@@ -1,0 +1,33 @@
+{
+  "source_url": "https://www.cars.co.za/for-sale/used/2023-Audi-A4-2.0-TFSI-Auto--35-TFSI-Gauteng-Four-Ways/11195370/",
+  "title": "2023 Audi A4",
+  "title_description": "2.0 TFSI Auto | 35 TFSI",
+  "condition": "https://schema.org/UsedCondition",
+  "year": null,
+  "mileage": null,
+  "transmission": null,
+  "fuel": null,
+  "drive_type": null,
+  "colour": null,
+  "seats": null,
+  "pricing_summary": "419000",
+  "dealer_name": null,
+  "dealer_address": null,
+  "dealer_rating": null,
+  "features": [],
+  "contact_number": null,
+  "images": [
+    "https://img-ik.cars.co.za/ik-seo/carsimages/11195370/2023-Audi-A4-20-TFSI-Auto-35-TFSI.jpg"
+  ],
+  "highlights": [],
+  "description": "Refined 2023 Audi A4 35TFSI sedan with turbo petrol performance and premium comfort This 2023 Audi A4 35TFSI blends executive style with everyday usability in a sleek white sedan body. Powered by a 2.0-litre turbo petrol engine driving the front wheels through Audi’s 7-speed S tronic automatic transmission, it delivers 110 kW and 270 Nm for smooth, confident performance. With fuel consumption rated at 6.1 L/100 km and a range of up to 885 km, it is well suited to both city driving and longer journeys. Inside, the A4 offers a polished, comfortable cabin for five, backed by the practicality of a 460–965 litre load area. Standard features such as climate control, Bluetooth connectivity, navigation and park distance control add convenience to daily driving, while safety is supported by six airbags, ABS, stability control and lane departure warning. Priced at R 419,000, this used A4 presents a strong opportunity to step into Audi sedan ownership. Key Features: • 2.0-litre turbo petrol engine • 7-speed S tronic automatic transmission • Climate control / automatic air conditioning • Bluetooth connectivity • Navigation • Park distance control (PDC) - front and rear • Lane departure warning",
+  "price": 419000,
+  "currency": "R (Rand)",
+  "address": null,
+  "location": "South Africa",
+  "listing_id": "11195370",
+  "scraped_at": "2026-08-25T05:23:31.545619+00:00",
+  "image_files": [
+    "vehicles\\11195370\\image_1.jpg"
+  ]
+}

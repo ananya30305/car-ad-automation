@@ -1,0 +1,33 @@
+{
+  "source_url": "https://www.cars.co.za/for-sale/used/2020-Toyota-Hilux-2.8-GD-6-Raised-Body-Raider-4x4-Auto-Extended-Cab-Gauteng-Vereeniging/11195258/",
+  "title": "2020 Toyota Hilux",
+  "title_description": "2.8 GD-6 Raised Body Raider 4x4 Auto Extended Cab",
+  "condition": "https://schema.org/UsedCondition",
+  "year": null,
+  "mileage": null,
+  "transmission": null,
+  "fuel": null,
+  "drive_type": null,
+  "colour": null,
+  "seats": null,
+  "pricing_summary": "649900",
+  "dealer_name": null,
+  "dealer_address": null,
+  "dealer_rating": null,
+  "features": [],
+  "contact_number": null,
+  "images": [
+    "https://img-ik.cars.co.za/ik-seo/carsimages/11195258/2020-Toyota-Hilux-28-GD-6-Raised-Body-Raider-4x4-Auto-Extended-Cab.jpg"
+  ],
+  "highlights": [],
+  "description": "Discover the rugged and reliable Toyota Hilux 2.8 GD-6 Raised Body Raider 4x4 Automatic Extended Cab, a perfect blend of strength and sophistication. Finished in a sleek white, this vehicle boasts a full service record and is in excellent condition, ready to tackle any adventure. Powered by a robust 130kW diesel engine, it offers a top speed of 180 km/h and features an automatic transmission for smooth driving. Inside, enjoy luxurious leather seats, a state-of-the-art Sat Nav compatible with Apple and Android devices, and a rear-view camera for added convenience. Safety is paramount with seven airbags, ABS, and park distance control. The Hilux comes equipped with a towbar, side steps, and a comprehensive set of extras including a Rhino front bumper, ToerTop, EFS shocks and coils, rubberised bed, Smash&Grab security, BF Goodrich tyres, stylish mags, hard Korr spotlights, a Tentco tent, and a diesel Jerry can, making it ideal for work or play. Brought to you by EasyAutofin, a reputable all-bank approved dealer in Gauteng, we offer nationwide delivery and welcome all trade-ins. If you're in the market to buy or sell your",
+  "price": 649900,
+  "currency": "R (Rand)",
+  "address": null,
+  "location": "South Africa",
+  "listing_id": "11195258",
+  "scraped_at": "2026-08-25T05:23:26.276198+00:00",
+  "image_files": [
+    "vehicles\\11195258\\image_1.jpg"
+  ]
+}

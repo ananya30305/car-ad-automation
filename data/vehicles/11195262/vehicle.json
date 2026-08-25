@@ -1,0 +1,33 @@
+{
+  "source_url": "https://www.cars.co.za/for-sale/used/2019-Haval-H6C-2.0T-Luxury-Auto-Gauteng-Vereeniging/11195262/",
+  "title": "2019 Haval H6C",
+  "title_description": "2.0T Luxury Auto",
+  "condition": "https://schema.org/UsedCondition",
+  "year": null,
+  "mileage": null,
+  "transmission": null,
+  "fuel": null,
+  "drive_type": null,
+  "colour": null,
+  "seats": null,
+  "pricing_summary": "249900",
+  "dealer_name": null,
+  "dealer_address": null,
+  "dealer_rating": null,
+  "features": [],
+  "contact_number": null,
+  "images": [
+    "https://img-ik.cars.co.za/ik-seo/carsimages/11195262/2019-Haval-H6C-20T-Luxury-Auto.jpg"
+  ],
+  "highlights": [],
+  "description": "Discover the stylish and reliable Haval H6C 2.0T Luxury Auto, a fantastic SUV finished in pristine white. With a full service record and a well-maintained mileage of 74,523 km, this vehicle promises both dependability and a touch of luxury. It boasts a powerful 140kW petrol engine that delivers a smooth drive and a top speed of 190 km/h. This SUV is packed with features to enhance your driving experience, including a sunroof to enjoy those sunny days, leather interior for comfort and style, and a reverse camera for safe parking. Additional extras include a towbar for practicality, smash-and-grab window protection, cruise control for relaxed highway cruising, and air conditioning to keep you cool. Safety is covered with six airbags and ABS brakes, while the full-service history guarantees ongoing maintenance. The vehicle’s body shape is perfect for families or adventure seekers alike, with a spacious interior and reliable performance. Contact EasyAutofin, a reputable and all-bank approved dealer in Gauteng, for nationwide delivery and trade-in options.",
+  "price": 249900,
+  "currency": "R (Rand)",
+  "address": null,
+  "location": "South Africa",
+  "listing_id": "11195262",
+  "scraped_at": "2026-08-25T05:23:23.371759+00:00",
+  "image_files": [
+    "vehicles\\11195262\\image_1.jpg"
+  ]
+}
