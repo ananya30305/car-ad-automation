@@ -1,0 +1,43 @@
+{
+  "_meta": {
+    "notes": [
+      "Destination SA used-car extra fields (category 35) are free-text inputs, not selects.",
+      "Maps below are used when a destination field is configured as a select in form_map.json.",
+      "Unknown source values must reject the record — never fuzzy-match."
+    ]
+  },
+  "transmission": {
+    "options": {
+      "Automatic": "Automatic",
+      "Auto": "Automatic",
+      "Manual": "Manual",
+      "CVT": "CVT"
+    }
+  },
+  "fuel": {
+    "options": {
+      "Petrol": "Petrol",
+      "Gasoline": "Petrol",
+      "Diesel": "Diesel",
+      "Hybrid": "Hybrid",
+      "Electric": "Electric"
+    }
+  },
+  "condition": {
+    "options": {
+      "Used": "Used",
+      "New": "New",
+      "Refurbished": "Refurbished"
+    }
+  },
+  "drive_type": {
+    "options": {
+      "4x2": "4x2",
+      "4x4": "4x4",
+      "FWD": "FWD",
+      "RWD": "RWD",
+      "AWD": "AWD",
+      "4WD": "4x4"
+    }
+  }
+}

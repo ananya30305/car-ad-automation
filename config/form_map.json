@@ -1,0 +1,244 @@
+{
+  "_meta": {
+    "inspected_at": "2026-08-25",
+    "destination_base": "https://august2026karnataka.dicewebfreelancers.com",
+    "destination_post_url": "https://august2026karnataka.dicewebfreelancers.com/index.php/post-free-ad",
+    "notes": [
+      "Category cascade and SA used-car extra fields were inspected via public JomClassifieds AJAX APIs (listCategory, listExtraFields) without login.",
+      "The post-free-ad page redirects to login. Core advert fields (title, description, price, location widgets) could not be inspected without credentials.",
+      "Run: ./run.sh inspect  (login manually, open the post form, script writes config/form_map.inspected.json)"
+    ]
+  },
+  "ready_for_browser": false,
+  "category": {
+    "select_selector": "select#category, select[name='category[]']",
+    "path": [
+      {
+        "value": "6",
+        "label": "Vehicles"
+      },
+      {
+        "value": "8",
+        "label": "Cars - Parts"
+      },
+      {
+        "value": "35",
+        "label": "Used cars in South Africa"
+      }
+    ],
+    "ajax_list_category": "/index.php?option=com_jomclassifieds&task=listCategory&format=raw",
+    "ajax_list_extra_fields": "/index.php?option=com_jomclassifieds&task=listExtraFields&format=raw"
+  },
+  "images": {
+    "uploader_container": "#jomclimageuploader",
+    "file_input_name": "images",
+    "file_input_fallback_selector": "input[type='file'][name='images'], #jomclimageuploader input[type='file']",
+    "required_count": 5,
+    "source": "Inspected from components/com_jomclassifieds/js/jomClassifieds.js (uploadFile fileName: images, container #jomclimageuploader)"
+  },
+  "fields": {
+    "title_description": {
+      "selector": "#exf_111",
+      "name": "exf_111",
+      "type": "text",
+      "label": "Title Description",
+      "from": "title_description",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "condition_primary": {
+      "selector": "#exf_112",
+      "name": "exf_112",
+      "type": "text",
+      "label": "Condition",
+      "from": "condition",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "year": {
+      "selector": "#exf_113",
+      "name": "exf_113",
+      "type": "text",
+      "label": "Year",
+      "from": "year",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "mileage": {
+      "selector": "#exf_114",
+      "name": "exf_114",
+      "type": "text",
+      "label": "Kilometers driven",
+      "from": "mileage",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "transmission": {
+      "selector": "#exf_115",
+      "name": "exf_115",
+      "type": "text",
+      "label": "Transmission",
+      "from": "transmission",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "fuel": {
+      "selector": "#exf_116",
+      "name": "exf_116",
+      "type": "text",
+      "label": "Fuel",
+      "from": "fuel",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "drive_type": {
+      "selector": "#exf_117",
+      "name": "exf_117",
+      "type": "text",
+      "label": "4x2 / 4x4",
+      "from": "drive_type",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "colour": {
+      "selector": "#exf_118",
+      "name": "exf_118",
+      "type": "text",
+      "label": "Body colour",
+      "from": "colour",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "condition_secondary": {
+      "selector": "#exf_119",
+      "name": "exf_119",
+      "type": "text",
+      "label": "Condition",
+      "from": "condition",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "seats": {
+      "selector": "#exf_120",
+      "name": "exf_120",
+      "type": "text",
+      "label": "Seats",
+      "from": "seats",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "pricing_summary": {
+      "selector": "#exf_121",
+      "name": "exf_121",
+      "type": "text",
+      "label": "pricing Summary",
+      "from": "pricing_summary",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "dealer_name": {
+      "selector": "#exf_122",
+      "name": "exf_122",
+      "type": "text",
+      "label": "Dealer Name",
+      "from": "dealer_name",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "dealer_address": {
+      "selector": "#exf_123",
+      "name": "exf_123",
+      "type": "text",
+      "label": "Dealer Address",
+      "from": "dealer_address",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "dealer_rating": {
+      "selector": "#exf_124",
+      "name": "exf_124",
+      "type": "text",
+      "label": "Dealer average rating",
+      "from": "dealer_rating",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "features": {
+      "selector": "textarea[name='exf_125']",
+      "name": "exf_125",
+      "type": "textarea",
+      "label": "Features",
+      "from": "features",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "contact_number": {
+      "selector": "#exf_126",
+      "name": "exf_126",
+      "type": "text",
+      "label": "Contact Number",
+      "from": "contact_number",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "source_url": {
+      "selector": "#exf_127",
+      "name": "exf_127",
+      "type": "text",
+      "label": "Source Link",
+      "from": "source_url",
+      "required": true,
+      "source": "listExtraFields id=35"
+    },
+    "highlights": {
+      "selector": "textarea[name='exf_128']",
+      "name": "exf_128",
+      "type": "textarea",
+      "label": "Vehicle Highlights",
+      "from": "highlights",
+      "required": true,
+      "source": "listExtraFields id=35"
+    }
+  },
+  "core_fields_pending_login_inspection": {
+    "title": {
+      "selector": null,
+      "name": null,
+      "type": "text",
+      "from": "title",
+      "note": "Not visible without authenticated post-ad page"
+    },
+    "description": {
+      "selector": null,
+      "name": null,
+      "type": "textarea",
+      "from": "description",
+      "note": "Not visible without authenticated post-ad page"
+    },
+    "price": {
+      "selector": null,
+      "name": null,
+      "type": "text",
+      "from": "price",
+      "note": "Price widget loads via listPriceField AJAX; HTML empty for cat 35 without post form session"
+    },
+    "country": {
+      "selector": null,
+      "name": null,
+      "type": "select",
+      "from": "country",
+      "note": "Separate from location — do not reuse location selectors"
+    },
+    "location": {
+      "selector": null,
+      "name": null,
+      "type": "select",
+      "from": "location",
+      "note": "Separate from country — do not reuse country selectors"
+    },
+    "submit": {
+      "selector": null,
+      "note": "Final submit control unknown until login inspection"
+    }
+  }
+}

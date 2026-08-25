@@ -1,37 +1,20 @@
-# Python
+# Byte-compiled / cache
 __pycache__/
 *.py[cod]
-*.pyo
-
-# Virtual environment
-venv/
+.pytest_cache/
 .venv/
 
-# Browser/session data
-browser_profile/
-
-# Runtime/generated data
-downloads/
-screenshots/
-debug/
-logs/
-checkpoints/
-reports/
-output/
-
-# Local/private data
+# Secrets / local env
 .env
-*.env
 
-# Generated/cache data
+# Runtime artifacts
+browser_profile/
+data/canonical/
+data/ready/
+data/rejected/
+data/reports/
 data/images/
-data/*.json
-data/*.csv
-
-# IDE
-.vscode/
-.idea/
+*.png
 
 # OS
 .DS_Store
-Thumbs.db
