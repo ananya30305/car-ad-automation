@@ -1,6 +1,7 @@
-*.html linguist-vendored
-*.htm linguist-vendored
-debug/** linguist-vendored
-reports/** linguist-vendored
-logs/** linguist-vendored
-tests/** linguist-vendored
+*.html linguist-detectable=false
+*.htm linguist-detectable=false
+reports/** linguist-detectable=false
+debug/** linguist-detectable=false
+logs/** linguist-detectable=false
+screenshots/** linguist-detectable=false
+tests/** linguist-detectable=false
