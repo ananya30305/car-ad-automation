@@ -1,0 +1,383 @@
+2026-08-25 16:27:34 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 16:27:34 | INFO     | Loading source data...
+2026-08-25 16:27:34 | INFO     | Loaded 3 records from JSON
+2026-08-25 16:27:34 | INFO     | Loaded 3 records
+2026-08-25 16:27:34 | INFO     | Limited to 3 records (--batch 3)
+2026-08-25 16:27:34 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-25 16:27:34 | INFO     | Starting batch processing...
+2026-08-25 16:27:34 | INFO     | Starting batch processing: 3 records
+2026-08-25 16:27:34 | INFO     | Normalized 3 records
+2026-08-25 16:27:34 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 16:27:34 | INFO     | Processing 3 unique vehicles
+2026-08-25 16:27:34 | INFO     | Saving reports...
+2026-08-25 16:27:34 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 16:27:34 | INFO     | 
+============================================================
+2026-08-25 16:27:34 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 16:27:34 | INFO     | ============================================================
+2026-08-25 16:27:34 | INFO     | Total records:           3
+2026-08-25 16:27:34 | INFO     | Valid records:           3
+2026-08-25 16:27:34 | INFO     | Invalid records:         0
+2026-08-25 16:27:34 | INFO     | Duplicates found:        0
+2026-08-25 16:27:34 | INFO     | Processed:               3
+2026-08-25 16:27:34 | INFO     | Successful:              3
+2026-08-25 16:27:34 | INFO     | Failed:                  0
+2026-08-25 16:27:34 | INFO     | Skipped:                 0
+2026-08-25 16:27:34 | INFO     | Runtime:                 0.0s
+2026-08-25 16:27:34 | INFO     | ============================================================
+2026-08-25 16:27:40 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 16:27:40 | INFO     | Loading source data...
+2026-08-25 16:27:40 | INFO     | Loaded 3 records from JSON
+2026-08-25 16:27:40 | INFO     | Loaded 3 records
+2026-08-25 16:27:40 | INFO     | Limited to 3 records (--batch 3)
+2026-08-25 16:27:40 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-25 16:27:40 | INFO     | Starting batch processing...
+2026-08-25 16:27:40 | INFO     | Starting batch processing: 3 records
+2026-08-25 16:27:40 | INFO     | Normalized 3 records
+2026-08-25 16:27:40 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 16:27:40 | INFO     | Processing 3 unique vehicles
+2026-08-25 16:27:40 | INFO     | Saving reports...
+2026-08-25 16:27:40 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 16:27:40 | INFO     | 
+============================================================
+2026-08-25 16:27:40 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 16:27:40 | INFO     | ============================================================
+2026-08-25 16:27:40 | INFO     | Total records:           3
+2026-08-25 16:27:40 | INFO     | Valid records:           3
+2026-08-25 16:27:40 | INFO     | Invalid records:         0
+2026-08-25 16:27:40 | INFO     | Duplicates found:        0
+2026-08-25 16:27:40 | INFO     | Processed:               3
+2026-08-25 16:27:40 | INFO     | Successful:              3
+2026-08-25 16:27:40 | INFO     | Failed:                  0
+2026-08-25 16:27:40 | INFO     | Skipped:                 0
+2026-08-25 16:27:40 | INFO     | Runtime:                 0.0s
+2026-08-25 16:27:40 | INFO     | ============================================================
+2026-08-25 20:12:04 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:12:04 | INFO     | Loading source data...
+2026-08-25 20:12:04 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:12:04 | INFO     | Loaded 3 records
+2026-08-25 20:12:04 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-25 20:12:04 | INFO     | Starting batch processing...
+2026-08-25 20:12:04 | INFO     | Starting batch processing: 3 records
+2026-08-25 20:12:04 | INFO     | Normalized 3 records
+2026-08-25 20:12:04 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 20:12:04 | INFO     | Processing 3 unique vehicles
+2026-08-25 20:12:04 | INFO     | Saving reports...
+2026-08-25 20:12:04 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:12:04 | INFO     | 
+============================================================
+2026-08-25 20:12:04 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:12:04 | INFO     | ============================================================
+2026-08-25 20:12:04 | INFO     | Total records:           3
+2026-08-25 20:12:04 | INFO     | Valid records:           3
+2026-08-25 20:12:04 | INFO     | Invalid records:         0
+2026-08-25 20:12:04 | INFO     | Duplicates found:        0
+2026-08-25 20:12:04 | INFO     | Processed:               3
+2026-08-25 20:12:04 | INFO     | Successful:              3
+2026-08-25 20:12:04 | INFO     | Failed:                  0
+2026-08-25 20:12:04 | INFO     | Skipped:                 0
+2026-08-25 20:12:04 | INFO     | Runtime:                 0.0s
+2026-08-25 20:12:04 | INFO     | ============================================================
+2026-08-25 20:12:18 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:12:18 | INFO     | Loading source data...
+2026-08-25 20:12:18 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:12:18 | INFO     | Loaded 3 records
+2026-08-25 20:12:18 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-25 20:12:18 | INFO     | Starting batch processing...
+2026-08-25 20:12:18 | INFO     | Starting batch processing: 3 records
+2026-08-25 20:12:18 | INFO     | Normalized 3 records
+2026-08-25 20:12:18 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 20:12:18 | INFO     | Processing 3 unique vehicles
+2026-08-25 20:12:18 | INFO     | Saving reports...
+2026-08-25 20:12:18 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:12:18 | INFO     | 
+============================================================
+2026-08-25 20:12:18 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:12:18 | INFO     | ============================================================
+2026-08-25 20:12:18 | INFO     | Total records:           3
+2026-08-25 20:12:18 | INFO     | Valid records:           3
+2026-08-25 20:12:18 | INFO     | Invalid records:         0
+2026-08-25 20:12:18 | INFO     | Duplicates found:        0
+2026-08-25 20:12:18 | INFO     | Processed:               3
+2026-08-25 20:12:18 | INFO     | Successful:              3
+2026-08-25 20:12:18 | INFO     | Failed:                  0
+2026-08-25 20:12:18 | INFO     | Skipped:                 0
+2026-08-25 20:12:18 | INFO     | Runtime:                 0.0s
+2026-08-25 20:12:18 | INFO     | ============================================================
+2026-08-25 20:13:29 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:13:29 | INFO     | Loading source data...
+2026-08-25 20:13:29 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:13:29 | INFO     | Loaded 3 records
+2026-08-25 20:13:29 | INFO     | Limited to 1 records (--batch 1)
+2026-08-25 20:13:29 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-25 20:13:29 | INFO     | Starting batch processing...
+2026-08-25 20:13:29 | INFO     | Starting batch processing: 1 records
+2026-08-25 20:13:29 | INFO     | Normalized 1 records
+2026-08-25 20:13:29 | INFO     | Validated 1 records, 0 rejected
+2026-08-25 20:13:29 | INFO     | Processing 1 unique vehicles
+2026-08-25 20:13:29 | INFO     | Saving reports...
+2026-08-25 20:13:29 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:13:29 | INFO     | 
+============================================================
+2026-08-25 20:13:29 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:13:29 | INFO     | ============================================================
+2026-08-25 20:13:29 | INFO     | Total records:           1
+2026-08-25 20:13:29 | INFO     | Valid records:           1
+2026-08-25 20:13:29 | INFO     | Invalid records:         0
+2026-08-25 20:13:29 | INFO     | Duplicates found:        0
+2026-08-25 20:13:29 | INFO     | Processed:               1
+2026-08-25 20:13:29 | INFO     | Successful:              1
+2026-08-25 20:13:29 | INFO     | Failed:                  0
+2026-08-25 20:13:29 | INFO     | Skipped:                 0
+2026-08-25 20:13:29 | INFO     | Runtime:                 0.0s
+2026-08-25 20:13:29 | INFO     | ============================================================
+2026-08-25 20:14:44 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:14:44 | INFO     | Loading source data...
+2026-08-25 20:14:44 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:14:44 | INFO     | Loaded 3 records
+2026-08-25 20:14:44 | INFO     | Limited to 1 records (--batch 1)
+2026-08-25 20:14:44 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-25 20:14:44 | INFO     | Starting batch processing...
+2026-08-25 20:14:44 | INFO     | Starting batch processing: 1 records
+2026-08-25 20:14:44 | INFO     | Normalized 1 records
+2026-08-25 20:14:44 | INFO     | Validated 1 records, 0 rejected
+2026-08-25 20:14:44 | INFO     | Processing 1 unique vehicles
+2026-08-25 20:14:44 | INFO     | Saving reports...
+2026-08-25 20:14:44 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:14:44 | INFO     | 
+============================================================
+2026-08-25 20:14:44 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:14:44 | INFO     | ============================================================
+2026-08-25 20:14:44 | INFO     | Total records:           1
+2026-08-25 20:14:44 | INFO     | Valid records:           1
+2026-08-25 20:14:44 | INFO     | Invalid records:         0
+2026-08-25 20:14:44 | INFO     | Duplicates found:        0
+2026-08-25 20:14:44 | INFO     | Processed:               1
+2026-08-25 20:14:44 | INFO     | Successful:              1
+2026-08-25 20:14:44 | INFO     | Failed:                  0
+2026-08-25 20:14:44 | INFO     | Skipped:                 0
+2026-08-25 20:14:44 | INFO     | Runtime:                 0.0s
+2026-08-25 20:14:44 | INFO     | ============================================================
+2026-08-25 20:15:44 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:15:44 | INFO     | Loading source data...
+2026-08-25 20:15:44 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:15:44 | INFO     | Loaded 3 records
+2026-08-25 20:15:44 | INFO     | Limited to 1 records (--batch 1)
+2026-08-25 20:15:44 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-25 20:15:44 | INFO     | Starting batch processing...
+2026-08-25 20:15:44 | INFO     | Starting batch processing: 1 records
+2026-08-25 20:15:44 | INFO     | Normalized 1 records
+2026-08-25 20:15:44 | INFO     | Validated 1 records, 0 rejected
+2026-08-25 20:15:44 | INFO     | Processing 1 unique vehicles
+2026-08-25 20:15:44 | INFO     | Saving reports...
+2026-08-25 20:15:44 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:15:44 | INFO     | 
+============================================================
+2026-08-25 20:15:44 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:15:44 | INFO     | ============================================================
+2026-08-25 20:15:44 | INFO     | Total records:           1
+2026-08-25 20:15:44 | INFO     | Valid records:           1
+2026-08-25 20:15:44 | INFO     | Invalid records:         0
+2026-08-25 20:15:44 | INFO     | Duplicates found:        0
+2026-08-25 20:15:44 | INFO     | Processed:               1
+2026-08-25 20:15:44 | INFO     | Successful:              1
+2026-08-25 20:15:44 | INFO     | Failed:                  0
+2026-08-25 20:15:44 | INFO     | Skipped:                 0
+2026-08-25 20:15:44 | INFO     | Runtime:                 0.0s
+2026-08-25 20:15:44 | INFO     | ============================================================
+2026-08-25 20:20:48 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:20:48 | INFO     | Loading source data...
+2026-08-25 20:20:48 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:20:48 | INFO     | Loaded 3 records
+2026-08-25 20:20:48 | INFO     | VALIDATE-ONLY MODE - no browser automation
+2026-08-25 20:20:48 | INFO     | Starting batch processing: 3 records
+2026-08-25 20:20:48 | INFO     | Normalized 3 records
+2026-08-25 20:20:48 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 20:20:48 | INFO     | Processing 3 unique vehicles
+2026-08-25 20:20:48 | INFO     | Saving reports...
+2026-08-25 20:20:48 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:20:48 | INFO     | 
+============================================================
+2026-08-25 20:20:48 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:20:48 | INFO     | ============================================================
+2026-08-25 20:20:48 | INFO     | Total records:           3
+2026-08-25 20:20:48 | INFO     | Valid records:           3
+2026-08-25 20:20:48 | INFO     | Invalid records:         0
+2026-08-25 20:20:48 | INFO     | Duplicates found:        0
+2026-08-25 20:20:48 | INFO     | Processed:               3
+2026-08-25 20:20:48 | INFO     | Successful:              3
+2026-08-25 20:20:48 | INFO     | Failed:                  0
+2026-08-25 20:20:48 | INFO     | Skipped:                 0
+2026-08-25 20:20:48 | INFO     | Runtime:                 0.0s
+2026-08-25 20:20:48 | INFO     | ============================================================
+2026-08-25 20:21:01 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:21:01 | INFO     | Loading source data...
+2026-08-25 20:21:01 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:21:01 | INFO     | Loaded 3 records
+2026-08-25 20:21:01 | INFO     | PREPARE MODE - normalize, validate, and prepare without browser automation
+2026-08-25 20:21:01 | INFO     | Starting batch processing: 3 records
+2026-08-25 20:21:01 | INFO     | Normalized 3 records
+2026-08-25 20:21:01 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 20:21:01 | INFO     | Processing 3 unique vehicles
+2026-08-25 20:21:01 | INFO     | Saving reports...
+2026-08-25 20:21:01 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:21:01 | INFO     | 
+============================================================
+2026-08-25 20:21:01 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:21:01 | INFO     | ============================================================
+2026-08-25 20:21:01 | INFO     | Total records:           3
+2026-08-25 20:21:01 | INFO     | Valid records:           3
+2026-08-25 20:21:01 | INFO     | Invalid records:         0
+2026-08-25 20:21:01 | INFO     | Duplicates found:        0
+2026-08-25 20:21:01 | INFO     | Processed:               3
+2026-08-25 20:21:01 | INFO     | Successful:              3
+2026-08-25 20:21:01 | INFO     | Failed:                  0
+2026-08-25 20:21:01 | INFO     | Skipped:                 0
+2026-08-25 20:21:01 | INFO     | Runtime:                 0.0s
+2026-08-25 20:21:01 | INFO     | ============================================================
+2026-08-25 20:21:05 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:21:05 | INFO     | Loading source data...
+2026-08-25 20:21:05 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:21:05 | INFO     | Loaded 3 records
+2026-08-25 20:21:05 | INFO     | Limited to 1 records (--batch 1)
+2026-08-25 20:21:05 | INFO     | DRY RUN MODE - browser automation will fill and verify forms without submitting
+2026-08-25 20:21:05 | INFO     | Starting batch processing...
+2026-08-25 20:21:05 | INFO     | Starting batch processing: 1 records
+2026-08-25 20:21:05 | INFO     | Normalized 1 records
+2026-08-25 20:21:05 | INFO     | Validated 1 records, 0 rejected
+2026-08-25 20:21:05 | INFO     | Processing 1 unique vehicles
+2026-08-25 20:21:08 | INFO     | Browser launched successfully
+2026-08-25 20:21:09 | INFO     | Navigated to https://august2026karnataka.dicewebfreelancers.com/index.php/post-free-ad
+2026-08-25 20:21:09 | INFO     | Form detected with selector: form
+2026-08-25 20:21:10 | INFO     | Found 5 form fields
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute title
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute price
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute year
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute mileage
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute transmission
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute fuel
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute drive_type
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute colour
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute seats
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute condition
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute description
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute contact_number
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute dealer_name
+2026-08-25 20:21:10 | WARNING  | Could not fill attribute dealer_address
+2026-08-25 20:21:10 | WARNING  | TEST001: No fields were filled
+2026-08-25 20:21:10 | INFO     | Session saved to D:\car-ad-automation\browser_profile\state.json
+2026-08-25 20:21:10 | INFO     | Browser closed
+2026-08-25 20:21:10 | INFO     | Saving reports...
+2026-08-25 20:21:10 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:21:10 | INFO     | 
+============================================================
+2026-08-25 20:21:10 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:21:10 | INFO     | ============================================================
+2026-08-25 20:21:10 | INFO     | Total records:           1
+2026-08-25 20:21:10 | INFO     | Valid records:           1
+2026-08-25 20:21:10 | INFO     | Invalid records:         0
+2026-08-25 20:21:10 | INFO     | Duplicates found:        0
+2026-08-25 20:21:10 | INFO     | Processed:               1
+2026-08-25 20:21:10 | INFO     | Successful:              0
+2026-08-25 20:21:10 | INFO     | Failed:                  1
+2026-08-25 20:21:10 | INFO     | Skipped:                 0
+2026-08-25 20:21:10 | INFO     | Runtime:                 4.7s
+2026-08-25 20:21:10 | INFO     | ============================================================
+2026-08-25 20:22:51 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:22:51 | INFO     | Loading source data...
+2026-08-25 20:22:51 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:22:51 | INFO     | Loaded 3 records
+2026-08-25 20:22:51 | INFO     | VALIDATE-ONLY MODE - no browser automation
+2026-08-25 20:22:51 | INFO     | Starting batch processing: 3 records
+2026-08-25 20:22:51 | INFO     | Normalized 3 records
+2026-08-25 20:22:51 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 20:22:51 | INFO     | Processing 3 unique vehicles
+2026-08-25 20:22:51 | INFO     | Saving reports...
+2026-08-25 20:22:51 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:22:51 | INFO     | 
+============================================================
+2026-08-25 20:22:51 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:22:51 | INFO     | ============================================================
+2026-08-25 20:22:51 | INFO     | Total records:           3
+2026-08-25 20:22:51 | INFO     | Valid records:           3
+2026-08-25 20:22:51 | INFO     | Invalid records:         0
+2026-08-25 20:22:51 | INFO     | Duplicates found:        0
+2026-08-25 20:22:51 | INFO     | Processed:               3
+2026-08-25 20:22:51 | INFO     | Successful:              3
+2026-08-25 20:22:51 | INFO     | Failed:                  0
+2026-08-25 20:22:51 | INFO     | Skipped:                 0
+2026-08-25 20:22:51 | INFO     | Runtime:                 0.0s
+2026-08-25 20:22:51 | INFO     | ============================================================
+2026-08-25 20:23:02 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:23:02 | INFO     | Loading source data...
+2026-08-25 20:23:02 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:23:02 | INFO     | Loaded 3 records
+2026-08-25 20:23:02 | INFO     | PREPARE MODE - normalize, validate, and prepare without browser automation
+2026-08-25 20:23:02 | INFO     | Starting batch processing: 3 records
+2026-08-25 20:23:02 | INFO     | Normalized 3 records
+2026-08-25 20:23:02 | INFO     | Validated 3 records, 0 rejected
+2026-08-25 20:23:02 | INFO     | Processing 3 unique vehicles
+2026-08-25 20:23:02 | INFO     | Saving reports...
+2026-08-25 20:23:02 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:23:02 | INFO     | 
+============================================================
+2026-08-25 20:23:02 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:23:02 | INFO     | ============================================================
+2026-08-25 20:23:02 | INFO     | Total records:           3
+2026-08-25 20:23:02 | INFO     | Valid records:           3
+2026-08-25 20:23:02 | INFO     | Invalid records:         0
+2026-08-25 20:23:02 | INFO     | Duplicates found:        0
+2026-08-25 20:23:02 | INFO     | Processed:               3
+2026-08-25 20:23:02 | INFO     | Successful:              3
+2026-08-25 20:23:02 | INFO     | Failed:                  0
+2026-08-25 20:23:02 | INFO     | Skipped:                 0
+2026-08-25 20:23:02 | INFO     | Runtime:                 0.0s
+2026-08-25 20:23:02 | INFO     | ============================================================
+2026-08-25 20:23:09 | INFO     | Vehicle Advertisement Automation Starting
+2026-08-25 20:23:09 | INFO     | Loading source data...
+2026-08-25 20:23:09 | INFO     | Loaded 3 records from JSON
+2026-08-25 20:23:09 | INFO     | Loaded 3 records
+2026-08-25 20:23:09 | INFO     | Limited to 1 records (--batch 1)
+2026-08-25 20:23:09 | INFO     | DRY RUN MODE - browser automation will fill and verify forms without submitting
+2026-08-25 20:23:09 | INFO     | Starting batch processing...
+2026-08-25 20:23:09 | INFO     | Starting batch processing: 1 records
+2026-08-25 20:23:09 | INFO     | Normalized 1 records
+2026-08-25 20:23:09 | INFO     | Validated 1 records, 0 rejected
+2026-08-25 20:23:09 | INFO     | Processing 1 unique vehicles
+2026-08-25 20:23:11 | INFO     | Browser launched successfully
+2026-08-25 20:23:20 | INFO     | Navigated to https://august2026karnataka.dicewebfreelancers.com/index.php/post-free-ad
+2026-08-25 20:23:20 | INFO     | Form detected with selector: form
+2026-08-25 20:23:20 | INFO     | Found 5 form fields
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute title
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute price
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute year
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute mileage
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute transmission
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute fuel
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute drive_type
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute colour
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute seats
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute condition
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute description
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute contact_number
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute dealer_name
+2026-08-25 20:23:20 | WARNING  | Could not fill attribute dealer_address
+2026-08-25 20:23:20 | WARNING  | TEST001: No fields were filled
+2026-08-25 20:23:20 | INFO     | Session saved to D:\car-ad-automation\browser_profile\state.json
+2026-08-25 20:23:21 | INFO     | Browser closed
+2026-08-25 20:23:21 | INFO     | Saving reports...
+2026-08-25 20:23:21 | INFO     | Reports saved to D:\car-ad-automation\reports
+2026-08-25 20:23:21 | INFO     | 
+============================================================
+2026-08-25 20:23:21 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-25 20:23:21 | INFO     | ============================================================
+2026-08-25 20:23:21 | INFO     | Total records:           1
+2026-08-25 20:23:21 | INFO     | Valid records:           1
+2026-08-25 20:23:21 | INFO     | Invalid records:         0
+2026-08-25 20:23:21 | INFO     | Duplicates found:        0
+2026-08-25 20:23:21 | INFO     | Processed:               1
+2026-08-25 20:23:21 | INFO     | Successful:              0
+2026-08-25 20:23:21 | INFO     | Failed:                  1
+2026-08-25 20:23:21 | INFO     | Skipped:                 0
+2026-08-25 20:23:21 | INFO     | Runtime:                 12.0s
+2026-08-25 20:23:21 | INFO     | ============================================================

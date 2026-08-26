@@ -1,0 +1,75 @@
+URL: https://august2026karnataka.dicewebfreelancers.com/index.php/post-free-ad
+TITLE: Post Ad
+
+VISIBLE SELECTS
+SELECT 0: name='category[]' id='category' class='key  required' aria-label=None placeholder=None value='-1'
+  OPTION value='-1' text='- Select a category -' selected=True
+  OPTION value='1' text='For Sale' selected=False
+  OPTION value='6' text='Vehicles' selected=False
+  OPTION value='11' text='Services' selected=False
+  OPTION value='16' text='Real Estate' selected=False
+  OPTION value='21' text='Jobs' selected=False
+  OPTION value='26' text='Classes' selected=False
+SELECT 1: name='currency' id='currency' class=None aria-label=None placeholder=None value='USD'
+  OPTION value='-1' text='- -- -' selected=False
+  OPTION value='USD' text='USD' selected=True
+  OPTION value='AUD' text='AUD' selected=False
+  OPTION value='TK' text='TK' selected=False
+  OPTION value='Rs' text='Rs' selected=False
+  OPTION value='R (Rand)' text='R (Rand)' selected=False
+SELECT 2: name='tagid' id='tagid' class=None aria-label=None placeholder=None value='-1'
+  OPTION value='-1' text='- Select a tag -' selected=True
+  OPTION value='1' text='Sale' selected=False
+SELECT 3: name='location[]' id='location' class='key ' aria-label=None placeholder=None value='0'
+  OPTION value='0' text='- Select a country -' selected=False
+  OPTION value='1' text='United States' selected=False
+  OPTION value='33' text='Bangladesh' selected=False
+  OPTION value='34' text='Newzeland' selected=False
+  OPTION value='35' text='Australia' selected=False
+  OPTION value='44' text='China' selected=False
+  OPTION value='45' text='South Africa' selected=False
+
+VISIBLE COMBOBOXES
+COMBOBOX 0: name='category[]' id='category' class='key  required' aria-label=None value='-1'
+COMBOBOX 1: name='currency' id='currency' class=None aria-label=None value='USD'
+COMBOBOX 2: name='tagid' id='tagid' class=None aria-label=None value='-1'
+COMBOBOX 3: name='location[]' id='location' class='key ' aria-label=None value='0'
+
+VISIBLE CATEGORY LABELS/BUTTONS/LINKS
+All Categories
+Single Category
+Category *
+
+CATEGORY CONTROL HTML
+<select id="category" name="category[]" onchange="ListMultiCategory(this.options[this.selectedIndex].value, -1, 1,0);loadPriceField(this.options[this.selectedIndex].value, 1);ListExtraFields(this.options[this.selectedIndex].value, 0);" class="key  required">
+	<option value="-1" selected="selected">- Select a category -</option>
+	<option value="1">For Sale</option>
+	<option value="6">Vehicles</option>
+	<option value="11">Services</option>
+	<option value="16">Real Estate</option>
+	<option value="21">Jobs</option>
+	<option value="26">Classes</option>
+</select>
+<select id="currency" name="currency">
+	<option value="-1">- -- -</option>
+	<option value="USD" selected="selected">USD</option>
+	<option value="AUD">AUD</option>
+	<option value="TK">TK</option>
+	<option value="Rs">Rs</option>
+	<option value="R (Rand)">R (Rand)</option>
+</select>
+<select id="tagid" name="tagid">
+	<option value="-1" selected="selected">- Select a tag -</option>
+	<option value="1">Sale</option>
+</select>
+<select id="location" name="location[]" class="key " onchange="ListMultiLocation(this.options[this.selectedIndex].value, 0, 1);">
+	<option value="0" data-jomcl-country="United States">- Select a country -</option>
+	<option value="1" data-jomcl-country="United States">United States</option>
+	<option value="33" data-jomcl-country="Bangladesh">Bangladesh</option>
+	<option value="34" data-jomcl-country="Newzeland">Newzeland</option>
+	<option value="35" data-jomcl-country="Australia">Australia</option>
+	<option value="44" data-jomcl-country="China">China</option>
+	<option value="45" data-jomcl-country="South Africa">South Africa</option>
+</select>
+
+VISIBLE CATEGORY LINKS HTML

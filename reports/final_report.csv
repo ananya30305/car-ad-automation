@@ -1,0 +1,14 @@
+Metric,Count
+total_records,1
+valid_records,1
+invalid_records,0
+duplicates,0
+processed,1
+successful,0
+failed,1
+skipped,0
+missing_images,0
+verification_failures,0
+submission_failures,0
+runtime_seconds,11.98041
+status_summary,{'BLOCKED': 1}

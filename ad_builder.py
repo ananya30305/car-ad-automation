@@ -1,290 +1,52 @@
+"""Ad Builder - Formats payload details and verifies image file paths."""
+
 import json
 import logging
 from pathlib import Path
 
-from config import OUTPUT_DIR
+BASE_DIR = Path(__file__).resolve().parent
+INPUT_FILE = BASE_DIR / "output" / "car_details.json"
+OUTPUT_FILE = BASE_DIR / "output" / "ads_ready_for_form.json"
 
-
-INPUT_FILE = OUTPUT_DIR / "validated_cars.json"
-OUTPUT_FILE = OUTPUT_DIR / "ads_ready_for_form.json"
-
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s | %(levelname)s | %(message)s"
-)
-
+logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)s | %(message)s")
 logger = logging.getLogger(__name__)
 
 
-def load_json(file_path):
+def build_payload(car: dict) -> dict:
+    source_id = car.get("source_id", "")
+    images = car.get("images", [])
+    
+    valid_images = []
+    for img_p in images:
+        p = Path(img_p)
+        if p.exists():
+            valid_images.append(str(p.resolve()))
 
-    if not Path(file_path).exists():
+    if not valid_images and source_id:
+        local_dir = BASE_DIR / "data" / "images" / source_id
+        if local_dir.exists():
+            valid_images = [str(f.resolve()) for f in sorted(local_dir.glob("*.jpg"))]
 
-        raise FileNotFoundError(
-            f"File not found: {file_path}"
-        )
-
-    with open(
-        file_path,
-        "r",
-        encoding="utf-8"
-    ) as file:
-
-        return json.load(file)
-
-
-def save_json(file_path, data):
-
-    OUTPUT_DIR.mkdir(
-        parents=True,
-        exist_ok=True
-    )
-
-    with open(
-        file_path,
-        "w",
-        encoding="utf-8"
-    ) as file:
-
-        json.dump(
-            data,
-            file,
-            indent=4,
-            ensure_ascii=False
-        )
-
-
-def clean(value):
-
-    if value is None:
-        return ""
-
-    return str(value).strip()
-
-
-def prepare_missing_values(ad):
-
-    """
-    The advertisement rules allow '.' for a genuinely
-    missing category.
-
-    We ONLY use '.' for fields that are actually missing.
-
-    We do NOT replace missing highlights/features with '.'
-    because those have separate minimum requirements.
-    """
-
-    result = dict(ad)
-
-    missing_fields = result.get(
-        "validation",
-        {}
-    ).get(
-        "missing_fields",
-        []
-    )
-
-    if not isinstance(
-        missing_fields,
-        list
-    ):
-
-        missing_fields = []
-
-    for field in missing_fields:
-
-        if field in result:
-
-            if not clean(
-                result[field]
-            ):
-
-                result[field] = "."
-
-        else:
-
-            result[field] = "."
-
-    return result
-
-
-def build_form_record(ad, number):
-
-    ad = prepare_missing_values(
-        ad
-    )
-
-    highlights = ad.get(
-        "highlights",
-        []
-    )
-
-    features = ad.get(
-        "features",
-        []
-    )
-
-    if not isinstance(
-        highlights,
-        list
-    ):
-
-        highlights = []
-
-    if not isinstance(
-        features,
-        list
-    ):
-
-        features = []
-
-    record = {
-
-        "ad_number": number,
-
-        "source_id": ad.get(
-            "source_id",
-            ""
-        ),
-
-        "source_url": ad.get(
-            "source_url",
-            ""
-        ),
-
-        "year": clean(
-            ad.get("year")
-        ),
-
-        "make": clean(
-            ad.get("make")
-        ),
-
-        "model": clean(
-            ad.get("model")
-        ),
-
-        "variant": clean(
-            ad.get("variant")
-        ),
-
-        "mileage": clean(
-            ad.get("mileage")
-        ),
-
-        "transmission": clean(
-            ad.get("transmission")
-        ),
-
-        "fuel": clean(
-            ad.get("fuel")
-        ),
-
-        "drive_type": clean(
-            ad.get("drive_type")
-        ),
-
-        "condition": clean(
-            ad.get("condition")
-        ),
-
-        "price": clean(
-            ad.get("price")
-        ),
-
-        "highlights": highlights,
-
-        "features": features,
-
-        "images": ad.get(
-            "images",
-            []
-        ),
-
-        "validation": ad.get(
-            "validation",
-            {}
-        ),
-    }
-
-    return record
+    car_payload = dict(car)
+    car_payload["images"] = valid_images[:5]
+    return car_payload
 
 
 def main():
-
-    logger.info("=" * 70)
-    logger.info("ADVERTISEMENT BUILDER")
-    logger.info("=" * 70)
-
-    try:
-
-        cars = load_json(
-            INPUT_FILE
-        )
-
-    except Exception as error:
-
-        logger.error(
-            "%s",
-            error
-        )
-
+    if not INPUT_FILE.exists():
+        logger.error("Input file not found: %s", INPUT_FILE)
         return
 
-    if not isinstance(
-        cars,
-        list
-    ):
+    with open(INPUT_FILE, "r", encoding="utf-8") as f:
+        cars = json.load(f)
 
-        logger.error(
-            "validated_cars.json must contain a list."
-        )
+    ads = [build_payload(c) for c in cars]
 
-        return
+    OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        json.dump(ads, f, indent=4, ensure_ascii=False)
 
-    ads = []
-
-    for number, car in enumerate(
-        cars,
-        start=1
-    ):
-
-        record = build_form_record(
-            car,
-            number
-        )
-
-        ads.append(
-            record
-        )
-
-        logger.info(
-            "[%d] Prepared: %s %s %s",
-            number,
-            record["year"],
-            record["make"],
-            record["model"]
-        )
-
-    save_json(
-        OUTPUT_FILE,
-        ads
-    )
-
-    logger.info("=" * 70)
-
-    logger.info(
-        "Prepared advertisements: %d",
-        len(ads)
-    )
-
-    logger.info(
-        "Output: %s",
-        OUTPUT_FILE
-    )
-
-    logger.info("=" * 70)
+    logger.info("Prepared %d advertisements payload.", len(ads))
 
 
 if __name__ == "__main__":

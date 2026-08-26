@@ -1,0 +1,166 @@
+<!DOCTYPE html><html lang="en-gb" dir="ltr"><head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<base href="https://august2026karnataka.dicewebfreelancers.com/index.php/login">
+	<meta name="generator" content="Joomla! - Open Source Content Management">
+	<title>Login</title>
+	<link href="/templates/classic/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+	<link href="/templates/classic/css/template.css?671b436d52cfbb39caddfd67a6e53369" rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<style>
+
+	h1, h2, h3, h4, h5, h6, .site-title {
+		font-family: 'Open Sans', sans-serif;
+	}
+	body.site {
+		border-top: 3px solid #0088cc;
+		background-color: #ffffff;
+	}
+	a {
+		color: #0088cc;
+	}
+	.nav-list > .active > a,
+	.nav-list > .active > a:hover,
+	.dropdown-menu li > a:hover,
+	.dropdown-menu .active > a,
+	.dropdown-menu .active > a:hover,
+	.nav-pills > .active > a,
+	.nav-pills > .active > a:hover
+	{
+		background: #393E42;
+	}
+	</style>
+	<script type="application/json" class="joomla-script-options loaded">{"csrf.token":"d023e3e5c160896f402acf289abb5c39","system.paths":{"root":"","base":""},"system.keepalive":{"interval":300000,"uri":"\/index.php\/component\/ajax\/?format=json"},"joomla.jtext":{"JLIB_FORM_FIELD_INVALID":"Invalid field:&#160"}}</script>
+	<script src="/media/system/js/core.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<!--[if lt IE 9]><script src="/media/system/js/polyfill.event.js?671b436d52cfbb39caddfd67a6e53369"></script><![endif]-->
+	<script src="/media/system/js/keepalive.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<script src="/media/jui/js/jquery.min.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<script src="/media/jui/js/jquery-noconflict.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<script src="/media/jui/js/jquery-migrate.min.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<script src="/media/system/js/punycode.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<script src="/media/system/js/validate.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<!--[if lt IE 9]><script src="/media/system/js/html5fallback.js?671b436d52cfbb39caddfd67a6e53369"></script><![endif]-->
+	<script src="/media/jui/js/bootstrap.min.js?671b436d52cfbb39caddfd67a6e53369"></script>
+	<script src="/templates/classic/js/template.js?671b436d52cfbb39caddfd67a6e53369"></script>
+
+	<!--[if lt IE 9]><script src="/media/jui/js/html5.js"></script><![endif]-->
+</head>
+<body class="site com_users view-login no-layout no-task itemid-407">
+	<!-- Body -->
+	<div class="body">
+		<div class="container">
+			<!-- Header -->
+			<header class="header" role="banner">
+				<div class="header-inner clearfix">
+					<a class="brand pull-left" href="/">
+						<span class="site-title" title="Karnataka August 2026 Freelancers Portal">Karnataka August 2026 Freelancers Portal</span>											</a>
+					<div class="header-search pull-right">
+						
+					</div>
+				</div>
+			</header>
+							<nav class="navigation" role="navigation">
+					<div class="navbar pull-left">
+						<a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>
+					</div>
+					<div class="nav-collapse">
+						<ul class="nav menu  nav-pills top-menu mod-list">
+<li class="item-101 default"><a href="/index.php">All Categories</a></li><li class="item-103"><a href="/index.php/single-category">Single Category</a></li><li class="item-104"><a href="/index.php/all-adverts">All Adverts</a></li><li class="item-105"><a href="/index.php/single-advert">Single Advert</a></li><li class="item-119"><a href="/index.php/all-locations">All Locations</a></li><li class="item-106"><a href="/index.php/post-free-ad">Post  Ad</a></li><li class="item-407 current active"><a href="/index.php/login">Login</a></li><li class="item-408"><a href="/index.php/register">Register</a></li></ul>
+
+					</div>
+				</nav>
+						
+			<div class="row-fluid">
+								<main id="content" role="main" class="span12">
+					<!-- Begin Content -->					
+					<div id="system-message-container">
+			<div id="system-message">
+							<div class="alert alert-success">
+										<a class="close" data-dismiss="alert">×</a>
+
+											<h4 class="alert-heading">Message</h4>
+						<div>
+															<div class="alert-message">Login to post advert(s)!</div>
+													</div>
+									</div>
+					</div>
+	</div>
+
+					<div class="login">
+									<form action="/index.php/login?task=user.login" method="post" class="form-validate form-horizontal well">
+		<fieldset>
+			
+<div class="control-group">
+			<div class="control-label">
+			<label id="username-lbl" for="username" class="required">
+	Username<span class="star">&nbsp;*</span></label>
+					</div>
+		<div class="controls">
+		<input type="text" name="username" id="username" value="" class="validate-username required" size="25" required="required" aria-required="true" autofocus="" style="">
+	</div>
+</div>
+
+<div class="control-group">
+			<div class="control-label">
+			<label id="password-lbl" for="password" class="required">
+	Password<span class="star">&nbsp;*</span></label>
+					</div>
+		<div class="controls">
+		<input type="password" name="password" id="password" value="" class="validate-password required" size="25" maxlength="99" required="required" aria-required="true" style="">	</div>
+</div>
+										<div class="control-group">
+					<div class="control-label">
+						<label for="remember">
+							Remember me						</label>
+					</div>
+					<div class="controls">
+						<input id="remember" type="checkbox" name="remember" class="inputbox" value="yes" style="">
+					</div>
+				</div>
+						<div class="control-group">
+				<div class="controls">
+					<button type="submit" class="btn btn-primary">
+						Log in					</button>
+				</div>
+			</div>
+						<input type="hidden" name="return" value="aHR0cHM6Ly9hdWd1c3QyMDI2a2FybmF0YWthLmRpY2V3ZWJmcmVlbGFuY2Vycy5jb20vaW5kZXgucGhwL3Bvc3QtZnJlZS1hZA==" style="">
+			<input type="hidden" name="d023e3e5c160896f402acf289abb5c39" value="1" style="">		</fieldset>
+	</form>
+</div>
+<div>
+	<ul class="nav nav-tabs nav-stacked">
+		<li>
+			<a href="/index.php/login?view=reset">
+				Forgot your password?			</a>
+		</li>
+		<li>
+			<a href="/index.php/login?view=remind">
+				Forgot your username?			</a>
+		</li>
+					</ul>
+</div>
+
+                    
+                    					
+					<!-- End Content -->
+				</main>
+							</div>
+		</div>
+	</div>
+	<!-- Footer -->
+	<footer class="footer" role="contentinfo">
+		<div class="container">			
+					
+			<p>
+				© Karnataka August 2026 Freelancers Portal 2026 
+			</p>
+		</div>
+	</footer>
+	
+
+
+</body></html>

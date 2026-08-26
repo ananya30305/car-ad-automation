@@ -1,37 +1,10 @@
-# Python
+browser_profile_scraper/
+browser_profile_batch/
+browser_profile/
+output/
+data/images/
+*.json
 __pycache__/
-*.py[cod]
-*.pyo
-
-# Virtual environment
+*.pyc
 venv/
 .venv/
-
-# Browser/session data
-browser_profile/
-
-# Runtime/generated data
-downloads/
-screenshots/
-debug/
-logs/
-checkpoints/
-reports/
-output/
-
-# Local/private data
-.env
-*.env
-
-# Generated/cache data
-data/images/
-data/*.json
-data/*.csv
-
-# IDE
-.vscode/
-.idea/
-
-# OS
-.DS_Store
-Thumbs.db

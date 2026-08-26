@@ -1,0 +1,310 @@
+URL: https://august2026karnataka.dicewebfreelancers.com/index.php/post-free-ad
+TITLE: Post Ad
+
+======================================================================
+VISIBLE SELECTS
+======================================================================
+
+SELECT [0]
+ id='category'
+ name='category[]'
+ class='key  required'
+ value='6'
+   [0] text='- Select a category -' value='-1'
+   [1] text='For Sale' value='1'
+   [2] text='Vehicles' value='6'
+   [3] text='Services' value='11'
+   [4] text='Real Estate' value='16'
+   [5] text='Jobs' value='21'
+   [6] text='Classes' value='26'
+
+SELECT [1]
+ id='category'
+ name='category[]'
+ class='key  required'
+ value='6'
+   [0] text='- Sub categories -' value='6'
+   [1] text='Boats - Ships' value='7'
+   [2] text='Cars - Parts' value='8'
+   [3] text='RVs - Campers - Caravans' value='9'
+   [4] text='Trucks - Commercial Vehicles' value='10'
+
+SELECT [2]
+ id='exf_1'
+ name='exf_1'
+ class=None
+ value='-1'
+   [0] text='- None -' value='-1'
+   [1] text='Owner' value='1'
+   [2] text='Agent' value='2'
+   [3] text='Others' value='3'
+
+SELECT [3]
+ id='currency'
+ name='currency'
+ class=None
+ value='USD'
+   [0] text='- -- -' value='-1'
+   [1] text='USD' value='USD'
+   [2] text='AUD' value='AUD'
+   [3] text='TK' value='TK'
+   [4] text='Rs' value='Rs'
+   [5] text='R (Rand)' value='R (Rand)'
+
+SELECT [4]
+ id='tagid'
+ name='tagid'
+ class=None
+ value='-1'
+   [0] text='- Select a tag -' value='-1'
+   [1] text='Sale' value='1'
+
+SELECT [5]
+ id='location'
+ name='location[]'
+ class='key '
+ value='0'
+   [0] text='- Select a country -' value='0'
+   [1] text='United States' value='1'
+   [2] text='Bangladesh' value='33'
+   [3] text='Newzeland' value='34'
+   [4] text='Australia' value='35'
+   [5] text='China' value='44'
+   [6] text='South Africa' value='45'
+
+======================================================================
+VISIBLE INPUTS
+======================================================================
+
+INPUT [0]
+ id=None
+ name='Submit'
+ type='submit'
+ placeholder=None
+
+INPUT [1]
+ id='title'
+ name='title'
+ type='text'
+ placeholder=None
+
+INPUT [2]
+ id='exf_5'
+ name='exf_5'
+ type='text'
+ placeholder=None
+
+INPUT [3]
+ id=None
+ name='price'
+ type='text'
+ placeholder='0.00'
+
+INPUT [4]
+ id='ajax-upload-id-1787642459931'
+ name='images[]'
+ type='file'
+ placeholder=None
+
+INPUT [5]
+ id='privacy'
+ name='privacy[]'
+ type='checkbox'
+ placeholder=None
+
+======================================================================
+VISIBLE TEXTAREAS
+======================================================================
+
+TEXTAREA [0]
+ id=None
+ name='address'
+
+======================================================================
+VISIBLE BUTTONS
+======================================================================
+
+BUTTON [0]
+ text=''
+ id='exf_5_btn'
+ type='button'
+
+BUTTON [1]
+ text='Edit'
+ id='mceu_28-open'
+ type='button'
+
+BUTTON [2]
+ text='Insert'
+ id='mceu_29-open'
+ type='button'
+
+BUTTON [3]
+ text='View'
+ id='mceu_30-open'
+ type='button'
+
+BUTTON [4]
+ text='Format'
+ id='mceu_31-open'
+ type='button'
+
+BUTTON [5]
+ text='Table'
+ id='mceu_32-open'
+ type='button'
+
+BUTTON [6]
+ text='Tools'
+ id='mceu_33-open'
+ type='button'
+
+BUTTON [7]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [8]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [9]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [10]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [11]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [12]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [13]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [14]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [15]
+ text='Paragraph'
+ id='mceu_8-open'
+ type='button'
+
+BUTTON [16]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [17]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [18]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [19]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [20]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [21]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [22]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [23]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [24]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [25]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [26]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [27]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [28]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [29]
+ text=''
+ id='mceu_20-open'
+ type='button'
+
+BUTTON [30]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [31]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [32]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [33]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [34]
+ text=''
+ id=None
+ type='button'
+
+BUTTON [35]
+ text='Post Ad'
+ id=None
+ type='submit'
+
+BUTTON [36]
+ text='Cancel'
+ id=None
+ type='button'

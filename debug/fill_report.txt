@@ -1,0 +1,10 @@
+Advertisement URL: https://www.cars.co.za/for-sale/used/2025-Mitsubishi-Outlander-Sport-1.5-Aspire-Auto-Kwazulu-Natal-Umhlanga-Rocks/11112434/
+
+CATEGORY
+STATUS: FAILED
+ERROR: Page.wait_for_function: Timeout 10000ms exceeded.
+
+TOTAL FIELDS: 0
+SUCCESSFUL FIELDS: 0
+MISSING FIELDS: 0
+FAILED FIELDS: 1

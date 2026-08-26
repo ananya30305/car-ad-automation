@@ -1,0 +1,30 @@
+Target looking for: 'Vehicles'
+Current URL: https://august2026karnataka.dicewebfreelancers.com/index.php/login?return=aHR0cHM6Ly9hdWd1c3QyMDI2a2FybmF0YWthLmRpY2V3ZWJmcmVlbGFuY2Vycy5jb20vaW5kZXgucGhwL3Bvc3QtZnJlZS1hZA==
+
+--- VISIBLE INTERACTIVE DOM ELEMENTS ---
+A |  | Karnataka August 2026 Freelancers Portal
+LI |  | All Categories
+A |  | All Categories
+LI |  | Single Category
+A |  | Single Category
+LI |  | All Adverts
+A |  | All Adverts
+LI |  | Single Advert
+A |  | Single Advert
+LI |  | All Locations
+A |  | All Locations
+LI |  | Post Ad
+A |  | Post Ad
+LI |  | Login
+A |  | Login
+LI |  | Register
+A |  | Register
+A |  | ×
+LABEL | username-lbl | Username *
+LABEL | password-lbl | Password *
+LABEL |  | Remember me
+BUTTON |  | Log in
+LI |  | Forgot your password?
+A |  | Forgot your password?
+LI |  | Forgot your username?
+A |  | Forgot your username?
