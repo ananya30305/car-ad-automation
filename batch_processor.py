@@ -1,11 +1,10 @@
-"""Batch Processor with Auto-Navigation & Interactive Post Approval Per Car."""
+
 
 import json
 import logging
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 from form_filler import RobustFormFiller
-from category_handler import DynamicCategoryCascader
 from config import OUTPUT_DIR
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -47,8 +46,8 @@ def run_batch():
         print("\n" + "=" * 70)
         print("BROWSER SESSION READY")
         print("1. Log into the site if needed.")
-        print("2. Click to the 'Post Ad' / 'Single Advert' form page.")
-        print("3. Press ENTER in this terminal once you are on the form page.")
+        print("2. Navigate to the 'Post Ad' form page.")
+        print("3. Press ENTER in this terminal once on the form page.")
         print("=" * 70 + "\n")
 
         input(">>> Press ENTER when ready to start filling ads...")
@@ -59,23 +58,16 @@ def run_batch():
             print(f"[CAR {idx}/{len(ads)}] Processing Listing ID: {car.get('source_id')} | Title: {car.get('title')}")
             print("-" * 70)
 
-            # 1. Return to fresh Post Ad page if needed
+            # 1. Reset page URL for next car if needed
             if page.url != form_url:
                 page.goto(form_url, wait_until="domcontentloaded")
                 page.wait_for_timeout(2000)
 
-            # 2. Select Category (Vehicles -> Cars -> Used cars in South Africa)
-            cascader = DynamicCategoryCascader(page)
-            if not cascader.select_categories():
-                print(f"[WARN] Category selection step failed for item {car.get('source_id')}")
-
-            page.wait_for_timeout(1000)
-
-            # 3. Fill All Form Fields
+            # 2. Fill All Form Fields (Handles exact category cascading & spec mapping internally)
             filler = RobustFormFiller(page)
             filler.fill_all_car_fields(car)
 
-            # 4. Upload Up to 5 Images
+            # 3. Upload Up to 5 Images
             images = car.get("images", [])
             if images:
                 filler.upload_images(images)
