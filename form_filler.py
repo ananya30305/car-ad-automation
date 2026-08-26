@@ -1,4 +1,4 @@
-"""Form Filler - Direct Selector Mapping, Exact Category Hierarchy, and Isolated Images."""
+"""Robust Form Filler - Handles Joomla AJAX cascading categories and fills all dynamic spec fields."""
 
 import json
 import logging
@@ -14,92 +14,124 @@ class RobustFormFiller:
         self.page = page
 
     def fill_all_car_fields(self, car_data: Dict[str, Any]) -> bool:
-        # 1. Automate Category Selection (Vehicles -> Cars -> Used cars in South Africa)
-        self._select_category_hierarchy()
+        # 1. Fully expand the dynamic AJAX category chain
+        self._select_cascading_categories()
 
-        # 2. Map payload keys directly to input fields
+        # 2. Extract values with fallbacks
+        title = car_data.get("title") or "Used Car Listing"
+        variant = car_data.get("variant") or car_data.get("title_description") or title
+        km = str(car_data.get("mileage") or car_data.get("kilometer") or car_data.get("kilometers_driven") or ".").replace("km", "").strip()
+        fuel = str(car_data.get("fuel") or car_data.get("engine") or "Petrol")
+        colour = str(car_data.get("colour") or car_data.get("color") or ".")
+        price_val = str(car_data.get("price", "0")).replace("R", "").replace(" ", "").strip()
+        
+        dealer_name = car_data.get("dealer_name") or "."
+        dealer_addr = car_data.get("dealer_address") or car_data.get("address") or "."
+        dealer_rating = str(car_data.get("dealer_rating") or car_data.get("rating") or "4.5")
+        phone = str(car_data.get("contact_number") or car_data.get("contact_phone") or car_data.get("phone") or ".")
+        source_url = car_data.get("source_url") or car_data.get("source_link") or "."
+        
+        features = car_data.get("features") or "."
+        highlights = car_data.get("highlights") or "."
+        pricing_summary = car_data.get("pricing_summary") or f"Pricing Summary R {price_val}"
+
+        # 3. Direct field mapping rules
         field_assignments = [
-            (["title"], car_data.get("title")),
-            (["title description", "description title"], car_data.get("title_description")),
-            (["kilometer", "km", "mileage"], car_data.get("mileage")),
-            (["engine"], car_data.get("fuel")),
-            (["vehicle"], car_data.get("variant")),
-            (["colour", "color"], car_data.get("colour")),
-            (["interior colour"], car_data.get("interior_colour")),
-            (["comfort", "features"], car_data.get("features")),
+            (["title"], title),
+            (["title description", "description title", "variant"], variant),
+            (["condition"], "Used"),
+            (["year"], str(car_data.get("year") or ".")),
+            (["kilometer", "km", "mileage", "kilometers driven"], km),
+            (["engine", "fuel"], fuel),
+            (["vehicle"], variant),
+            (["colour", "color"], colour),
+            (["interior colour"], "."),
+            (["comfort", "features"], features),
             (["lights"], "."),
             (["interior"], "."),
-            (["seating", "seats"], car_data.get("seats")),
+            (["seating", "seats"], str(car_data.get("seats") or ".")),
             (["instruments"], "."),
-            (["exterior", "highlights"], car_data.get("highlights")),
-            (["pricing summary"], car_data.get("pricing_summary")),
-            (["dealer name"], car_data.get("dealer_name")),
-            (["dealer address"], car_data.get("dealer_address")),
-            (["dealer average rating", "rating"], car_data.get("dealer_rating")),
-            (["contact number", "phone"], car_data.get("contact_number")),
-            (["source link", "source url"], car_data.get("source_url")),
-            (["price"], car_data.get("price")),
+            (["exterior", "highlights", "vehicle highlights"], highlights),
+            (["pricing summary"], pricing_summary),
+            (["dealer name"], dealer_name),
+            (["dealer address"], dealer_addr),
+            (["dealer average rating", "rating"], dealer_rating),
+            (["contact number", "phone"], phone),
+            (["source link", "source url"], source_url),
+            (["price"], price_val),
+            (["address"], dealer_addr),
         ]
 
+        # 4. Fill text inputs and textareas
         for keywords, val in field_assignments:
-            if val and str(val).strip() != ".":
+            if val and str(val).strip() != "":
                 self._fill_field_by_keywords(keywords, str(val).strip())
 
-        # 3. Handle Address, Location, Currency, and Tag
-        addr_val = car_data.get("dealer_address")
-        if addr_val and str(addr_val).strip() != ".":
-            self._fill_field_by_keywords(["address"], str(addr_val).strip())
-
+        # 5. Fill main dropdowns
         self._force_dropdown_selection("currency", "R (Rand)")
-        self._force_dropdown_selection("tag", "Sale")
+        self._force_dropdown_selection("tagid", "Sale")
         self._force_dropdown_selection("location", "South Africa")
 
-        # 4. Fill Rich Text Description
-        desc_content = car_data.get("description") or car_data.get("title") or "."
+        # 6. Fill description iframe
+        desc_content = car_data.get("description") or title
         self._fill_tinymce_description(desc_content)
 
         return True
 
-    def _select_category_hierarchy(self):
+    def _select_cascading_categories(self):
+        """Hardcodes exact option values and forces the website to expand the full AJAX form."""
         try:
+            # 1. Main Category: Select 'Vehicles' (Value = 6)
             selects = self.page.query_selector_all("select")
             if len(selects) >= 1:
-                self._select_option_by_exact_keywords(selects[0], ["Vehicles"])
-                self.page.wait_for_timeout(600)
-            
+                selects[0].select_option(value="6")
+                selects[0].evaluate("el => el.dispatchEvent(new Event('change', { bubbles: true }))")
+                self.page.wait_for_timeout(1500)
+
+            # 2. Subcategory: Select EXACT 'Cars' (Skip 'Cars - Parts')
             selects = self.page.query_selector_all("select")
             if len(selects) >= 2:
-                self._select_option_by_exact_keywords(selects[1], ["Cars", "Used Cars", "Passenger Vehicles"], exclude=["parts"])
-                self.page.wait_for_timeout(600)
+                sub_select = selects[1]
+                opts = sub_select.query_selector_all("option")
+                target_value = None
+                
+                # Iterate through options to match EXACT 'Cars' or 'Used Cars' (explicitly ignoring 'Parts')
+                for opt in opts:
+                    txt = opt.inner_text().strip()
+                    val = opt.get_attribute("value")
+                    if txt.lower() == "cars" or txt.lower() == "used cars":
+                        target_value = val
+                        break
+                    elif "cars" in txt.lower() and "parts" not in txt.lower() and val != "-1":
+                        target_value = val
 
+                if target_value:
+                    sub_select.select_option(value=target_value)
+                    sub_select.evaluate("el => el.dispatchEvent(new Event('change', { bubbles: true }))")
+                    self.page.wait_for_timeout(2000)
+
+            # 3. Third Level: Select 'Used cars in South Africa'
             selects = self.page.query_selector_all("select")
             if len(selects) >= 3:
-                target_sel = selects[3] if len(selects) > 3 else selects[2]
-                self._select_option_by_exact_keywords(target_sel, ["Used cars in South Africa", "South Africa", "Used cars"])
+                third_select = selects[2]
+                opts = third_select.query_selector_all("option")
+                for opt in opts:
+                    txt = opt.inner_text().strip().lower()
+                    if "south africa" in txt or "used cars in south africa" in txt:
+                        third_select.select_option(value=opt.get_attribute("value"))
+                        third_select.evaluate("el => el.dispatchEvent(new Event('change', { bubbles: true }))")
+                        self.page.wait_for_timeout(2000)
+                        break
         except Exception as e:
-            logger.warning(f"Category navigation warning: {e}")
-
-    def _select_option_by_exact_keywords(self, select_elem, keywords: List[str], exclude: Optional[List[str]] = None) -> bool:
-        try:
-            options = select_elem.query_selector_all("option")
-            for opt in options:
-                opt_txt = opt.inner_text().strip()
-                if exclude and any(ex.lower() in opt_txt.lower() for ex in exclude):
-                    continue
-                if any(kw.lower() in opt_txt.lower() for kw in keywords):
-                    val = opt.get_attribute("value")
-                    select_elem.select_option(value=val)
-                    return True
-        except Exception:
-            pass
-        return False
-
+            logger.warning(f"Category selection error: {e}")
     def _fill_field_by_keywords(self, keywords: List[str], value: str):
         val_str = str(value).strip()
         elements = self.page.query_selector_all("input[type='text'], input[type='number'], textarea")
         
         for elem in elements:
             try:
+                if not elem.is_visible():
+                    continue
                 name_attr = (elem.get_attribute("name") or "").lower()
                 id_attr = (elem.get_attribute("id") or "").lower()
                 placeholder = (elem.get_attribute("placeholder") or "").lower()
@@ -117,6 +149,8 @@ class RobustFormFiller:
         try:
             selects = self.page.query_selector_all("select")
             for sel in selects:
+                if not sel.is_visible():
+                    continue
                 name_attr = (sel.get_attribute("name") or "").lower()
                 id_attr = (sel.get_attribute("id") or "").lower()
                 parent_txt = sel.evaluate("el => el.parentElement?.innerText || ''").lower()
@@ -127,6 +161,7 @@ class RobustFormFiller:
                         if target_text.lower() in opt.inner_text().strip().lower():
                             val = opt.get_attribute("value")
                             sel.select_option(value=val)
+                            sel.evaluate("el => el.dispatchEvent(new Event('change', { bubbles: true }))")
                             return
         except Exception as e:
             logger.warning(f"Dropdown selection failed for {field_keyword}: {e}")
@@ -142,17 +177,6 @@ class RobustFormFiller:
             pass
 
     def upload_images(self, image_paths: Optional[List[str]] = None, source_id: Optional[str] = None, car_data: Optional[Dict[str, Any]] = None) -> bool:
-        # 1. Clear any existing UI thumbnails on the form
-        try:
-            delete_btns = self.page.query_selector_all("a[class*='delete'], button[class*='delete'], span[class*='delete'], .qq-upload-delete, div[class*='remove']")
-            for btn in delete_btns:
-                if btn.is_visible():
-                    btn.click()
-                    self.page.wait_for_timeout(300)
-        except Exception:
-            pass
-
-        # 2. Get isolated images for current listing
         paths = []
         if car_data and car_data.get("images"):
             paths = car_data["images"]
@@ -173,10 +197,8 @@ class RobustFormFiller:
         try:
             file_input = self.page.query_selector("input[type='file'][name*='images']") or self.page.query_selector("input[type='file']")
             if file_input:
-                file_input.set_input_files([])
-                self.page.wait_for_timeout(500)
                 file_input.set_input_files(valid_paths[:5])
-                self.page.wait_for_timeout(2500)
+                self.page.wait_for_timeout(2000)
                 logger.info(f"Uploaded {len(valid_paths[:5])} isolated images.")
                 return True
         except Exception as e:
