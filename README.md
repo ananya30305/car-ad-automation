@@ -155,10 +155,7 @@ python main.py --resume
 
 ### JSON Format (data/inventory.json)
 
-```json
 [
-  {
-    [
   {
     "id": "STOCK001",
     "title": "2022 Volkswagen Amarok",
@@ -170,28 +167,33 @@ python main.py --resume
     "fuel": "petrol",
     "4x2 / 4x4": "4x4",
     " body colour": "White",
-    "condition":".",
-    "seats":".",
+    "seats": ".",
     "price summary": "Pricing Summary R 729 900 Est. R 13 014 p/m",
     "dealer_name": "ABC Motors",
     "dealer_address": "Nelspruit, Mpumalanga",
-   "Dealer average rating":"4.0 (322 reviews)",
-    "features": ["ABS Air Conditioner Airbag - DriverPass & Sides Airbag - On/Off Switch Alloy Wheels Audio Control on Steering Wheel Auxilary Input Bluetooth Central Locking Remote Cruise Control Electric Windows - Front & Back Fog Lamps - Front Leather Seats Leather Trim Mags Mud Flaps Park Distance Control (PDC) - Front Reverse Camera Smash and Grab Steering Wheel control Tow Bar Traction Control"],
+    "Dealer average rating": "4.0 (322 reviews)",
+    "features": [
+      "ABS Air Conditioner Airbag - DriverPass & Sides Airbag - On/Off Switch Alloy Wheels Audio Control on Steering Wheel Auxilary Input Bluetooth Central Locking Remote Cruise Control Electric Windows - Front & Back Fog Lamps - Front Leather Seats Leather Trim Mags Mud Flaps Park Distance Control (PDC) - Front Reverse Camera Smash and Grab Steering Wheel control Tow Bar Traction Control"
+    ],
     "contact_number": "0600431011",
-    "Source Link":"https://www.cars.co.za/for-sale/used/2022-Volkswagen-Amarok-3.0-TDI-Highline-EX-190kW-4Motion-Auto-Double-Ca-Mpumalanga-Nelspruit/11198989/",
-    "vehicle highlights": ["Exceptional Torque Output 580 Nm Exceptional pulling power for strong in-gear acceleration.Excellent Towing Capacity 3300 Kg Can haul heavy trailers and caravans with ease.High Ground Clearance 239 mm Improved approach, break-over and departure off-road."],
-     "description": "This 2022 Volkswagen Amarok 3.0TDi H-LINE EX is a remarkable pickup that combines rugged capability with luxurious comfort, making it a perfect companion for both work and leisure. With only 77,000 kilometres on the clock and supported by a full service history, this used vehicle promises reliability and performance.Finished in a pristine white, this Amarok boasts an array of impressive features designed for those who demand both utility and style. Its robust diesel engine, paired with an automatic transmission, ensures a smooth, commanding drive. Enjoy the convenience of modern amenities including Bluetooth connectivity, a reverse camera, leather seats, and park distance control, enhancing your journeys. Ideal for adventures or everyday use, this vehicle is ready to tackle any terrain with confidence. Don't miss out on this exceptional opportunity.Reference: WV001|USED|509534",
-     "price": "729 900",
-    "Select a tag ":"Sale",
-    "images": [""D:\car-ad-automation\data\images\0001\Screenshot 2026-08-26 195720.png" "D:\car-ad-automation\data\images\0001\Screenshot 2026-08-26 195716.png""D:\car-ad-automation\data\images\0001\Screenshot 2026-08-26 195701.png""D:\car-ad-automation\data\images\0001\Screenshot 2026-08-26 195711.png""D:\car-ad-automation\data\images\0001\Screenshot 2026-08-26 195706.png""],
+    "Source Link": "https://www.cars.co.za/for-sale/used/2022-Volkswagen-Amarok-3.0-TDI-Highline-EX-190kW-4Motion-Auto-Double-Ca-Mpumalanga-Nelspruit/11198989/",
+    "vehicle highlights": [
+      "Exceptional Torque Output 580 Nm Exceptional pulling power for strong in-gear acceleration.Excellent Towing Capacity 3300 Kg Can haul heavy trailers and caravans with ease.High Ground Clearance 239 mm Improved approach, break-over and departure off-road."
+    ],
+    "description": "This 2022 Volkswagen Amarok 3.0TDi H-LINE EX is a remarkable pickup that combines rugged capability with luxurious comfort, making it a perfect companion for both work and leisure. With only 77,000 kilometres on the clock and supported by a full service history, this used vehicle promises reliability and performance.Finished in a pristine white, this Amarok boasts an array of impressive features designed for those who demand both utility and style. Its robust diesel engine, paired with an automatic transmission, ensures a smooth, commanding drive. Enjoy the convenience of modern amenities including Bluetooth connectivity, a reverse camera, leather seats, and park distance control, enhancing your journeys. Ideal for adventures or everyday use, this vehicle is ready to tackle any terrain with confidence. Don't miss out on this exceptional opportunity.Reference: WV001|USED|509534",
+    "price": "729 900",
+    "Select a tag ": "Sale",
+    "images": [
+      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195720.png",
+      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195716.png",
+      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195701.png",
+      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195711.png",
+      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195706.png"
+    ],
     "address": "Nelspruit, Mpumalanga",
-     "location": "South Africa",
+    "location": "South Africa"
   }
 ]
-
-  }
-]
-```
 
 ### CSV Format (data/inventory.csv)
 
