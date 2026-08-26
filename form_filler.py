@@ -82,45 +82,40 @@ class RobustFormFiller:
 
         return True
 
-    def _select_exact_category_hierarchy(self):
-        """Rule Enforcement: Vehicles -> Cars (excluding Parts/RVs) -> Used cars in South Africa."""
+    
+               def _select_exact_category_hierarchy(self):
+        """Forces exact option selection by awaiting AJAX network response."""
         try:
-            # 1. Main Category: Vehicles (Value = 6)
+            # 1. Main Category: Select 'Vehicles' (Value 6)
             selects = self.page.query_selector_all("select")
             if len(selects) >= 1:
-                selects[0].select_option(value="6")
-                selects[0].dispatch_event("change")
-                self.page.wait_for_timeout(3000)
-
-            # 2. Subcategory: Wait for options to render and select exact 'Cars'
+                # Trigger change and wait for server response
+                with self.page.expect_response(lambda r: r.status == 200, timeout=5000):
+                    selects[0].select_option(value="6")
+                    selects[0].dispatch_event("change")
+            
+            # 2. Subcategory: Select exact 'Cars' (excluding Parts/RVs)
+            self.page.wait_for_selector("select:nth-of-type(2) option[value='1']", timeout=5000)
             selects = self.page.query_selector_all("select")
             if len(selects) >= 2:
                 sub_select = selects[1]
-                
-                # Polling loop: Wait for subcategory options to load into DOM
-                for _ in range(10):
-                    opts = sub_select.query_selector_all("option")
-                    if len(opts) > 1:
-                        break
-                    self.page.wait_for_timeout(500)
-
                 opts = sub_select.query_selector_all("option")
-                target_val = None
                 
-                # Match 'Cars' or 'Used Cars' and reject 'Parts' or 'RVs'
+                cars_val = None
                 for opt in opts:
                     txt = opt.inner_text().strip()
                     val = opt.get_attribute("value")
                     if (txt.lower() == "cars" or txt.lower() == "used cars") and "part" not in txt.lower():
-                        target_val = val
+                        cars_val = val
                         break
+                
+                if cars_val:
+                    with self.page.expect_response(lambda r: r.status == 200, timeout=5000):
+                        sub_select.select_option(value=cars_val)
+                        sub_select.dispatch_event("change")
 
-                if target_val:
-                    sub_select.select_option(value=target_val)
-                    sub_select.dispatch_event("change")
-                    self.page.wait_for_timeout(3500)  # Pause for AJAX form schema to render
-
-            # 3. Third Level: Used cars in South Africa
+            # 3. Third Level: Select 'Used cars in South Africa'
+            self.page.wait_for_timeout(2000)
             selects = self.page.query_selector_all("select")
             if len(selects) >= 3:
                 third_select = selects[2]
@@ -130,10 +125,10 @@ class RobustFormFiller:
                     if "south africa" in txt or "used" in txt:
                         third_select.select_option(value=opt.get_attribute("value"))
                         third_select.dispatch_event("change")
-                        self.page.wait_for_timeout(2500)
+                        self.page.wait_for_timeout(2000)
                         break
         except Exception as e:
-            logger.warning(f"Category selection error: {e}")
+            logger.warning(f"Category selection timing retry: {e}")
 
     def _fill_field_by_keywords(self, keywords: List[str], value: str):
         val_str = str(value).strip()
