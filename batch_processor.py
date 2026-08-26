@@ -1,4 +1,4 @@
-
+"""Batch Processor - Runs RobustFormFiller directly for category selection and field population."""
 
 import json
 import logging
@@ -58,16 +58,14 @@ def run_batch():
             print(f"[CAR {idx}/{len(ads)}] Processing Listing ID: {car.get('source_id')} | Title: {car.get('title')}")
             print("-" * 70)
 
-            # 1. Reset page URL for next car if needed
             if page.url != form_url:
                 page.goto(form_url, wait_until="domcontentloaded")
                 page.wait_for_timeout(2000)
 
-            # 2. Fill All Form Fields (Handles exact category cascading & spec mapping internally)
+            # RobustFormFiller performs category expansion + spec mapping + image uploads
             filler = RobustFormFiller(page)
             filler.fill_all_car_fields(car)
 
-            # 3. Upload Up to 5 Images
             images = car.get("images", [])
             if images:
                 filler.upload_images(images)
