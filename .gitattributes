@@ -1,0 +1,6 @@
+*.html linguist-vendored
+*.htm linguist-vendored
+debug/** linguist-vendored
+reports/** linguist-vendored
+logs/** linguist-vendored
+tests/** linguist-vendored
