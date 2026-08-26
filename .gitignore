@@ -8,3 +8,8 @@ __pycache__/
 *.pyc
 venv/
 .venv/
+
+*.html
+output/
+data/
+browser_profile_scraper/
