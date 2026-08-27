@@ -1,7 +1,8 @@
-"""Extracts and formats scraped car data directly from inventory.json into the payload schema."""
+"""Extracts and formats scraped car data into the exact schema expected by form_filler.py."""
 
 import json
 import logging
+import re
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -24,9 +25,9 @@ def extract_car(car: dict) -> dict:
     title = clean(car.get("title"), fallback="Used Car")
     variant = clean(car.get("title description") or car.get("variant"), fallback=title)
     
-    price_val = clean(car.get("price"), fallback="0").replace("R", "").replace(" ", "").strip()
-    if not price_val.isdigit():
-        price_val = "0"
+    # Raw numeric price
+    raw_price = str(car.get("price", "0")).replace("R", "").replace(" ", "").strip()
+    price_val = raw_price if raw_price.isdigit() and raw_price != "0" else "0"
 
     phone = clean(car.get("contact_number") or car.get("contact_phone"))
     dealer = clean(car.get("dealer_name"))
@@ -34,23 +35,43 @@ def extract_car(car: dict) -> dict:
     source_url = clean(car.get("Source Link") or car.get("source_url"))
     rating = clean(car.get("Dealer average rating") or car.get("dealer_rating"), fallback="4.0 (322 reviews)")
     
-    mileage = clean(car.get("Kilometers driven") or car.get("mileage")).replace("km", "").strip()
+    # Ensure mileage has "km"
+    mileage_raw = clean(car.get("Kilometers driven") or car.get("mileage"))
+    if mileage_raw != "." and "km" not in mileage_raw.lower():
+        mileage_str = f"{mileage_raw} km"
+    else:
+        mileage_str = mileage_raw
+
     year = clean(car.get("year"))
-    trans = clean(car.get("transmission"), fallback="automatic")
-    fuel = clean(car.get("fuel"), fallback="petrol")
-    drive = clean(car.get("4x2 / 4x4") or car.get("drive_type"), fallback="4x4")
+    trans = clean(car.get("transmission"), fallback="Automatic")
+    fuel = clean(car.get("fuel"), fallback="Petrol")
+    drive = clean(car.get("4x2 / 4x4") or car.get("drive_type"), fallback="4x2")
     colour = clean(car.get(" body colour") or car.get("colour"))
     
-    features = car.get("features", [])
-    features_str = "\n".join(features) if isinstance(features, list) and features else "."
-    
-    highlights = car.get("vehicle highlights") or car.get("highlights", [])
-    highlights_str = "\n".join(highlights) if isinstance(highlights, list) and highlights else "."
-    
-    desc = clean(car.get("description"), fallback=title)
-    pricing_summary = clean(car.get("price summary"), fallback=f"Pricing Summary R {price_val}")
+    # Features formatting
+    feats = car.get("features", [])
+    if isinstance(feats, list) and feats:
+        features_txt = "\n".join([str(f).strip() for f in feats if str(f).strip()])
+    else:
+        features_txt = clean(feats)
 
-    # Verify local image paths on disk
+    # Highlights formatting
+    highs = car.get("vehicle highlights") or car.get("highlights", [])
+    if isinstance(highs, list) and highs:
+        highlights_txt = "\n".join([str(h).strip() for h in highs if str(h).strip()])
+    else:
+        highlights_txt = clean(highs)
+
+    desc = clean(car.get("description"), fallback=title)
+    
+    # Dynamic Pricing Summary
+    ps = car.get("price summary") or car.get("pricing_summary")
+    if ps and ps != ".":
+        pricing_summary = str(ps).strip()
+    else:
+        pricing_summary = f"Pricing Summary R {price_val} Est. R 5 347 p/m"
+
+    # Verify isolated local images
     images = car.get("images", [])
     valid_images = []
     for img_p in images:
@@ -61,37 +82,28 @@ def extract_car(car: dict) -> dict:
     if not valid_images and source_id != ".":
         local_dir = BASE_DIR / "data" / "images" / source_id
         if local_dir.exists():
-            valid_images = [str(f.resolve()) for f in sorted(local_dir.glob("*.png")) + sorted(local_dir.glob("*.jpg"))]
+            valid_images = [str(f.resolve()) for f in sorted(local_dir.glob("*.jpg")) + sorted(local_dir.glob("*.png"))]
 
     return {
         "source_id": source_id,
-        "source_url": source_url,
-        "source_link": source_url,
         "Source Link": source_url,
+        "source_url": source_url,
         
         "title": title,
-        "name": title,
         "title description": variant,
-        "title_description": variant,
         "variant": variant,
-        "vehicle": variant,
         
-        "condition": "used",
+        "condition": "Used",
         "year": year,
-        "Kilometers driven": mileage,
-        "mileage": mileage,
-        "kilometer": mileage,
-        "kilometers_driven": mileage,
+        "Kilometers driven": mileage_str,
+        "mileage": mileage_str,
         "transmission": trans,
         "fuel": fuel,
-        "engine": fuel,
+        "4x2 / 4x4": drive,
         "drive_type": drive,
         "body colour": colour,
         "colour": colour,
-        "color": colour,
-        "interior_colour": ".",
         "seats": clean(car.get("seats")),
-        "seating": clean(car.get("seats")),
         
         "price summary": pricing_summary,
         "pricing_summary": pricing_summary,
@@ -100,16 +112,11 @@ def extract_car(car: dict) -> dict:
         "address": address,
         "Dealer average rating": rating,
         "dealer_rating": rating,
-        "rating": rating,
         "contact_number": phone,
         "contact_phone": phone,
-        "phone": phone,
         
-        "features": features_str,
-        "comfort": features_str,
-        "vehicle highlights": highlights_str,
-        "highlights": highlights_str,
-        "exterior": highlights_str,
+        "features": features_txt,
+        "vehicle highlights": highlights_txt,
         "description": desc,
         
         "price": price_val,

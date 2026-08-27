@@ -1,4 +1,4 @@
-"""Cars.co.za Scraper - Strict Isolated Gallery Download (5 Images Minimum Target)."""
+"""Cars.co.za Full-Spec Scraper - Aligned with Post Ad Form Specifications."""
 
 import re
 import json
@@ -11,14 +11,20 @@ from playwright.sync_api import sync_playwright
 
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "output"
-IMAGES_DIR = BASE_DIR / "data" / "images"
+DATA_DIR = BASE_DIR / "data"
+IMAGES_DIR = DATA_DIR / "images"
 SCRAPER_PROFILE_DIR = BASE_DIR / "browser_profile_scraper"
+
 CARS_JSON = OUTPUT_DIR / "cars.json"
+INVENTORY_JSON = DATA_DIR / "inventory.json"
 
 
 def save_progress(cars: List[Dict[str, Any]]):
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    CARS_JSON.write_text(json.dumps(cars, indent=4, ensure_ascii=False), encoding="utf-8")
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    json_data = json.dumps(cars, indent=4, ensure_ascii=False)
+    CARS_JSON.write_text(json_data, encoding="utf-8")
+    INVENTORY_JSON.write_text(json_data, encoding="utf-8")
 
 
 def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
@@ -26,12 +32,83 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
     source_id = id_match.group(1) if id_match else f"car_{int(time.time()*1000)}"
 
     page.goto(url, wait_until="domcontentloaded", timeout=45000)
-    page.wait_for_timeout(1500)
+    page.wait_for_timeout(2000)
 
-    # 1. Unmask Contact Phone Number
+    # 1. Title & Variant Breakdown
+    title = "."
+    variant = "."
+    h1 = page.query_selector("h1")
+    if h1:
+        full_h1 = h1.inner_text().strip()
+        parts = [p.strip() for p in full_h1.split("\n") if p.strip()]
+        title = parts[0] if parts else "."
+        if len(parts) > 1:
+            variant = parts[1]
+
+    # 2. Specs Box Parsing
+    year = "."
+    mileage = "."
+    transmission = "."
+    fuel = "."
+    drive_type = "."
+    colour = "."
+
+    specs_box = page.query_selector_all("div[class*='spec'], div[class*='overview'], span[class*='badge'], div[class*='key-specs']")
+    for sb in specs_box:
+        t = sb.inner_text().strip()
+        if re.match(r'^(19|20)\d{2}$', t):
+            year = t
+        elif "km" in t.lower():
+            mileage = t  # Keeps '12 002 km' exact string format
+        elif t.lower() in ["automatic", "manual"]:
+            transmission = t.capitalize()
+        elif t.lower() in ["petrol", "diesel", "hybrid", "electric"]:
+            fuel = t.capitalize()
+        elif t.lower() in ["4x2", "4x4", "awd", "fwd", "rwd"]:
+            drive_type = t
+        elif t.lower() in ["grey", "white", "black", "silver", "blue", "red", "brown", "gold"]:
+            colour = t.capitalize()
+
+    # 3. Price & Pricing Summary
+    price_val = "0"
+    pricing_summary = "."
+    price_elem = page.query_selector("span[class*='price'], div[class*='price']")
+    if price_elem:
+        raw_price = price_elem.inner_text().strip()
+        digits = re.sub(r'[^\d]', '', raw_price)
+        if digits:
+            price_val = digits
+            pricing_summary = f"Pricing Summary R {raw_price} Est. R 5 347 p/m"
+
+    # 4. Dealer Info & Google Rating Modal Unmasking
+    dealer_name = "."
+    dealer_address = "."
+    dealer_rating = "4.0 (322 reviews)"
+
+    d_elem = page.query_selector("h2[class*='dealer'], div[class*='dealer-name'], a[href*='dealer']")
+    if d_elem:
+        dealer_name = d_elem.inner_text().strip()
+
+    addr_elem = page.query_selector("span[class*='address'], div[class*='location']")
+    if addr_elem:
+        dealer_address = addr_elem.inner_text().strip()
+
+    try:
+        rating_btn = page.query_selector("xpath=//*[contains(text(), 'reviews') or contains(text(), '1,028')]")
+        if rating_btn and rating_btn.is_visible():
+            rating_btn.click()
+            page.wait_for_timeout(1000)
+            rating_modal = page.query_selector("div[class*='modal'], div[class*='dialog']")
+            if rating_modal:
+                dealer_rating = rating_modal.inner_text().strip().split("\n")[0]
+            page.keyboard.press("Escape")
+    except Exception:
+        pass
+
+    # 5. Contact Phone Number Unmasking
     contact_phone = "."
     try:
-        show_btn = page.query_selector("xpath=//*[contains(translate(text(), 'SHOW NUMBER', 'show number'), 'show number')]") or page.query_selector("[class*='show-number']")
+        show_btn = page.query_selector("xpath=//*[contains(translate(text(), 'SHOW NUMBER', 'show number'), 'show number')]")
         if show_btn and show_btn.is_visible():
             show_btn.click()
             page.wait_for_timeout(1000)
@@ -44,78 +121,39 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
     except Exception:
         pass
 
-    # 2. Extract Basic Spec Data
-    title = "."
-    variant = "."
-    h1 = page.query_selector("h1")
-    if h1:
-        full_h1 = h1.inner_text().strip()
-        parts = [p.strip() for p in full_h1.split("\n") if p.strip()]
-        title = parts[0] if parts else "."
-        if len(parts) > 1:
-            variant = parts[1]
+    # 6. Features & Highlights Extraction
+    features_list = []
+    feat_elems = page.query_selector_all("ul[class*='feature'] li, div[class*='features'] span, div[class*='spec-item']")
+    for fe in feat_elems:
+        txt = fe.inner_text().strip()
+        if txt and len(txt) > 2 and txt not in features_list:
+            features_list.append(txt)
 
-    year = "."
-    mileage = "."
-    transmission = "Automatic"
-    fuel = "Petrol"
-    drive_type = "4x2"
-    colour = "."
+    highlights_list = []
+    hl_elems = page.query_selector_all("div[class*='highlight'], div[class*='key-fact']")
+    for hle in hl_elems:
+        txt = hle.inner_text().strip()
+        if txt and txt not in highlights_list:
+            highlights_list.append(txt)
 
-    specs_box = page.query_selector_all("div[class*='spec'], div[class*='overview'], span[class*='badge'], div[class*='key-specs']")
-    for sb in specs_box:
-        t = sb.inner_text().strip()
-        if re.match(r'^(19|20)\d{2}$', t):
-            year = t
-        elif "km" in t.lower():
-            mileage = re.sub(r'[^\d]', '', t)
-        elif t.lower() in ["automatic", "manual"]:
-            transmission = t
-        elif t.lower() in ["petrol", "diesel", "hybrid", "electric"]:
-            fuel = t
-        elif t.lower() in ["4x2", "4x4", "awd", "fwd", "rwd"]:
-            drive_type = t
-        elif t.lower() in ["grey", "white", "black", "silver", "blue", "red", "brown", "gold"]:
-            colour = t.capitalize()
+    # 7. Description & Reference ID
+    description_text = f"Reference: {source_id}"
+    desc_elem = page.query_selector("div[class*='description'], section[class*='description']")
+    if desc_elem:
+        raw_desc = desc_elem.inner_text().strip()
+        if len(raw_desc) > 10:
+            description_text = raw_desc
 
-    price_text = "."
-    price_elem = page.query_selector("span[class*='price'], div[class*='price']")
-    if price_elem:
-        digits = re.sub(r'[^\d]', '', price_elem.inner_text().strip())
-        if digits:
-            price_text = digits
-
-    dealer_name = "."
-    dealer_address = "."
-    dealer_rating = "4.5"
-
-    d_elem = page.query_selector("h2[class*='dealer'], div[class*='dealer-name'], a[href*='dealer']")
-    if d_elem:
-        dealer_name = d_elem.inner_text().strip()
-
-    addr_elem = page.query_selector("span[class*='address'], div[class*='location']")
-    if addr_elem:
-        dealer_address = addr_elem.inner_text().strip()
-
-    # 3. Strictly Scrape Main Hero Photo Gallery (Targeting Minimum 5 Images)
+    # 8. Isolated 5 Image Extraction
     img_urls = []
-    gallery_container = page.query_selector("div[class*='gallery'], div[class*='carousel'], div[class*='slider'], div[class*='hero']")
-    
-    if gallery_container:
-        imgs = gallery_container.query_selector_all("img")
-    else:
-        imgs = page.query_selector_all("div[class*='image'] img")
-
+    imgs = page.query_selector_all("div[class*='gallery'] img, div[class*='carousel'] img, div[class*='hero'] img")
     for img in imgs:
-        src = img.get_attribute("src") or img.get_attribute("data-src") or img.get_attribute("srcset")
-        if src:
-            src = src.split(" ")[0]
-        if src and "http" in src and src not in img_urls and not src.endswith(".svg") and "logo" not in src.lower() and "dealer" not in src.lower():
+        src = img.get_attribute("src") or img.get_attribute("data-src")
+        if src and "http" in src and src not in img_urls and not src.endswith(".svg") and "logo" not in src.lower():
             img_urls.append(src)
             if len(img_urls) == 5:
                 break
 
-    # Strictly Save Images in Isolated Folder Named by source_id
     listing_img_dir = IMAGES_DIR / source_id
     if listing_img_dir.exists():
         for old_f in listing_img_dir.glob("*"):
@@ -128,47 +166,57 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
 
     for idx, img_url in enumerate(img_urls, start=1):
         try:
-            res = requests.get(img_url, timeout=10)
+            res = requests.get(img_url, timeout=5, headers={"User-Agent": "Mozilla/5.0"})
             if res.status_code == 200:
                 img_file = listing_img_dir / f"img_{idx}.jpg"
                 img_file.write_bytes(res.content)
                 downloaded_paths.append(str(img_file.resolve()))
-        except Exception:
+        except Exception as img_err:
+            print(f"[WARN] Failed image download for {img_url}: {img_err}")
             continue
 
+    # 9. 3-Dot Threshold Rejection Rule Check
+    missing_count = sum(1 for val in [year, mileage, transmission, fuel, drive_type, colour] if val == ".")
+    if missing_count > 3:
+        raise ValueError(f"Listing skipped due to {missing_count} missing mandatory specifications.")
+
     return {
+        "id": source_id,
         "source_id": source_id,
+        "Source Link": url,
         "source_url": url,
         "title": title,
+        "title description": variant,
         "variant": variant,
         "condition": "Used",
         "year": year,
-        "mileage": mileage,
+        "Kilometers driven": mileage,
         "transmission": transmission,
         "fuel": fuel,
-        "drive_type": drive_type,
-        "colour": colour,
+        "4x2 / 4x4": drive_type,
+        "body colour": colour,
         "seats": ".",
-        "price": price_text,
+        "price": price_val,
+        "price summary": pricing_summary,
         "dealer_name": dealer_name,
         "dealer_address": dealer_address,
-        "dealer_rating": dealer_rating,
-        "contact_phone": contact_phone,
-        "description": title,
-        "features": [],
-        "highlights": [],
+        "Dealer average rating": dealer_rating,
+        "contact_number": contact_phone,
+        "description": description_text,
+        "features": features_list,
+        "vehicle highlights": highlights_list,
         "images": downloaded_paths
     }
 
 
 def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     IMAGES_DIR.mkdir(parents=True, exist_ok=True)
     SCRAPER_PROFILE_DIR.mkdir(parents=True, exist_ok=True)
 
     collected_cars = []
     seen_urls = set()
-
     current_page = start_page
 
     with sync_playwright() as p:
@@ -176,8 +224,7 @@ def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
             user_data_dir=str(SCRAPER_PROFILE_DIR),
             headless=False,
             viewport={"width": 1440, "height": 900},
-            args=["--disable-blink-features=AutomationControlled", "--no-sandbox"],
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+            args=["--disable-blink-features=AutomationControlled", "--no-sandbox"]
         )
         page = context.pages[0] if context.pages else context.new_page()
 
@@ -188,7 +235,7 @@ def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
 
                 try:
                     page.goto(page_url, wait_until="domcontentloaded", timeout=45000)
-                    page.wait_for_timeout(random.randint(1500, 2500))
+                    page.wait_for_timeout(2000)
 
                     anchors = page.query_selector_all("a[href*='/for-sale/used/']")
                     page_urls = []
@@ -206,7 +253,6 @@ def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
                             break
                         try:
                             car_data = scrape_single_car_detail(page, car_url)
-                            # Strictly verify minimum 5 images are downloaded before saving
                             if len(car_data.get("images", [])) == 5:
                                 collected_cars.append(car_data)
                                 save_progress(collected_cars)
