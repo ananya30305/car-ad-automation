@@ -1,4 +1,4 @@
-"""Form Filler Engine - Strictly handles exact category cascading and maps all specification fields."""
+"""Form Filler Engine - Handles category cascading, timing delays, and DOM field filling."""
 
 import json
 import logging
@@ -14,15 +14,15 @@ class RobustFormFiller:
         self.page = page
 
     def fill_all_car_fields(self, car_data: Dict[str, Any]) -> bool:
-        # 1. Expand Category Cascade: Vehicles -> Cars -> Used cars in South Africa
+        # 1. Select Categories: Vehicles -> Cars -> Used cars in South Africa
         self._select_exact_category_hierarchy()
 
-        # 2. Extract Values with Fallbacks
-        title = car_data.get("title") or "2022 Volkswagen Amarok"
+        # 2. Extract Specification Values
+        title = car_data.get("title") or "Used Car"
         variant = car_data.get("title description") or car_data.get("variant") or title
-        km = str(car_data.get("Kilometers driven") or car_data.get("mileage") or car_data.get("kilometer") or ".").replace("km", "").strip()
-        fuel = str(car_data.get("fuel") or car_data.get("engine") or "Petrol")
-        colour = str(car_data.get(" body colour") or car_data.get("colour") or car_data.get("color") or ".")
+        km = str(car_data.get("Kilometers driven") or car_data.get("mileage") or ".").replace("km", "").strip()
+        fuel = str(car_data.get("fuel") or car_data.get("engine") or "petrol")
+        colour = str(car_data.get("body colour") or car_data.get("colour") or ".")
         price_val = str(car_data.get("price", "0")).replace("R", "").replace(" ", "").strip()
         
         dealer_name = car_data.get("dealer_name") or "."
@@ -31,15 +31,15 @@ class RobustFormFiller:
         phone = str(car_data.get("contact_number") or car_data.get("phone") or ".")
         source_url = car_data.get("Source Link") or car_data.get("source_url") or "."
         
-        feats = car_data.get("features", [])
+        feats = car_data.get("features", "")
         features_txt = "\n".join(feats) if isinstance(feats, list) else str(feats)
         
-        highs = car_data.get("vehicle highlights", [])
+        highs = car_data.get("vehicle highlights", "")
         highlights_txt = "\n".join(highs) if isinstance(highs, list) else str(highs)
         
         pricing_summary = car_data.get("price summary") or car_data.get("pricing_summary") or f"Pricing Summary R {price_val}"
 
-        # 3. Direct HTML Form Field Assignments
+        # 3. Direct HTML Input Mapping
         field_assignments = [
             (["title description", "description title", "variant"], variant),
             (["title"], title),
@@ -71,7 +71,7 @@ class RobustFormFiller:
             if val and str(val).strip() != "":
                 self._fill_field_by_keywords(keywords, str(val).strip())
 
-        # 5. Fill main static dropdowns
+        # 5. Fill static dropdowns
         self._force_dropdown_selection("currency", "R (Rand)")
         self._force_dropdown_selection("tagid", "Sale")
         self._force_dropdown_selection("location", "South Africa")
@@ -82,40 +82,44 @@ class RobustFormFiller:
 
         return True
 
-    
-               def _select_exact_category_hierarchy(self):
-        """Forces exact option selection by awaiting AJAX network response."""
+    def _select_exact_category_hierarchy(self):
+        """Selects Vehicles -> Cars -> Used cars in South Africa."""
         try:
-            # 1. Main Category: Select 'Vehicles' (Value 6)
+            # 1. Main Category: Vehicles (Value 6)
             selects = self.page.query_selector_all("select")
             if len(selects) >= 1:
-                # Trigger change and wait for server response
-                with self.page.expect_response(lambda r: r.status == 200, timeout=5000):
-                    selects[0].select_option(value="6")
-                    selects[0].dispatch_event("change")
-            
-            # 2. Subcategory: Select exact 'Cars' (excluding Parts/RVs)
-            self.page.wait_for_selector("select:nth-of-type(2) option[value='1']", timeout=5000)
+                selects[0].select_option(value="6")
+                selects[0].dispatch_event("change")
+                self.page.wait_for_timeout(3000)
+
+            # 2. Subcategory: Select exact 'Cars' (rejecting 'Parts' or 'RVs')
             selects = self.page.query_selector_all("select")
             if len(selects) >= 2:
                 sub_select = selects[1]
-                opts = sub_select.query_selector_all("option")
                 
-                cars_val = None
+                # Wait for options to populate
+                for _ in range(10):
+                    opts = sub_select.query_selector_all("option")
+                    if len(opts) > 1:
+                        break
+                    self.page.wait_for_timeout(500)
+
+                opts = sub_select.query_selector_all("option")
+                target_val = None
+                
                 for opt in opts:
                     txt = opt.inner_text().strip()
                     val = opt.get_attribute("value")
                     if (txt.lower() == "cars" or txt.lower() == "used cars") and "part" not in txt.lower():
-                        cars_val = val
+                        target_val = val
                         break
-                
-                if cars_val:
-                    with self.page.expect_response(lambda r: r.status == 200, timeout=5000):
-                        sub_select.select_option(value=cars_val)
-                        sub_select.dispatch_event("change")
 
-            # 3. Third Level: Select 'Used cars in South Africa'
-            self.page.wait_for_timeout(2000)
+                if target_val:
+                    sub_select.select_option(value=target_val)
+                    sub_select.dispatch_event("change")
+                    self.page.wait_for_timeout(3500)
+
+            # 3. Third Level: Used cars in South Africa
             selects = self.page.query_selector_all("select")
             if len(selects) >= 3:
                 third_select = selects[2]
@@ -125,10 +129,10 @@ class RobustFormFiller:
                     if "south africa" in txt or "used" in txt:
                         third_select.select_option(value=opt.get_attribute("value"))
                         third_select.dispatch_event("change")
-                        self.page.wait_for_timeout(2000)
+                        self.page.wait_for_timeout(2500)
                         break
         except Exception as e:
-            logger.warning(f"Category selection timing retry: {e}")
+            logger.warning(f"Category selection error: {e}")
 
     def _fill_field_by_keywords(self, keywords: List[str], value: str):
         val_str = str(value).strip()
@@ -193,7 +197,7 @@ class RobustFormFiller:
             sid = source_id or car_data.get("source_id")
             local_dir = Path("data") / "images" / str(sid)
             if local_dir.exists():
-                paths = [str(f.resolve()) for f in sorted(local_dir.glob("*.jpg"))]
+                paths = [str(f.resolve()) for f in sorted(local_dir.glob("*.jpg")) + sorted(local_dir.glob("*.png"))]
 
         valid_paths = [str(Path(p).resolve()) for p in paths if Path(p).exists()]
         if not valid_paths:
