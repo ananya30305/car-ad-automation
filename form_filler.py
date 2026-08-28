@@ -1,4 +1,4 @@
-"""Form Filler Engine - Category Cascading & Exact Field Mapping."""
+"""Robust Form Filler - Separate Dual-Condition Field Handlers."""
 
 import json
 import logging
@@ -17,7 +17,7 @@ class RobustFormFiller:
         # 1. Expand Category Cascade: Vehicles -> Cars - Parts -> Used cars in South Africa
         self._select_exact_category_hierarchy()
 
-        # 2. Extract Values with Default Fallbacks
+        # 2. Extract Values
         title = car_data.get("title") or "Used Car"
         variant = car_data.get("title description") or car_data.get("variant") or title
         km = str(car_data.get("Kilometers driven") or car_data.get("mileage") or ".")
@@ -31,45 +31,47 @@ class RobustFormFiller:
         phone = str(car_data.get("contact_number") or car_data.get("phone") or ".")
         source_url = car_data.get("Source Link") or car_data.get("source_url") or "."
         
-        feats = car_data.get("features", [])
-        features_txt = "\n".join(feats) if isinstance(feats, list) else str(feats)
+        # Specific extracted vehicle status for bottom field
+        vehicle_specific_condition = car_data.get("condition") or "."
+        if vehicle_specific_condition.lower() == "used":
+            vehicle_specific_condition = "."  # Default to dot if no specific detail string like 'Excellent condition' exists
         
-        highs = car_data.get("vehicle highlights", [])
-        highlights_txt = "\n".join(highs) if isinstance(highs, list) else str(highs)
-        
-        pricing_summary = car_data.get("price summary") or car_data.get("pricing_summary") or f"Pricing Summary R {price_val}"
+        features_txt = car_data.get("features", "")
+        highlights_txt = car_data.get("vehicle highlights", "")
+        pricing_summary = car_data.get("price summary") or f"Pricing Summary R {price_val}"
 
-        # 3. Direct Field Mapping
+        # 3. Handle Dual Condition Fields Separately
+        self._fill_dual_condition_fields(top_condition="Used", bottom_condition=vehicle_specific_condition)
+
+        # 4. Standard Field Mappings
         field_assignments = [
             (["title description", "description title", "variant"], variant),
             (["title"], title),
-            (["condition"], "Used"),
             (["year"], str(car_data.get("year") or ".")),
             (["kilometer", "km", "mileage", "kilometers driven"], km),
             (["transmission"], str(car_data.get("transmission") or "Automatic")),
             (["engine", "fuel"], fuel),
             (["4x2 / 4x4", "drive"], str(car_data.get("4x2 / 4x4") or "4x2")),
             (["colour", "color", "body colour"], colour),
-            (["interior colour"], "."),
             (["seating", "seats"], str(car_data.get("seats") or ".")),
             (["pricing summary", "price summary"], pricing_summary),
             (["dealer name"], dealer_name),
             (["dealer address"], dealer_addr),
             (["dealer average rating", "dealer rating", "rating"], dealer_rating),
-            (["comfort", "features"], features_txt),
+            (["features"], features_txt),
             (["contact number", "phone"], phone),
             (["source link", "source url"], source_url),
-            (["exterior", "highlights", "vehicle highlights"], highlights_txt),
+            (["highlights", "vehicle highlights"], highlights_txt),
             (["price"], price_val),
-            (["address"], dealer_addr),
+            (["address"], dealer_addr),  # Fill contact details address field
         ]
 
-        # 4. Fill text inputs and textareas
+        # Fill text inputs
         for keywords, val in field_assignments:
             if val and str(val).strip() != "":
                 self._fill_field_by_keywords(keywords, str(val).strip())
 
-        # 5. Fill Static Dropdowns
+        # 5. Fill Dropdowns
         self._force_dropdown_selection("currency", "R (Rand)")
         self._force_dropdown_selection("tagid", "Sale")
         self._force_dropdown_selection("location", "South Africa")
@@ -80,36 +82,48 @@ class RobustFormFiller:
 
         return True
 
-    def _select_exact_category_hierarchy(self):
-        """Rule: Vehicles -> Cars - Parts -> Used cars in South Africa."""
+    def _fill_dual_condition_fields(self, top_condition: str, bottom_condition: str):
+        """Finds both fields labeled 'Condition' and fills top with 'Used' and bottom with extracted status/dot."""
         try:
-            # 1. Level 1: Vehicles
+            inputs = self.page.query_selector_all("input[type='text']")
+            condition_inputs = []
+
+            for inp in inputs:
+                if not inp.is_visible():
+                    continue
+                parent_txt = inp.evaluate("el => el.parentElement?.parentElement?.innerText || el.parentElement?.innerText || ''").lower()
+                if "condition" in parent_txt:
+                    condition_inputs.append(inp)
+
+            # Order: 1st condition input is under Title Description, 2nd condition input is under Body Colour
+            if len(condition_inputs) >= 1:
+                condition_inputs[0].click()
+                condition_inputs[0].fill(top_condition)  # Always "Used"
+
+            if len(condition_inputs) >= 2:
+                condition_inputs[1].click()
+                condition_inputs[1].fill(bottom_condition)  # Exact status (e.g., "Excellent condition") or "."
+        except Exception as e:
+            logger.warning(f"Error handling dual condition fields: {e}")
+
+    def _select_exact_category_hierarchy(self):
+        try:
             selects = self.page.query_selector_all("select")
             if len(selects) >= 1:
                 selects[0].select_option(label="Vehicles")
                 selects[0].dispatch_event("change")
                 self.page.wait_for_timeout(3000)
 
-            # 2. Level 2: Cars - Parts
             selects = self.page.query_selector_all("select")
             if len(selects) >= 2:
-                sub_select = selects[1]
-                for _ in range(10):
-                    opts = sub_select.query_selector_all("option")
-                    if len(opts) > 1:
-                        break
-                    self.page.wait_for_timeout(500)
-
-                sub_select.select_option(label="Cars - Parts")
-                sub_select.dispatch_event("change")
+                selects[1].select_option(label="Cars - Parts")
+                selects[1].dispatch_event("change")
                 self.page.wait_for_timeout(3500)
 
-            # 3. Level 3: Used cars in South Africa
             selects = self.page.query_selector_all("select")
             if len(selects) >= 3:
-                third_select = selects[2]
-                third_select.select_option(label="Used cars in South Africa")
-                third_select.dispatch_event("change")
+                selects[2].select_option(label="Used cars in South Africa")
+                selects[2].dispatch_event("change")
                 self.page.wait_for_timeout(2500)
         except Exception as e:
             logger.warning(f"Category selection error: {e}")
@@ -126,6 +140,10 @@ class RobustFormFiller:
                 id_attr = (elem.get_attribute("id") or "").lower()
                 placeholder = (elem.get_attribute("placeholder") or "").lower()
                 parent_txt = elem.evaluate("el => el.parentElement?.parentElement?.innerText || el.parentElement?.innerText || ''").lower()
+
+                # Avoid re-overwriting condition fields here
+                if "condition" in parent_txt:
+                    continue
 
                 if any(kw in name_attr or kw in id_attr or kw in placeholder or kw in parent_txt for kw in keywords):
                     elem.click()

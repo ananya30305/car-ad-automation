@@ -1,9 +1,8 @@
-"""Cars.co.za Full-Spec Scraper - Aligned with Post Ad Form Specifications."""
+"""Cars.co.za Full-Spec Scraper - Exact Workflow Alignment."""
 
 import re
 import json
 import time
-import random
 import requests
 from pathlib import Path
 from typing import Dict, Any, List
@@ -34,7 +33,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
     page.goto(url, wait_until="domcontentloaded", timeout=45000)
     page.wait_for_timeout(2000)
 
-    # 1. Title & Variant Breakdown
+    # 1. Title & Title Description
     title = "."
     variant = "."
     h1 = page.query_selector("h1")
@@ -45,122 +44,156 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
         if len(parts) > 1:
             variant = parts[1]
 
-    # 2. Specs Box Parsing
+    # 2. Specs Row Parsing (Year, Mileage, Transmission, Fuel, Drive, Colour, Condition)
     year = "."
     mileage = "."
     transmission = "."
     fuel = "."
     drive_type = "."
     colour = "."
+    condition_val = "."
 
-    specs_box = page.query_selector_all("div[class*='spec'], div[class*='overview'], span[class*='badge'], div[class*='key-specs']")
-    for sb in specs_box:
-        t = sb.inner_text().strip()
-        if re.match(r'^(19|20)\d{2}$', t):
-            year = t
-        elif "km" in t.lower():
-            mileage = t  # Keeps '12 002 km' exact string format
-        elif t.lower() in ["automatic", "manual"]:
-            transmission = t.capitalize()
-        elif t.lower() in ["petrol", "diesel", "hybrid", "electric"]:
-            fuel = t.capitalize()
-        elif t.lower() in ["4x2", "4x4", "awd", "fwd", "rwd"]:
-            drive_type = t
-        elif t.lower() in ["grey", "white", "black", "silver", "blue", "red", "brown", "gold"]:
-            colour = t.capitalize()
+    # Check spec badges/items
+    spec_items = page.query_selector_all("div[class*='spec'], div[class*='overview'] div, span[class*='badge']")
+    for item in spec_items:
+        txt = item.inner_text().strip()
+        if not txt:
+            continue
+        if re.match(r'^(19|20)\d{2}$', txt):
+            year = txt
+        elif "km" in txt.lower():
+            mileage = txt
+        elif txt.lower() in ["automatic", "manual"]:
+            transmission = txt.capitalize()
+        elif txt.lower() in ["petrol", "diesel", "hybrid", "electric", "phev"]:
+            fuel = txt.capitalize()
+        elif txt.lower() in ["4x2", "4x4", "awd", "fwd", "rwd"]:
+            drive_type = txt
+        elif txt.lower() in ["white", "black", "silver", "grey", "gray", "red", "blue", "brown", "gold", "orange"]:
+            colour = txt.capitalize()
+        elif "condition" in txt.lower():
+            condition_val = txt
 
-    # 3. Price & Pricing Summary
+    if condition_val == ".":
+        condition_val = "Used"
+
+    # 3. Price & Pricing Summary Block
     price_val = "0"
     pricing_summary = "."
-    price_elem = page.query_selector("span[class*='price'], div[class*='price']")
-    if price_elem:
-        raw_price = price_elem.inner_text().strip()
-        digits = re.sub(r'[^\d]', '', raw_price)
+    price_container = page.query_selector("div[class*='pricing-summary'], div[class*='price']")
+    if price_container:
+        raw_text = price_container.inner_text().strip()
+        digits = re.sub(r'[^\d]', '', raw_text.split('\n')[0])
         if digits:
             price_val = digits
-            pricing_summary = f"Pricing Summary R {raw_price} Est. R 5 347 p/m"
+        # Capture formatted block: "Pricing Summary R 224 990 Est. R 4 012 p/m"
+        lines = [l.strip() for l in raw_text.split('\n') if l.strip()]
+        pricing_summary = " ".join(lines)
+    else:
+        price_elem = page.query_selector("span[class*='price']")
+        if price_elem:
+            digits = re.sub(r'[^\d]', '', price_elem.inner_text())
+            if digits:
+                price_val = digits
+                pricing_summary = f"Pricing Summary R {price_elem.inner_text().strip()}"
 
-    # 4. Dealer Info & Google Rating Modal Unmasking
+    # 4. Dealer Name & Address
     dealer_name = "."
     dealer_address = "."
     dealer_rating = "4.0 (322 reviews)"
 
-    d_elem = page.query_selector("h2[class*='dealer'], div[class*='dealer-name'], a[href*='dealer']")
+    d_elem = page.query_selector("a[href*='dealer'], h2[class*='dealer']")
     if d_elem:
         dealer_name = d_elem.inner_text().strip()
 
-    addr_elem = page.query_selector("span[class*='address'], div[class*='location']")
+    addr_elem = page.query_selector("div[class*='dealer'] span[class*='location'], span[class*='address']")
     if addr_elem:
-        dealer_address = addr_elem.inner_text().strip()
+        dealer_address = addr_elem.inner_text().strip().replace("Location", "").strip()
+    if dealer_address == "." or not dealer_address:
+        # Fallback location extraction
+        loc_match = re.search(r'Gauteng|Western Cape|KwaZulu-Natal|Eastern Cape|Limpopo|Mpumalanga|Free State', page.content())
+        if loc_match:
+            dealer_address = loc_match.group(0)
 
+    # Dealer Rating Modal Unmasking
     try:
-        rating_btn = page.query_selector("xpath=//*[contains(text(), 'reviews') or contains(text(), '1,028')]")
+        rating_btn = page.query_selector("xpath=//*[contains(text(), 'reviews') or contains(text(), 'rating')]")
         if rating_btn and rating_btn.is_visible():
             rating_btn.click()
             page.wait_for_timeout(1000)
-            rating_modal = page.query_selector("div[class*='modal'], div[class*='dialog']")
-            if rating_modal:
-                dealer_rating = rating_modal.inner_text().strip().split("\n")[0]
+            modal = page.query_selector("div[class*='modal'], div[class*='dialog']")
+            if modal:
+                modal_txt = modal.inner_text().strip()
+                first_line = modal_txt.split('\n')[0]
+                m = re.search(r'\d\.\d\s*\(\d+[\d,]*\s*reviews\)', first_line, re.IGNORECASE)
+                if m:
+                    dealer_rating = m.group(0)
             page.keyboard.press("Escape")
     except Exception:
         pass
 
-    # 5. Contact Phone Number Unmasking
+    # 5. Phone Unmasking
     contact_phone = "."
     try:
         show_btn = page.query_selector("xpath=//*[contains(translate(text(), 'SHOW NUMBER', 'show number'), 'show number')]")
         if show_btn and show_btn.is_visible():
             show_btn.click()
             page.wait_for_timeout(1000)
-
-        phone_elem = page.query_selector("a[href^='tel:']") or page.query_selector("xpath=//*[contains(text(), '060') or contains(text(), '07') or contains(text(), '08')]")
+        phone_elem = page.query_selector("a[href^='tel:']")
         if phone_elem:
-            raw_digits = re.sub(r'[^\d]', '', phone_elem.inner_text().strip())
-            if len(raw_digits) >= 10:
-                contact_phone = raw_digits[:10]
+            raw_ph = re.sub(r'[^\d]', '', phone_elem.inner_text().strip())
+            if len(raw_ph) >= 10:
+                contact_phone = raw_ph[:10]
     except Exception:
         pass
 
-    # 6. Features & Highlights Extraction
+    # 6. Description (Click "Show More" first)
+    try:
+        show_more_btn = page.query_selector("xpath=//*[contains(text(), 'Show More') or contains(text(), 'show more')]")
+        if show_more_btn and show_more_btn.is_visible():
+            show_more_btn.click()
+            page.wait_for_timeout(500)
+    except Exception:
+        pass
+
+    desc_elem = page.query_selector("div[class*='description']")
+    description_text = desc_elem.inner_text().strip() if desc_elem else title
+
+    # 7. Features Extraction (Primary list or Summary tab fallback)
     features_list = []
-    feat_elems = page.query_selector_all("ul[class*='feature'] li, div[class*='features'] span, div[class*='spec-item']")
+    feat_elems = page.query_selector_all("div[class*='features'] li, ul[class*='feature'] li, div[class*='feature-item']")
     for fe in feat_elems:
-        txt = fe.inner_text().strip()
-        if txt and len(txt) > 2 and txt not in features_list:
-            features_list.append(txt)
+        t = fe.inner_text().strip()
+        if t and t not in features_list:
+            features_list.append(t)
 
+    if len(features_list) < 3:
+        # Fallback to Summary tab features if primary list is missing
+        tab_feats = page.query_selector_all("tr[class*='feature'] td, div[class*='spec-table'] div")
+        for tf in tab_feats:
+            t = tf.inner_text().strip()
+            if t and len(t) > 2 and t not in features_list:
+                features_list.append(t)
+
+    # 8. Vehicle Highlights Extraction
     highlights_list = []
-    hl_elems = page.query_selector_all("div[class*='highlight'], div[class*='key-fact']")
-    for hle in hl_elems:
-        txt = hle.inner_text().strip()
-        if txt and txt not in highlights_list:
-            highlights_list.append(txt)
+    hl_blocks = page.query_selector_all("div[class*='highlight-card'], div[class*='vehicle-highlight']")
+    for hb in hl_blocks:
+        t = hb.inner_text().strip()
+        if t and t not in highlights_list:
+            highlights_list.append(t)
 
-    # 7. Description & Reference ID
-    description_text = f"Reference: {source_id}"
-    desc_elem = page.query_selector("div[class*='description'], section[class*='description']")
-    if desc_elem:
-        raw_desc = desc_elem.inner_text().strip()
-        if len(raw_desc) > 10:
-            description_text = raw_desc
-
-    # 8. Isolated 5 Image Extraction
+    # 9. Isolated 5 Image Extraction
     img_urls = []
-    imgs = page.query_selector_all("div[class*='gallery'] img, div[class*='carousel'] img, div[class*='hero'] img")
+    imgs = page.query_selector_all("div[class*='gallery'] img, div[class*='carousel'] img")
     for img in imgs:
         src = img.get_attribute("src") or img.get_attribute("data-src")
-        if src and "http" in src and src not in img_urls and not src.endswith(".svg") and "logo" not in src.lower():
+        if src and "http" in src and src not in img_urls and not src.endswith(".svg"):
             img_urls.append(src)
             if len(img_urls) == 5:
                 break
 
     listing_img_dir = IMAGES_DIR / source_id
-    if listing_img_dir.exists():
-        for old_f in listing_img_dir.glob("*"):
-            try:
-                old_f.unlink()
-            except Exception:
-                pass
     listing_img_dir.mkdir(parents=True, exist_ok=True)
     downloaded_paths = []
 
@@ -171,11 +204,10 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
                 img_file = listing_img_dir / f"img_{idx}.jpg"
                 img_file.write_bytes(res.content)
                 downloaded_paths.append(str(img_file.resolve()))
-        except Exception as img_err:
-            print(f"[WARN] Failed image download for {img_url}: {img_err}")
+        except Exception:
             continue
 
-    # 9. 3-Dot Threshold Rejection Rule Check
+    # 10. Strict 3-Dot Rejection Rule Check
     missing_count = sum(1 for val in [year, mileage, transmission, fuel, drive_type, colour] if val == ".")
     if missing_count > 3:
         raise ValueError(f"Listing skipped due to {missing_count} missing mandatory specifications.")
@@ -188,7 +220,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
         "title": title,
         "title description": variant,
         "variant": variant,
-        "condition": "Used",
+        "condition": condition_val,
         "year": year,
         "Kilometers driven": mileage,
         "transmission": transmission,
@@ -257,8 +289,6 @@ def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
                                 collected_cars.append(car_data)
                                 save_progress(collected_cars)
                                 print(f" -> [{len(collected_cars)}/{target_count}] Successfully Scraped: {car_data.get('title')} (5 Images Downloaded)")
-                            else:
-                                print(f" -> [SKIP] {car_url} (Found only {len(car_data.get('images', []))}/5 images)")
                         except Exception as err:
                             print(f"[WARN] Failed extracting {car_url}: {err}")
 
