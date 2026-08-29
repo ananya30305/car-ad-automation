@@ -75,7 +75,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
     title = "."
     variant = "."
     
-    title_el = page.query_selector("h1")
+    title_el = page.query_selector("h1, .mantine-Title-root")
     if title_el:
         full_h1 = title_el.inner_text().strip()
         lines = [l.strip() for l in full_h1.split("\n") if l.strip()]
@@ -85,7 +85,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
                 variant = lines[1]
 
     if variant == "." or not variant:
-        sub_heading = page.query_selector("h1 + div, h1 + p, div[class*='variant'], .variant-name")
+        sub_heading = page.query_selector("p[class*='mantine-Text-root']:has-text('TSI'), h1 + div, div[class*='variant']")
         if sub_heading:
             variant = sub_heading.inner_text().strip()
 
@@ -98,7 +98,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
         summary_text = pricing_summary_el.inner_text().strip()
         pricing_summary = " ".join([line.strip() for line in summary_text.split("\n") if line.strip()])
 
-    price_el = page.query_selector("div[class*='price-main'], span[class*='price-main'], h2[class*='price'], .heading--2")
+    price_el = page.query_selector("p[class*='price'], span[class*='price'], div[class*='price-main']")
     if price_el:
         raw_p_text = price_el.inner_text().strip()
         digits = re.sub(r'[^\d]', '', raw_p_text)
@@ -123,7 +123,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
     condition_val = "."
     seats_val = "."
 
-    # Schema structured JSON-LD check
+    # Check Schema structured JSON-LD first
     try:
         scripts = page.query_selector_all("script[type='application/ld+json']")
         for script in scripts:
@@ -148,22 +148,17 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
     except Exception:
         pass
 
-    # Direct Spec Icon Bar scanning & Table row parsing
-    spec_items = page.query_selector_all("div[class*='spec-icon-text'], div[class*='key-spec'], tr, td, li[class*='spec']")
+    # DOM Spec Icon Bar Scanning
+    spec_items = page.query_selector_all("p[class*='mantine-Text-root'], div[class*='spec-icon-text'], td, li")
     for sp in spec_items:
         txt = sp.inner_text().strip()
         if not txt or len(txt) > 40:
             continue
         
-        # Check for seat capacity in spec text or labels
         if seats_val == ".":
             seat_m = re.search(r'\b([2-9]|10|12)\s*(?:seats|seater|seat)\b', txt, re.I)
             if seat_m:
                 seats_val = seat_m.group(1)
-            elif "seats" in txt.lower() or "seating" in txt.lower():
-                num = re.sub(r'[^\d]', '', txt)
-                if num and 2 <= int(num) <= 12:
-                    seats_val = num
 
         if "\n" in txt:
             continue
@@ -183,7 +178,19 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
         elif condition_val == "." and txt.lower() in ["used", "demo", "new", "excellent condition"]:
             condition_val = txt.capitalize()
 
-    # Dynamic Fallbacks
+    # Dynamic Fallback: Check Technical Spec Tab for Seats
+    if seats_val == ".":
+        try:
+            seats_row = page.query_selector("xpath=//*[contains(text(), 'Seats quantity') or contains(text(), 'Seats')]")
+            if seats_row:
+                parent_text = seats_row.evaluate("el => el.parentElement.innerText")
+                digits = re.sub(r'[^\d]', '', parent_text)
+                if digits:
+                    seats_val = digits
+        except Exception:
+            pass
+
+    # URL / Context Fallbacks
     if year == ".":
         y_match = re.search(r'/(19|20\d{2})-', url)
         if y_match:
@@ -212,11 +219,11 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
     dealer_address = "."
     dealer_rating = "."
 
-    d_name_el = page.query_selector("a[href*='/dealer/'], div[class*='dealer-name'], h3[class*='seller']")
+    d_name_el = page.query_selector("a[href*='/dealer/'], h3[class*='seller'], div[class*='dealer-name']")
     if d_name_el:
         dealer_name = d_name_el.inner_text().strip()
 
-    d_addr_el = page.query_selector("div[class*='dealer-address'], span[class*='location-text'], p[class*='address']")
+    d_addr_el = page.query_selector("div[class*='dealer-address'], p[class*='mantine-Text-root']:has-text('Gauteng'), span[class*='location-text']")
     if d_addr_el:
         dealer_address = d_addr_el.inner_text().replace("Distance From You", "").replace("Location", "").strip()
 
@@ -225,13 +232,13 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
         if loc_match:
             dealer_address = loc_match.group(1).replace("-", ", ")
 
-    # Rating popup extraction
+    # Click Rating Popup Trigger
     try:
         rating_btn = page.query_selector("xpath=//*[contains(text(), 'reviews') or contains(text(), 'rating')]")
         if rating_btn:
             rating_btn.click()
             page.wait_for_timeout(1200)
-            modal = page.query_selector("div[class*='modal'], div[class*='dialog']")
+            modal = page.query_selector("div[class*='mantine-Modal-content'], div[class*='modal']")
             if modal:
                 r_match = re.search(r'\d\.\d\s*\(\d+[\d,]*\s*reviews\)', modal.inner_text(), re.I)
                 if r_match:
@@ -269,7 +276,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
 
     # 7. Features & Vehicle Highlights
     features_list = []
-    feat_elements = page.query_selector_all("ul[class*='feature'] li, div[class*='feature-item'], #features-tab .spec-item")
+    feat_elements = page.query_selector_all("p[class*='mantine-Text-root'], div[class*='Vehicle_item'], div[class*='feature-item']")
     for fe in feat_elements:
         txt = fe.inner_text().strip()
         if txt and txt not in features_list and len(txt) > 2 and "\n" not in txt:
@@ -306,7 +313,7 @@ def scrape_single_car_detail(page, url: str) -> Dict[str, Any]:
         except Exception:
             continue
 
-    # Validation Check
+    # Validation
     mandatory_specs_map = {
         "Year": year,
         "Kilometers driven": mileage,
@@ -380,13 +387,12 @@ def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
                     page.goto(page_url, wait_until="domcontentloaded", timeout=45000)
                     page.wait_for_timeout(2000)
 
-                    # Query listing cards specifically to exclude sponsored/promoted ad slots
-                    cards = page.query_selector_all("div[class*='card']:not([class*='sponsored']):not([class*='promoted'])")
+                    # Exclude sponsored cards directly
+                    cards = page.query_selector_all("div[class*='card']:not([class*='sponsored'])")
                     page_urls = []
 
                     for card in cards:
-                        # Skip cards tagged explicitly as sponsored
-                        if card.query_selector("[class*='sponsored'], [class*='promoted'], span:has-text('Sponsored')"):
+                        if card.query_selector("span:has-text('Sponsored')"):
                             continue
 
                         a = card.query_selector("a[href*='/for-sale/used/']")
@@ -400,7 +406,6 @@ def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
                                 seen_urls.add(full_url)
                                 page_urls.append(full_url)
 
-                    # Fallback to general anchors if card containers aren't matched
                     if not page_urls:
                         anchors = page.query_selector_all("a[href*='/for-sale/used/']")
                         for a in anchors:
