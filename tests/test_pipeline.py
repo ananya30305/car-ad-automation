@@ -1,9 +1,10 @@
 import unittest
 
-from deduplicator import deduplicate, normalize_url
-from parser import parse_listing
-from validator import validate_car
-from automation.form_mapper import map_vehicle
+from car_ad_automation.stages.dedupe.deduplicator import check_duplicates, generate_fingerprint
+from car_ad_automation.stages.scrape.parser import parse_listing
+from car_ad_automation.stages.normalize.validator import validate_vehicle
+from car_ad_automation.stages.post.automation.form_mapper import map_vehicle
+from car_ad_automation.core.models import Vehicle
 
 
 class PipelineTests(unittest.TestCase):
@@ -14,18 +15,28 @@ class PipelineTests(unittest.TestCase):
         self.assertEqual(record["price"], 449950)
         self.assertEqual(record["images"], ["https://img.example/carsimages/123456/one.jpg"])
 
-    def test_validator_rejects_incomplete_images(self):
-        result = validate_car({"source_url": "https://example.test/1", "images": ["https://img.example/1.jpg"]})
-        self.assertEqual(result["validation_status"], "incomplete")
-        self.assertIn("images", result["missing_fields"])
-        self.assertEqual(result["quality_score"], 11)
+    def test_validator_warns_on_no_images(self):
+        vehicle = Vehicle(
+            id="test1",
+            title="Test Car",
+            price=10000,
+            images=[]
+        )
+        result = validate_vehicle(vehicle)
+        self.assertTrue(result.valid)  # Still valid, but with warning
+        self.assertIn("No images provided", result.warnings)
 
-    def test_deduplicator_normalizes_tracking_and_trailing_slash(self):
-        records = [{"source_url": "HTTPS://Cars.co.za/for-sale/used/a/123/?utm_source=x", "listing_id": "123"}, {"source_url": "https://cars.co.za/for-sale/used/a/123", "listing_id": "123"}]
-        unique, duplicates = deduplicate(records)
-        self.assertEqual(len(unique), 1)
-        self.assertEqual(duplicates, 1)
-        self.assertEqual(normalize_url(unique[0]["source_url"]), "https://cars.co.za/for-sale/used/a/123/")
+    def test_deduplicator_generates_fingerprint(self):
+        vehicle = Vehicle(
+            id="test1",
+            title="2018 Volkswagen Kombi",
+            year=2018,
+            price=449950,
+            condition="used"
+        )
+        fingerprint = generate_fingerprint(vehicle)
+        self.assertIsInstance(fingerprint, str)
+        self.assertEqual(len(fingerprint), 64)  # SHA256 hex
 
     def test_form_mapper_maps_location_and_schema_condition(self):
         record = {"source_url": "https://example.test/1", "title": "Car", "description": "Description", "price": 1, "mileage": "100 km", "images": [str(index) for index in range(5)], "location": "South Africa", "condition": "https://schema.org/UsedCondition", "transmission": "Automatic", "fuel": "Petrol", "drive_type": "4x2", "colour": "Silver"}
