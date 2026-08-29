@@ -1,4 +1,4 @@
-"""Robust Form Filler - Separate Dual-Condition Field Handlers."""
+"""Positional Form Filler - Direct Index Field Assignment."""
 
 import json
 import logging
@@ -18,93 +18,100 @@ class RobustFormFiller:
         self._select_exact_category_hierarchy()
 
         # 2. Extract Values
-        title = car_data.get("title") or "Used Car"
-        variant = car_data.get("title description") or car_data.get("variant") or title
+        title = car_data.get("title") or "."
+        variant = car_data.get("title description") or car_data.get("variant") or "."
+        top_condition = "Used"
+        year = str(car_data.get("year") or ".")
         km = str(car_data.get("Kilometers driven") or car_data.get("mileage") or ".")
-        fuel = str(car_data.get("fuel") or "Petrol")
+        transmission = str(car_data.get("transmission") or ".")
+        fuel = str(car_data.get("fuel") or ".")
+        drive_type = str(car_data.get("4x2 / 4x4") or car_data.get("drive_type") or ".")
         colour = str(car_data.get("body colour") or car_data.get("colour") or ".")
+        bottom_condition = str(car_data.get("condition") or ".")
+        seats = str(car_data.get("seats") or ".")
+        pricing_summary = str(car_data.get("price summary") or car_data.get("pricing_summary") or ".")
+        dealer_name = str(car_data.get("dealer_name") or ".")
+        dealer_address = str(car_data.get("dealer_address") or car_data.get("address") or ".")
+        dealer_rating = str(car_data.get("Dealer average rating") or car_data.get("dealer_rating") or ".")
+        features_txt = str(car_data.get("features") or ".")
+        contact_number = str(car_data.get("contact_number") or car_data.get("contact_phone") or ".")
+        source_link = str(car_data.get("Source Link") or car_data.get("source_url") or ".")
+        highlights_txt = str(car_data.get("vehicle highlights") or ".")
         price_val = str(car_data.get("price", "0")).replace("R", "").replace(" ", "").strip()
-        
-        dealer_name = car_data.get("dealer_name") or "."
-        dealer_addr = car_data.get("dealer_address") or car_data.get("address") or "."
-        dealer_rating = str(car_data.get("Dealer average rating") or car_data.get("dealer_rating") or "4.0 (322 reviews)")
-        phone = str(car_data.get("contact_number") or car_data.get("phone") or ".")
-        source_url = car_data.get("Source Link") or car_data.get("source_url") or "."
-        
-        # Specific extracted vehicle status for bottom field
-        vehicle_specific_condition = car_data.get("condition") or "."
-        if vehicle_specific_condition.lower() == "used":
-            vehicle_specific_condition = "."  # Default to dot if no specific detail string like 'Excellent condition' exists
-        
-        features_txt = car_data.get("features", "")
-        highlights_txt = car_data.get("vehicle highlights", "")
-        pricing_summary = car_data.get("price summary") or f"Pricing Summary R {price_val}"
 
-        # 3. Handle Dual Condition Fields Separately
-        self._fill_dual_condition_fields(top_condition="Used", bottom_condition=vehicle_specific_condition)
+        # 3. Direct Index-Based Input Fill
+        text_inputs = [inp for inp in self.page.query_selector_all("input[type='text']") if inp.is_visible()]
 
-        # 4. Standard Field Mappings
-        field_assignments = [
-            (["title description", "description title", "variant"], variant),
-            (["title"], title),
-            (["year"], str(car_data.get("year") or ".")),
-            (["kilometer", "km", "mileage", "kilometers driven"], km),
-            (["transmission"], str(car_data.get("transmission") or "Automatic")),
-            (["engine", "fuel"], fuel),
-            (["4x2 / 4x4", "drive"], str(car_data.get("4x2 / 4x4") or "4x2")),
-            (["colour", "color", "body colour"], colour),
-            (["seating", "seats"], str(car_data.get("seats") or ".")),
-            (["pricing summary", "price summary"], pricing_summary),
-            (["dealer name"], dealer_name),
-            (["dealer address"], dealer_addr),
-            (["dealer average rating", "dealer rating", "rating"], dealer_rating),
-            (["features"], features_txt),
-            (["contact number", "phone"], phone),
-            (["source link", "source url"], source_url),
-            (["highlights", "vehicle highlights"], highlights_txt),
-            (["price"], price_val),
-            (["address"], dealer_addr),  # Fill contact details address field
+        # Field mapping ordered strictly top-to-bottom as shown in the portal form UI
+        ordered_values = [
+            title,            # Field 0: Title*
+            variant,          # Field 1: Title Description*
+            top_condition,    # Field 2: Condition* (Top - Always "Used")
+            year,             # Field 3: Year*
+            km,               # Field 4: Kilometers driven*
+            transmission,     # Field 5: Transmission*
+            fuel,             # Field 6: Fuel*
+            drive_type,       # Field 7: 4x2 / 4x4*
+            colour,           # Field 8: Body colour*
+            bottom_condition, # Field 9: Condition* (Bottom - Extracted condition badge or '.')
+            seats,            # Field 10: Seats*
+            pricing_summary,  # Field 11: pricing Summary*
+            dealer_name,      # Field 12: Dealer Name*
+            dealer_address,   # Field 13: Dealer Address*
+            dealer_rating,    # Field 14: Dealer average rating*
         ]
 
-        # Fill text inputs
-        for keywords, val in field_assignments:
-            if val and str(val).strip() != "":
-                self._fill_field_by_keywords(keywords, str(val).strip())
+        for i, val in enumerate(ordered_values):
+            if i < len(text_inputs):
+                try:
+                    text_inputs[i].click()
+                    text_inputs[i].fill("")
+                    text_inputs[i].fill(val)
+                except Exception as err:
+                    logger.warning(f"Error filling index {i} ({val}): {err}")
 
-        # 5. Fill Dropdowns
+        # 4. Fill Textarea Fields
+        textareas = [ta for ta in self.page.query_selector_all("textarea") if ta.is_visible()]
+        textarea_mapping = [
+            (features_txt),     # Textarea 0: Features*
+            (contact_number),   # Textarea 1: Contact Number*
+            (source_link),      # Textarea 2: Source Link*
+            (highlights_txt),   # Textarea 3: Vehicle Highlights*
+        ]
+
+        for i, val in enumerate(textarea_mapping):
+            if i < len(textareas):
+                try:
+                    textareas[i].click()
+                    textareas[i].fill("")
+                    textareas[i].fill(val)
+                except Exception as err:
+                    logger.warning(f"Error filling textarea index {i}: {err}")
+
+        # 5. Price & Contact Address
+        price_input = self.page.query_selector("input[name*='price'], input[id*='price']")
+        if price_input and price_input.is_visible():
+            price_input.click()
+            price_input.fill("")
+            price_input.fill(price_val)
+
+        # Fill lower contact details address field
+        bottom_address_input = self.page.query_selector("input[name*='address']:not([name*='dealer']), textarea[name*='address']")
+        if bottom_address_input and bottom_address_input.is_visible():
+            bottom_address_input.click()
+            bottom_address_input.fill("")
+            bottom_address_input.fill(dealer_address)
+
+        # 6. Fill Dropdowns
         self._force_dropdown_selection("currency", "R (Rand)")
         self._force_dropdown_selection("tagid", "Sale")
         self._force_dropdown_selection("location", "South Africa")
 
-        # 6. Fill Description iFrame
+        # 7. Fill TinyMCE Description Frame
         desc_content = car_data.get("description") or title
         self._fill_tinymce_description(desc_content)
 
         return True
-
-    def _fill_dual_condition_fields(self, top_condition: str, bottom_condition: str):
-        """Finds both fields labeled 'Condition' and fills top with 'Used' and bottom with extracted status/dot."""
-        try:
-            inputs = self.page.query_selector_all("input[type='text']")
-            condition_inputs = []
-
-            for inp in inputs:
-                if not inp.is_visible():
-                    continue
-                parent_txt = inp.evaluate("el => el.parentElement?.parentElement?.innerText || el.parentElement?.innerText || ''").lower()
-                if "condition" in parent_txt:
-                    condition_inputs.append(inp)
-
-            # Order: 1st condition input is under Title Description, 2nd condition input is under Body Colour
-            if len(condition_inputs) >= 1:
-                condition_inputs[0].click()
-                condition_inputs[0].fill(top_condition)  # Always "Used"
-
-            if len(condition_inputs) >= 2:
-                condition_inputs[1].click()
-                condition_inputs[1].fill(bottom_condition)  # Exact status (e.g., "Excellent condition") or "."
-        except Exception as e:
-            logger.warning(f"Error handling dual condition fields: {e}")
 
     def _select_exact_category_hierarchy(self):
         try:
@@ -127,31 +134,6 @@ class RobustFormFiller:
                 self.page.wait_for_timeout(2500)
         except Exception as e:
             logger.warning(f"Category selection error: {e}")
-
-    def _fill_field_by_keywords(self, keywords: List[str], value: str):
-        val_str = str(value).strip()
-        elements = self.page.query_selector_all("input[type='text'], input[type='number'], textarea")
-        
-        for elem in elements:
-            try:
-                if not elem.is_visible():
-                    continue
-                name_attr = (elem.get_attribute("name") or "").lower()
-                id_attr = (elem.get_attribute("id") or "").lower()
-                placeholder = (elem.get_attribute("placeholder") or "").lower()
-                parent_txt = elem.evaluate("el => el.parentElement?.parentElement?.innerText || el.parentElement?.innerText || ''").lower()
-
-                # Avoid re-overwriting condition fields here
-                if "condition" in parent_txt:
-                    continue
-
-                if any(kw in name_attr or kw in id_attr or kw in placeholder or kw in parent_txt for kw in keywords):
-                    elem.click()
-                    elem.fill("")
-                    elem.fill(val_str)
-                    return
-            except Exception:
-                continue
 
     def _force_dropdown_selection(self, field_keyword: str, target_text: str):
         try:

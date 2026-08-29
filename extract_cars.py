@@ -1,4 +1,4 @@
-"""Formats scraped cars into the exact JSON schema required by batch_processor.py."""
+"""Formats extracted vehicle details into JSON schema for Playwright form automation."""
 
 import json
 import logging
@@ -24,24 +24,23 @@ def extract_car(car: dict) -> dict:
     title = clean(car.get("title"), fallback="Used Car")
     variant = clean(car.get("title description") or car.get("variant"), fallback=title)
     
-    raw_price = str(car.get("price", "0")).replace("R", "").replace(" ", "").strip()
-    price_val = raw_price if raw_price.isdigit() and raw_price != "0" else "0"
+    price_val = str(car.get("price", "0")).replace("R", "").replace(" ", "").strip()
+    if not price_val.isdigit():
+        price_val = "0"
 
     phone = clean(car.get("contact_number") or car.get("contact_phone"))
     dealer = clean(car.get("dealer_name"))
     address = clean(car.get("dealer_address") or car.get("address"))
     source_url = clean(car.get("Source Link") or car.get("source_url"))
-    rating = clean(car.get("Dealer average rating") or car.get("dealer_rating"), fallback="4.0 (322 reviews)")
+    rating = clean(car.get("Dealer average rating") or car.get("dealer_rating"), fallback=".")
 
-    mileage_raw = clean(car.get("Kilometers driven") or car.get("mileage"))
-    mileage_str = f"{mileage_raw} km" if mileage_raw != "." and "km" not in mileage_raw.lower() else mileage_raw
-
+    mileage_str = clean(car.get("Kilometers driven") or car.get("mileage"))
     year = clean(car.get("year"))
-    trans = clean(car.get("transmission"), fallback="Automatic")
-    fuel = clean(car.get("fuel"), fallback="Petrol")
-    drive = clean(car.get("4x2 / 4x4") or car.get("drive_type"), fallback="4x2")
+    trans = clean(car.get("transmission"))
+    fuel = clean(car.get("fuel"))
+    drive = clean(car.get("4x2 / 4x4") or car.get("drive_type"))
     colour = clean(car.get("body colour") or car.get("colour"))
-    cond = clean(car.get("condition"), fallback="Used")
+    cond = clean(car.get("condition"), fallback=".")
 
     feats = car.get("features", [])
     features_txt = "\n".join([str(f).strip() for f in feats if str(f).strip()]) if isinstance(feats, list) else clean(feats)
@@ -50,8 +49,7 @@ def extract_car(car: dict) -> dict:
     highlights_txt = "\n".join([str(h).strip() for h in highs if str(h).strip()]) if isinstance(highs, list) else clean(highs)
 
     desc = clean(car.get("description"), fallback=title)
-    ps = car.get("price summary") or car.get("pricing_summary")
-    pricing_summary = str(ps).strip() if ps and ps != "." else f"Pricing Summary R {price_val} Est. R 5 347 p/m"
+    pricing_summary = clean(car.get("price summary") or car.get("pricing_summary"))
 
     images = car.get("images", [])
     valid_images = [str(Path(p).resolve()) for p in images if Path(p).exists()]
