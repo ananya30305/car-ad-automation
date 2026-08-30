@@ -1,0 +1,13 @@
+Metric,Count
+total_records,3
+valid_records,3
+invalid_records,0
+duplicates,0
+processed,3
+successful,3
+failed,0
+skipped,0
+missing_images,0
+verification_failures,0
+submission_failures,0
+runtime_seconds,4.488318

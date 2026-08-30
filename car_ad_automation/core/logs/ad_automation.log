@@ -1,0 +1,1594 @@
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Browser headless mode: False
+2026-08-30 10:03:34 | INFO     | Dry run: True
+2026-08-30 10:03:34 | INFO     | Submit advertisements: False
+2026-08-30 10:03:34 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:03:34 | INFO     | Loaded 3 records.
+2026-08-30 10:03:34 | INFO     | Processing first 2 records.
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | VALIDATE-ONLY MODE
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Starting pipeline processing...
+2026-08-30 10:03:34 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False)
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Normalized 2 records
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:03:34 | INFO     | ============================================================
+2026-08-30 10:03:34 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:03:34 | INFO     | Processing vehicle 1/2: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:03:37 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:03:37 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:03:37 | INFO     | Processing vehicle 2/2: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:03:39 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:03:39 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:03:39 | INFO     | ============================================================
+2026-08-30 10:03:39 | INFO     | SAVING REPORT
+2026-08-30 10:03:39 | INFO     | ============================================================
+2026-08-30 10:03:39 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:03:39 | INFO     | 
+2026-08-30 10:03:39 | INFO     | ============================================================
+2026-08-30 10:03:39 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:03:39 | INFO     | ============================================================
+2026-08-30 10:03:39 | INFO     | Total records:     2
+2026-08-30 10:03:39 | INFO     | Valid records:     2
+2026-08-30 10:03:39 | INFO     | Invalid records:   0
+2026-08-30 10:03:39 | INFO     | Duplicates found:  0
+2026-08-30 10:03:39 | INFO     | Processed:         2
+2026-08-30 10:03:39 | INFO     | Successful:        2
+2026-08-30 10:03:39 | INFO     | Failed:            0
+2026-08-30 10:03:39 | INFO     | Skipped:           0
+2026-08-30 10:03:39 | INFO     | Runtime:           4.9s
+2026-08-30 10:03:39 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Browser headless mode: False
+2026-08-30 10:04:00 | INFO     | Dry run: True
+2026-08-30 10:04:00 | INFO     | Submit advertisements: False
+2026-08-30 10:04:00 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:04:00 | INFO     | Loaded 3 records.
+2026-08-30 10:04:00 | INFO     | Processing first 2 records.
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | PREPARE MODE
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Starting pipeline processing...
+2026-08-30 10:04:00 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False)
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Normalized 2 records
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:04:00 | INFO     | ============================================================
+2026-08-30 10:04:00 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:04:00 | INFO     | Processing vehicle 1/2: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:04:01 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:04:01 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:04:01 | INFO     | Processing vehicle 2/2: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:04:02 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:04:02 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:04:02 | INFO     | ============================================================
+2026-08-30 10:04:02 | INFO     | SAVING REPORT
+2026-08-30 10:04:02 | INFO     | ============================================================
+2026-08-30 10:04:02 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:04:02 | INFO     | 
+2026-08-30 10:04:02 | INFO     | ============================================================
+2026-08-30 10:04:02 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:04:02 | INFO     | ============================================================
+2026-08-30 10:04:02 | INFO     | Total records:     2
+2026-08-30 10:04:02 | INFO     | Valid records:     2
+2026-08-30 10:04:02 | INFO     | Invalid records:   0
+2026-08-30 10:04:02 | INFO     | Duplicates found:  0
+2026-08-30 10:04:02 | INFO     | Processed:         2
+2026-08-30 10:04:02 | INFO     | Successful:        2
+2026-08-30 10:04:02 | INFO     | Failed:            0
+2026-08-30 10:04:02 | INFO     | Skipped:           0
+2026-08-30 10:04:02 | INFO     | Runtime:           3.0s
+2026-08-30 10:04:02 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Browser headless mode: False
+2026-08-30 10:05:52 | INFO     | Dry run: True
+2026-08-30 10:05:52 | INFO     | Submit advertisements: False
+2026-08-30 10:05:52 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:05:52 | INFO     | Loaded 3 records.
+2026-08-30 10:05:52 | INFO     | Processing first 2 records.
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | PREPARE MODE
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Starting pipeline processing...
+2026-08-30 10:05:52 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=images)
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Normalized 2 records
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | SAVING REPORT
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:05:52 | INFO     | 
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:05:52 | INFO     | Total records:     2
+2026-08-30 10:05:52 | INFO     | Valid records:     2
+2026-08-30 10:05:52 | INFO     | Invalid records:   0
+2026-08-30 10:05:52 | INFO     | Duplicates found:  0
+2026-08-30 10:05:52 | INFO     | Processed:         0
+2026-08-30 10:05:52 | INFO     | Successful:        0
+2026-08-30 10:05:52 | INFO     | Failed:            0
+2026-08-30 10:05:52 | INFO     | Skipped:           0
+2026-08-30 10:05:52 | INFO     | Runtime:           0.0s
+2026-08-30 10:05:52 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | Browser headless mode: False
+2026-08-30 10:06:17 | INFO     | Dry run: True
+2026-08-30 10:06:17 | INFO     | Submit advertisements: False
+2026-08-30 10:06:17 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:06:17 | INFO     | Loaded 3 records.
+2026-08-30 10:06:17 | INFO     | Processing first 2 records.
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | VALIDATE-ONLY MODE
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | Starting pipeline processing...
+2026-08-30 10:06:17 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=validate)
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | Normalized 2 records
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | SAVING REPORT
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:06:17 | INFO     | 
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:17 | INFO     | Total records:     2
+2026-08-30 10:06:17 | INFO     | Valid records:     2
+2026-08-30 10:06:17 | INFO     | Invalid records:   0
+2026-08-30 10:06:17 | INFO     | Duplicates found:  0
+2026-08-30 10:06:17 | INFO     | Processed:         0
+2026-08-30 10:06:17 | INFO     | Successful:        0
+2026-08-30 10:06:17 | INFO     | Failed:            0
+2026-08-30 10:06:17 | INFO     | Skipped:           0
+2026-08-30 10:06:17 | INFO     | Runtime:           0.0s
+2026-08-30 10:06:17 | INFO     | ============================================================
+2026-08-30 10:06:20 | INFO     | ============================================================
+2026-08-30 10:06:20 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:06:20 | INFO     | ============================================================
+2026-08-30 10:06:20 | INFO     | Browser headless mode: False
+2026-08-30 10:06:20 | INFO     | Dry run: True
+2026-08-30 10:06:20 | INFO     | Submit advertisements: False
+2026-08-30 10:06:20 | INFO     | Input source: auto
+2026-08-30 10:06:20 | INFO     | ============================================================
+2026-08-30 10:06:20 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:06:20 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | Browser headless mode: False
+2026-08-30 10:07:23 | INFO     | Dry run: True
+2026-08-30 10:07:23 | INFO     | Submit advertisements: False
+2026-08-30 10:07:23 | INFO     | Input source: auto
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | Loading default CSV: /Users/nsumant/car-ad-automation/car_ad_automation/core/data/inventory.csv
+2026-08-30 10:07:23 | INFO     | Loaded 3 records.
+2026-08-30 10:07:23 | INFO     | Processing first 1 records.
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | DRY RUN MODE
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:07:23 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:07:23 | INFO     | Starting pipeline processing...
+2026-08-30 10:07:23 | INFO     | Starting pipeline with 1 records (dry_run=True, resume=False, max_stage=None)
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | Normalized 1 records
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | Validated 1 records, 0 rejected
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | Unique vehicles after dedupe: 1
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | Descriptions built for 1 vehicles
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | Images validated for 1 vehicles
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:07:23 | INFO     | ============================================================
+2026-08-30 10:07:23 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:07:23 | INFO     | Processing vehicle 1/1: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:07:26 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:07:26 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:07:26 | INFO     | ============================================================
+2026-08-30 10:07:26 | INFO     | SAVING REPORT
+2026-08-30 10:07:26 | INFO     | ============================================================
+2026-08-30 10:07:26 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:07:26 | INFO     | 
+2026-08-30 10:07:26 | INFO     | ============================================================
+2026-08-30 10:07:26 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:07:26 | INFO     | ============================================================
+2026-08-30 10:07:26 | INFO     | Total records:     1
+2026-08-30 10:07:26 | INFO     | Valid records:     1
+2026-08-30 10:07:26 | INFO     | Invalid records:   0
+2026-08-30 10:07:26 | INFO     | Duplicates found:  0
+2026-08-30 10:07:26 | INFO     | Processed:         1
+2026-08-30 10:07:26 | INFO     | Successful:        1
+2026-08-30 10:07:26 | INFO     | Failed:            0
+2026-08-30 10:07:26 | INFO     | Skipped:           0
+2026-08-30 10:07:26 | INFO     | Runtime:           2.4s
+2026-08-30 10:07:26 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | Browser headless mode: False
+2026-08-30 10:08:30 | INFO     | Dry run: True
+2026-08-30 10:08:30 | INFO     | Submit advertisements: False
+2026-08-30 10:08:30 | INFO     | Input source: auto
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | Loading default CSV: /Users/nsumant/car-ad-automation/car_ad_automation/core/data/inventory.csv
+2026-08-30 10:08:30 | INFO     | Loaded 3 records.
+2026-08-30 10:08:30 | INFO     | Processing first 1 records.
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | DRY RUN MODE
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:08:30 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:08:30 | INFO     | Starting pipeline processing...
+2026-08-30 10:08:30 | INFO     | Starting pipeline with 1 records (dry_run=True, resume=False, max_stage=None)
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | Normalized 1 records
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | Validated 1 records, 0 rejected
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | Unique vehicles after dedupe: 1
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | Descriptions built for 1 vehicles
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | Images validated for 1 vehicles
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:08:30 | INFO     | ============================================================
+2026-08-30 10:08:30 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:08:30 | INFO     | Processing vehicle 1/1: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:08:31 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:08:31 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:08:31 | INFO     | ============================================================
+2026-08-30 10:08:31 | INFO     | SAVING REPORT
+2026-08-30 10:08:31 | INFO     | ============================================================
+2026-08-30 10:08:31 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:08:31 | INFO     | 
+2026-08-30 10:08:31 | INFO     | ============================================================
+2026-08-30 10:08:31 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:08:31 | INFO     | ============================================================
+2026-08-30 10:08:31 | INFO     | Total records:     1
+2026-08-30 10:08:31 | INFO     | Valid records:     1
+2026-08-30 10:08:31 | INFO     | Invalid records:   0
+2026-08-30 10:08:31 | INFO     | Duplicates found:  0
+2026-08-30 10:08:31 | INFO     | Processed:         1
+2026-08-30 10:08:31 | INFO     | Successful:        1
+2026-08-30 10:08:31 | INFO     | Failed:            0
+2026-08-30 10:08:31 | INFO     | Skipped:           0
+2026-08-30 10:08:31 | INFO     | Runtime:           1.4s
+2026-08-30 10:08:31 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | Browser headless mode: False
+2026-08-30 10:09:06 | INFO     | Dry run: True
+2026-08-30 10:09:06 | INFO     | Submit advertisements: False
+2026-08-30 10:09:06 | INFO     | Input source: file (data/invalid.csv)
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | Loading source data from: data/invalid.csv
+2026-08-30 10:09:06 | INFO     | Loaded 1 records.
+2026-08-30 10:09:06 | INFO     | Processing first 1 records.
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | VALIDATE-ONLY MODE
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | Starting pipeline processing...
+2026-08-30 10:09:06 | INFO     | Starting pipeline with 1 records (dry_run=True, resume=False, max_stage=validate)
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | Normalized 1 records
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:09:06 | INFO     | ============================================================
+2026-08-30 10:09:06 | ERROR    | Validation failed for auto_Test_Car_not_a_number: ['Price must be greater than zero', 'Price must be greater than zero']
+2026-08-30 10:09:06 | ERROR    | Pipeline failed at stage 'validate': Validation failed for auto_Test_Car_not_a_number: ['Price must be greater than zero', 'Price must be greater than zero']
+Traceback (most recent call last):
+  File "/Users/nsumant/car-ad-automation/car_ad_automation/pipeline/pipeline.py", line 154, in run
+    vehicles = self._stage_validate(vehicles)
+  File "/Users/nsumant/car-ad-automation/car_ad_automation/pipeline/pipeline.py", line 254, in _stage_validate
+    raise ValueError(f"Validation failed for {vehicle.id}: {result.errors}")
+ValueError: Validation failed for auto_Test_Car_not_a_number: ['Price must be greater than zero', 'Price must be greater than zero']
+
+2026-08-30 10:09:06 | ERROR    | Fatal error: Validation failed for auto_Test_Car_not_a_number: ['Price must be greater than zero', 'Price must be greater than zero']
+Traceback (most recent call last):
+  File "/Users/nsumant/car-ad-automation/car_ad_automation/cli/main.py", line 319, in main_async
+    report = pipeline.run(
+        records,
+    ...<2 lines>...
+        max_stage=max_stage
+    )
+  File "/Users/nsumant/car-ad-automation/car_ad_automation/pipeline/pipeline.py", line 154, in run
+    vehicles = self._stage_validate(vehicles)
+  File "/Users/nsumant/car-ad-automation/car_ad_automation/pipeline/pipeline.py", line 254, in _stage_validate
+    raise ValueError(f"Validation failed for {vehicle.id}: {result.errors}")
+ValueError: Validation failed for auto_Test_Car_not_a_number: ['Price must be greater than zero', 'Price must be greater than zero']
+
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | Browser headless mode: False
+2026-08-30 10:09:23 | INFO     | Dry run: True
+2026-08-30 10:09:23 | INFO     | Submit advertisements: False
+2026-08-30 10:09:23 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:09:23 | INFO     | Loaded 3 records.
+2026-08-30 10:09:23 | INFO     | Processing first 2 records.
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | DRY RUN MODE
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:09:23 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:09:23 | INFO     | Starting pipeline processing...
+2026-08-30 10:09:23 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=None)
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | Normalized 2 records
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:09:23 | INFO     | ============================================================
+2026-08-30 10:09:23 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:09:23 | INFO     | Processing vehicle 1/2: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:09:24 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:09:25 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:09:25 | INFO     | Processing vehicle 2/2: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:09:26 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:09:26 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:09:26 | INFO     | ============================================================
+2026-08-30 10:09:26 | INFO     | SAVING REPORT
+2026-08-30 10:09:26 | INFO     | ============================================================
+2026-08-30 10:09:26 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:09:26 | INFO     | 
+2026-08-30 10:09:26 | INFO     | ============================================================
+2026-08-30 10:09:26 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:09:26 | INFO     | ============================================================
+2026-08-30 10:09:26 | INFO     | Total records:     2
+2026-08-30 10:09:26 | INFO     | Valid records:     2
+2026-08-30 10:09:26 | INFO     | Invalid records:   0
+2026-08-30 10:09:26 | INFO     | Duplicates found:  0
+2026-08-30 10:09:26 | INFO     | Processed:         2
+2026-08-30 10:09:26 | INFO     | Successful:        2
+2026-08-30 10:09:26 | INFO     | Failed:            0
+2026-08-30 10:09:26 | INFO     | Skipped:           0
+2026-08-30 10:09:26 | INFO     | Runtime:           3.1s
+2026-08-30 10:09:26 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | Browser headless mode: False
+2026-08-30 10:09:31 | INFO     | Dry run: True
+2026-08-30 10:09:31 | INFO     | Submit advertisements: False
+2026-08-30 10:09:31 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:09:31 | INFO     | Loaded 3 records.
+2026-08-30 10:09:31 | INFO     | Processing first 3 records.
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | DRY RUN MODE
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:09:31 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:09:31 | INFO     | Starting pipeline processing...
+2026-08-30 10:09:31 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=True, max_stage=None)
+2026-08-30 10:09:31 | INFO     | Resumed: 3 records remaining
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | Normalized 3 records
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | Unique vehicles after dedupe: 3
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | Descriptions built for 3 vehicles
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | Images validated for 3 vehicles
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:09:31 | INFO     | ============================================================
+2026-08-30 10:09:31 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:09:31 | INFO     | Processing vehicle 1/3: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:09:32 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:09:32 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:09:32 | INFO     | Processing vehicle 2/3: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:09:34 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:09:34 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:09:34 | INFO     | Processing vehicle 3/3: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:09:35 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:09:35 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:09:35 | INFO     | ============================================================
+2026-08-30 10:09:35 | INFO     | SAVING REPORT
+2026-08-30 10:09:35 | INFO     | ============================================================
+2026-08-30 10:09:35 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:09:35 | INFO     | 
+2026-08-30 10:09:35 | INFO     | ============================================================
+2026-08-30 10:09:35 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:09:35 | INFO     | ============================================================
+2026-08-30 10:09:35 | INFO     | Total records:     3
+2026-08-30 10:09:35 | INFO     | Valid records:     3
+2026-08-30 10:09:35 | INFO     | Invalid records:   0
+2026-08-30 10:09:35 | INFO     | Duplicates found:  0
+2026-08-30 10:09:35 | INFO     | Processed:         3
+2026-08-30 10:09:35 | INFO     | Successful:        3
+2026-08-30 10:09:35 | INFO     | Failed:            0
+2026-08-30 10:09:35 | INFO     | Skipped:           0
+2026-08-30 10:09:35 | INFO     | Runtime:           4.1s
+2026-08-30 10:09:35 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | Browser headless mode: False
+2026-08-30 10:09:50 | INFO     | Dry run: True
+2026-08-30 10:09:50 | INFO     | Submit advertisements: False
+2026-08-30 10:09:50 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:09:50 | INFO     | Loaded 3 records.
+2026-08-30 10:09:50 | INFO     | Processing first 3 records.
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | DRY RUN MODE
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:09:50 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:09:50 | INFO     | Starting pipeline processing...
+2026-08-30 10:09:50 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=True, max_stage=None)
+2026-08-30 10:09:50 | INFO     | Resumed: 3 records remaining
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | Normalized 3 records
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | Unique vehicles after dedupe: 3
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | Descriptions built for 3 vehicles
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | Images validated for 3 vehicles
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:09:50 | INFO     | ============================================================
+2026-08-30 10:09:50 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:09:50 | INFO     | Processing vehicle 1/3: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:09:51 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:09:52 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:09:52 | INFO     | Processing vehicle 2/3: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:09:53 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:09:53 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:09:53 | INFO     | Processing vehicle 3/3: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:09:54 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:09:55 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:09:55 | INFO     | ============================================================
+2026-08-30 10:09:55 | INFO     | SAVING REPORT
+2026-08-30 10:09:55 | INFO     | ============================================================
+2026-08-30 10:09:55 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:09:55 | INFO     | 
+2026-08-30 10:09:55 | INFO     | ============================================================
+2026-08-30 10:09:55 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:09:55 | INFO     | ============================================================
+2026-08-30 10:09:55 | INFO     | Total records:     3
+2026-08-30 10:09:55 | INFO     | Valid records:     3
+2026-08-30 10:09:55 | INFO     | Invalid records:   0
+2026-08-30 10:09:55 | INFO     | Duplicates found:  0
+2026-08-30 10:09:55 | INFO     | Processed:         3
+2026-08-30 10:09:55 | INFO     | Successful:        3
+2026-08-30 10:09:55 | INFO     | Failed:            0
+2026-08-30 10:09:55 | INFO     | Skipped:           0
+2026-08-30 10:09:55 | INFO     | Runtime:           4.6s
+2026-08-30 10:09:55 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Browser headless mode: False
+2026-08-30 10:10:48 | INFO     | Dry run: True
+2026-08-30 10:10:48 | INFO     | Submit advertisements: False
+2026-08-30 10:10:48 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:10:48 | INFO     | Loaded 3 records.
+2026-08-30 10:10:48 | INFO     | Processing first 2 records.
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | PREPARE MODE
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Starting pipeline processing...
+2026-08-30 10:10:48 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=images)
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Normalized 2 records
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | SAVING REPORT
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:10:48 | INFO     | 
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:10:48 | INFO     | Total records:     2
+2026-08-30 10:10:48 | INFO     | Valid records:     2
+2026-08-30 10:10:48 | INFO     | Invalid records:   0
+2026-08-30 10:10:48 | INFO     | Duplicates found:  0
+2026-08-30 10:10:48 | INFO     | Processed:         0
+2026-08-30 10:10:48 | INFO     | Successful:        0
+2026-08-30 10:10:48 | INFO     | Failed:            0
+2026-08-30 10:10:48 | INFO     | Skipped:           0
+2026-08-30 10:10:48 | INFO     | Runtime:           0.0s
+2026-08-30 10:10:48 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | Browser headless mode: False
+2026-08-30 10:11:19 | INFO     | Dry run: True
+2026-08-30 10:11:19 | INFO     | Submit advertisements: False
+2026-08-30 10:11:19 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:11:19 | INFO     | Loaded 3 records.
+2026-08-30 10:11:19 | INFO     | Processing first 3 records.
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | DRY RUN MODE
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:11:19 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:11:19 | INFO     | Starting pipeline processing...
+2026-08-30 10:11:19 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=True, max_stage=None)
+2026-08-30 10:11:19 | INFO     | Checkpoint found: 2 records already processed
+2026-08-30 10:11:19 | INFO     | Resuming with 3 remaining records
+2026-08-30 10:11:19 | INFO     | Resumed: 3 records remaining
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | Normalized 3 records
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | Unique vehicles after dedupe: 3
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | Descriptions built for 3 vehicles
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | Images validated for 3 vehicles
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:11:19 | INFO     | ============================================================
+2026-08-30 10:11:19 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:11:19 | INFO     | Processing vehicle 1/3: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:11:21 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:11:21 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:11:21 | INFO     | Processing vehicle 2/3: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:11:22 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:11:22 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:11:22 | INFO     | Processing vehicle 3/3: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:11:23 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:11:23 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:11:23 | INFO     | ============================================================
+2026-08-30 10:11:23 | INFO     | SAVING REPORT
+2026-08-30 10:11:23 | INFO     | ============================================================
+2026-08-30 10:11:23 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:11:23 | INFO     | 
+2026-08-30 10:11:23 | INFO     | ============================================================
+2026-08-30 10:11:23 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:11:23 | INFO     | ============================================================
+2026-08-30 10:11:23 | INFO     | Total records:     3
+2026-08-30 10:11:23 | INFO     | Valid records:     3
+2026-08-30 10:11:23 | INFO     | Invalid records:   0
+2026-08-30 10:11:23 | INFO     | Duplicates found:  0
+2026-08-30 10:11:23 | INFO     | Processed:         3
+2026-08-30 10:11:23 | INFO     | Successful:        3
+2026-08-30 10:11:23 | INFO     | Failed:            0
+2026-08-30 10:11:23 | INFO     | Skipped:           0
+2026-08-30 10:11:23 | INFO     | Runtime:           3.7s
+2026-08-30 10:11:23 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Browser headless mode: False
+2026-08-30 10:12:19 | INFO     | Dry run: True
+2026-08-30 10:12:19 | INFO     | Submit advertisements: False
+2026-08-30 10:12:19 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:12:19 | INFO     | Loaded 3 records.
+2026-08-30 10:12:19 | INFO     | Processing first 2 records.
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | PREPARE MODE
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Starting pipeline processing...
+2026-08-30 10:12:19 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=images)
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Normalized 2 records
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | SAVING REPORT
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:12:19 | INFO     | 
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:19 | INFO     | Total records:     2
+2026-08-30 10:12:19 | INFO     | Valid records:     2
+2026-08-30 10:12:19 | INFO     | Invalid records:   0
+2026-08-30 10:12:19 | INFO     | Duplicates found:  0
+2026-08-30 10:12:19 | INFO     | Processed:         0
+2026-08-30 10:12:19 | INFO     | Successful:        0
+2026-08-30 10:12:19 | INFO     | Failed:            0
+2026-08-30 10:12:19 | INFO     | Skipped:           0
+2026-08-30 10:12:19 | INFO     | Runtime:           0.0s
+2026-08-30 10:12:19 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | Browser headless mode: False
+2026-08-30 10:12:24 | INFO     | Dry run: True
+2026-08-30 10:12:24 | INFO     | Submit advertisements: False
+2026-08-30 10:12:24 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:12:24 | INFO     | Loaded 3 records.
+2026-08-30 10:12:24 | INFO     | Processing first 3 records.
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | DRY RUN MODE
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:12:24 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:12:24 | INFO     | Starting pipeline processing...
+2026-08-30 10:12:24 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=True, max_stage=None)
+2026-08-30 10:12:24 | INFO     | Checkpoint found: 2 records already processed
+2026-08-30 10:12:24 | INFO     | Resuming with 3 remaining records
+2026-08-30 10:12:24 | INFO     | Resumed: 3 records remaining
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | Normalized 3 records
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | Unique vehicles after dedupe: 3
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | Descriptions built for 3 vehicles
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | Images validated for 3 vehicles
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:12:24 | INFO     | ============================================================
+2026-08-30 10:12:24 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:12:24 | INFO     | Processing vehicle 1/3: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:12:25 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:12:25 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:12:25 | INFO     | Processing vehicle 2/3: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:12:26 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:12:26 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:12:26 | INFO     | Processing vehicle 3/3: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:12:27 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:12:27 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:12:27 | INFO     | ============================================================
+2026-08-30 10:12:27 | INFO     | SAVING REPORT
+2026-08-30 10:12:27 | INFO     | ============================================================
+2026-08-30 10:12:27 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:12:27 | INFO     | 
+2026-08-30 10:12:27 | INFO     | ============================================================
+2026-08-30 10:12:27 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:12:27 | INFO     | ============================================================
+2026-08-30 10:12:27 | INFO     | Total records:     3
+2026-08-30 10:12:27 | INFO     | Valid records:     3
+2026-08-30 10:12:27 | INFO     | Invalid records:   0
+2026-08-30 10:12:27 | INFO     | Duplicates found:  0
+2026-08-30 10:12:27 | INFO     | Processed:         3
+2026-08-30 10:12:27 | INFO     | Successful:        3
+2026-08-30 10:12:27 | INFO     | Failed:            0
+2026-08-30 10:12:27 | INFO     | Skipped:           0
+2026-08-30 10:12:27 | INFO     | Runtime:           3.5s
+2026-08-30 10:12:27 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Browser headless mode: False
+2026-08-30 10:12:41 | INFO     | Dry run: True
+2026-08-30 10:12:41 | INFO     | Submit advertisements: False
+2026-08-30 10:12:41 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:12:41 | INFO     | Loaded 3 records.
+2026-08-30 10:12:41 | INFO     | Processing first 2 records.
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | PREPARE MODE
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Starting pipeline processing...
+2026-08-30 10:12:41 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=images)
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Normalized 2 records
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | SAVING REPORT
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:12:41 | INFO     | 
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:41 | INFO     | Total records:     2
+2026-08-30 10:12:41 | INFO     | Valid records:     2
+2026-08-30 10:12:41 | INFO     | Invalid records:   0
+2026-08-30 10:12:41 | INFO     | Duplicates found:  0
+2026-08-30 10:12:41 | INFO     | Processed:         0
+2026-08-30 10:12:41 | INFO     | Successful:        0
+2026-08-30 10:12:41 | INFO     | Failed:            0
+2026-08-30 10:12:41 | INFO     | Skipped:           0
+2026-08-30 10:12:41 | INFO     | Runtime:           0.0s
+2026-08-30 10:12:41 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | Browser headless mode: False
+2026-08-30 10:12:59 | INFO     | Dry run: True
+2026-08-30 10:12:59 | INFO     | Submit advertisements: False
+2026-08-30 10:12:59 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:12:59 | INFO     | Loaded 3 records.
+2026-08-30 10:12:59 | INFO     | Processing first 3 records.
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | DRY RUN MODE
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:12:59 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:12:59 | INFO     | Starting pipeline processing...
+2026-08-30 10:12:59 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=True, max_stage=None)
+2026-08-30 10:12:59 | INFO     | Checkpoint found: 2 records already processed
+2026-08-30 10:12:59 | INFO     | Resuming with 3 remaining records
+2026-08-30 10:12:59 | INFO     | Resumed: 3 records remaining
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | Normalized 3 records
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | Unique vehicles after dedupe: 3
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | Descriptions built for 3 vehicles
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | Images validated for 3 vehicles
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:12:59 | INFO     | ============================================================
+2026-08-30 10:12:59 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:12:59 | INFO     | Processing vehicle 1/3: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:13:00 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:13:00 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:13:01 | INFO     | Processing vehicle 2/3: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:13:01 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:13:02 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:13:02 | INFO     | Processing vehicle 3/3: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:13:03 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:13:03 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:13:03 | INFO     | ============================================================
+2026-08-30 10:13:03 | INFO     | SAVING REPORT
+2026-08-30 10:13:03 | INFO     | ============================================================
+2026-08-30 10:13:03 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:13:03 | INFO     | 
+2026-08-30 10:13:03 | INFO     | ============================================================
+2026-08-30 10:13:03 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:13:03 | INFO     | ============================================================
+2026-08-30 10:13:03 | INFO     | Total records:     3
+2026-08-30 10:13:03 | INFO     | Valid records:     3
+2026-08-30 10:13:03 | INFO     | Invalid records:   0
+2026-08-30 10:13:03 | INFO     | Duplicates found:  0
+2026-08-30 10:13:03 | INFO     | Processed:         3
+2026-08-30 10:13:03 | INFO     | Successful:        3
+2026-08-30 10:13:03 | INFO     | Failed:            0
+2026-08-30 10:13:03 | INFO     | Skipped:           0
+2026-08-30 10:13:03 | INFO     | Runtime:           3.5s
+2026-08-30 10:13:03 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Browser headless mode: False
+2026-08-30 10:14:06 | INFO     | Dry run: True
+2026-08-30 10:14:06 | INFO     | Submit advertisements: False
+2026-08-30 10:14:06 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:14:06 | INFO     | Loaded 3 records.
+2026-08-30 10:14:06 | INFO     | Processing first 2 records.
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | PREPARE MODE
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Starting pipeline processing...
+2026-08-30 10:14:06 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=images)
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Normalized 2 records
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | SAVING REPORT
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:14:06 | INFO     | 
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:06 | INFO     | Total records:     2
+2026-08-30 10:14:06 | INFO     | Valid records:     2
+2026-08-30 10:14:06 | INFO     | Invalid records:   0
+2026-08-30 10:14:06 | INFO     | Duplicates found:  0
+2026-08-30 10:14:06 | INFO     | Processed:         0
+2026-08-30 10:14:06 | INFO     | Successful:        0
+2026-08-30 10:14:06 | INFO     | Failed:            0
+2026-08-30 10:14:06 | INFO     | Skipped:           0
+2026-08-30 10:14:06 | INFO     | Runtime:           0.0s
+2026-08-30 10:14:06 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | Browser headless mode: False
+2026-08-30 10:14:08 | INFO     | Dry run: True
+2026-08-30 10:14:08 | INFO     | Submit advertisements: False
+2026-08-30 10:14:08 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:14:08 | INFO     | Loaded 3 records.
+2026-08-30 10:14:08 | INFO     | Processing first 3 records.
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | DRY RUN MODE
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:14:08 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:14:08 | INFO     | Starting pipeline processing...
+2026-08-30 10:14:08 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=True, max_stage=None)
+2026-08-30 10:14:08 | INFO     | Checkpoint found: 2 records already processed
+2026-08-30 10:14:08 | INFO     | Resuming with 1 remaining records
+2026-08-30 10:14:08 | INFO     | Resumed: 1 records remaining
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | Normalized 1 records
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | Validated 1 records, 0 rejected
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | Unique vehicles after dedupe: 1
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | Descriptions built for 1 vehicles
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | Images validated for 1 vehicles
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:14:08 | INFO     | ============================================================
+2026-08-30 10:14:08 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:14:08 | INFO     | Processing vehicle 1/1: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:14:09 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:14:09 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:14:09 | INFO     | ============================================================
+2026-08-30 10:14:09 | INFO     | SAVING REPORT
+2026-08-30 10:14:09 | INFO     | ============================================================
+2026-08-30 10:14:09 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:14:09 | INFO     | 
+2026-08-30 10:14:09 | INFO     | ============================================================
+2026-08-30 10:14:09 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:14:09 | INFO     | ============================================================
+2026-08-30 10:14:09 | INFO     | Total records:     3
+2026-08-30 10:14:09 | INFO     | Valid records:     1
+2026-08-30 10:14:09 | INFO     | Invalid records:   0
+2026-08-30 10:14:09 | INFO     | Duplicates found:  0
+2026-08-30 10:14:09 | INFO     | Processed:         1
+2026-08-30 10:14:09 | INFO     | Successful:        1
+2026-08-30 10:14:09 | INFO     | Failed:            0
+2026-08-30 10:14:09 | INFO     | Skipped:           0
+2026-08-30 10:14:09 | INFO     | Runtime:           1.2s
+2026-08-30 10:14:09 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Browser headless mode: False
+2026-08-30 10:14:27 | INFO     | Dry run: True
+2026-08-30 10:14:27 | INFO     | Submit advertisements: False
+2026-08-30 10:14:27 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:14:27 | INFO     | Loaded 3 records.
+2026-08-30 10:14:27 | INFO     | Processing first 2 records.
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | VALIDATE-ONLY MODE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Starting pipeline processing...
+2026-08-30 10:14:27 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=validate)
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Normalized 2 records
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | SAVING REPORT
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:14:27 | INFO     | 
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Total records:     2
+2026-08-30 10:14:27 | INFO     | Valid records:     2
+2026-08-30 10:14:27 | INFO     | Invalid records:   0
+2026-08-30 10:14:27 | INFO     | Duplicates found:  0
+2026-08-30 10:14:27 | INFO     | Processed:         0
+2026-08-30 10:14:27 | INFO     | Successful:        0
+2026-08-30 10:14:27 | INFO     | Failed:            0
+2026-08-30 10:14:27 | INFO     | Skipped:           0
+2026-08-30 10:14:27 | INFO     | Runtime:           0.0s
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Browser headless mode: False
+2026-08-30 10:14:27 | INFO     | Dry run: True
+2026-08-30 10:14:27 | INFO     | Submit advertisements: False
+2026-08-30 10:14:27 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:14:27 | INFO     | Loaded 3 records.
+2026-08-30 10:14:27 | INFO     | Processing first 2 records.
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | PREPARE MODE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Starting pipeline processing...
+2026-08-30 10:14:27 | INFO     | Starting pipeline with 2 records (dry_run=True, resume=False, max_stage=images)
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Normalized 2 records
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Validated 2 records, 0 rejected
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Unique vehicles after dedupe: 2
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Descriptions built for 2 vehicles
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Images validated for 2 vehicles
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | SAVING REPORT
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:14:27 | INFO     | 
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Total records:     2
+2026-08-30 10:14:27 | INFO     | Valid records:     2
+2026-08-30 10:14:27 | INFO     | Invalid records:   0
+2026-08-30 10:14:27 | INFO     | Duplicates found:  0
+2026-08-30 10:14:27 | INFO     | Processed:         0
+2026-08-30 10:14:27 | INFO     | Successful:        0
+2026-08-30 10:14:27 | INFO     | Failed:            0
+2026-08-30 10:14:27 | INFO     | Skipped:           0
+2026-08-30 10:14:27 | INFO     | Runtime:           0.0s
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Browser headless mode: False
+2026-08-30 10:14:27 | INFO     | Dry run: True
+2026-08-30 10:14:27 | INFO     | Submit advertisements: False
+2026-08-30 10:14:27 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:14:27 | INFO     | Loaded 3 records.
+2026-08-30 10:14:27 | INFO     | Processing first 3 records.
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | DRY RUN MODE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:14:27 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:14:27 | INFO     | Starting pipeline processing...
+2026-08-30 10:14:27 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=True, max_stage=None)
+2026-08-30 10:14:27 | INFO     | Checkpoint found: 2 records already processed
+2026-08-30 10:14:27 | INFO     | Resuming with 1 remaining records
+2026-08-30 10:14:27 | INFO     | Resumed: 1 records remaining
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Normalized 1 records
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Validated 1 records, 0 rejected
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Unique vehicles after dedupe: 1
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Descriptions built for 1 vehicles
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | Images validated for 1 vehicles
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:14:27 | INFO     | ============================================================
+2026-08-30 10:14:27 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:14:27 | INFO     | Processing vehicle 1/1: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:14:28 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:14:28 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:14:28 | INFO     | ============================================================
+2026-08-30 10:14:28 | INFO     | SAVING REPORT
+2026-08-30 10:14:28 | INFO     | ============================================================
+2026-08-30 10:14:28 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:14:28 | INFO     | 
+2026-08-30 10:14:28 | INFO     | ============================================================
+2026-08-30 10:14:28 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:14:28 | INFO     | ============================================================
+2026-08-30 10:14:28 | INFO     | Total records:     3
+2026-08-30 10:14:28 | INFO     | Valid records:     1
+2026-08-30 10:14:28 | INFO     | Invalid records:   0
+2026-08-30 10:14:28 | INFO     | Duplicates found:  0
+2026-08-30 10:14:28 | INFO     | Processed:         1
+2026-08-30 10:14:28 | INFO     | Successful:        1
+2026-08-30 10:14:28 | INFO     | Failed:            0
+2026-08-30 10:14:28 | INFO     | Skipped:           0
+2026-08-30 10:14:28 | INFO     | Runtime:           1.2s
+2026-08-30 10:14:28 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | Browser headless mode: False
+2026-08-30 10:14:31 | INFO     | Dry run: True
+2026-08-30 10:14:31 | INFO     | Submit advertisements: False
+2026-08-30 10:14:31 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:14:31 | INFO     | Loaded 3 records.
+2026-08-30 10:14:31 | INFO     | Processing first 1 records.
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | DRY RUN MODE
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:14:31 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:14:31 | INFO     | Starting pipeline processing...
+2026-08-30 10:14:31 | INFO     | Starting pipeline with 1 records (dry_run=True, resume=False, max_stage=None)
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | Normalized 1 records
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | Validated 1 records, 0 rejected
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | Unique vehicles after dedupe: 1
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | Descriptions built for 1 vehicles
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | Images validated for 1 vehicles
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:14:31 | INFO     | ============================================================
+2026-08-30 10:14:31 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:14:31 | INFO     | Processing vehicle 1/1: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:14:31 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:14:32 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:14:32 | INFO     | ============================================================
+2026-08-30 10:14:32 | INFO     | SAVING REPORT
+2026-08-30 10:14:32 | INFO     | ============================================================
+2026-08-30 10:14:32 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:14:32 | INFO     | 
+2026-08-30 10:14:32 | INFO     | ============================================================
+2026-08-30 10:14:32 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:14:32 | INFO     | ============================================================
+2026-08-30 10:14:32 | INFO     | Total records:     1
+2026-08-30 10:14:32 | INFO     | Valid records:     1
+2026-08-30 10:14:32 | INFO     | Invalid records:   0
+2026-08-30 10:14:32 | INFO     | Duplicates found:  0
+2026-08-30 10:14:32 | INFO     | Processed:         1
+2026-08-30 10:14:32 | INFO     | Successful:        1
+2026-08-30 10:14:32 | INFO     | Failed:            0
+2026-08-30 10:14:32 | INFO     | Skipped:           0
+2026-08-30 10:14:32 | INFO     | Runtime:           1.1s
+2026-08-30 10:14:32 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | Browser headless mode: False
+2026-08-30 10:14:42 | INFO     | Dry run: True
+2026-08-30 10:14:42 | INFO     | Submit advertisements: False
+2026-08-30 10:14:42 | INFO     | Input source: file (data/inventory.json)
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | Loading source data from: data/inventory.json
+2026-08-30 10:14:42 | INFO     | Loaded 1 records.
+2026-08-30 10:14:42 | INFO     | Processing first 1 records.
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | VALIDATE-ONLY MODE
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | Starting pipeline processing...
+2026-08-30 10:14:42 | INFO     | Starting pipeline with 1 records (dry_run=True, resume=False, max_stage=validate)
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | Normalized 1 records
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | Validated 1 records, 0 rejected
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | SAVING REPORT
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:14:42 | INFO     | 
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:14:42 | INFO     | Total records:     1
+2026-08-30 10:14:42 | INFO     | Valid records:     1
+2026-08-30 10:14:42 | INFO     | Invalid records:   0
+2026-08-30 10:14:42 | INFO     | Duplicates found:  0
+2026-08-30 10:14:42 | INFO     | Processed:         0
+2026-08-30 10:14:42 | INFO     | Successful:        0
+2026-08-30 10:14:42 | INFO     | Failed:            0
+2026-08-30 10:14:42 | INFO     | Skipped:           0
+2026-08-30 10:14:42 | INFO     | Runtime:           0.0s
+2026-08-30 10:14:42 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | Browser headless mode: False
+2026-08-30 10:20:00 | INFO     | Dry run: True
+2026-08-30 10:20:00 | INFO     | Submit advertisements: False
+2026-08-30 10:20:00 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:20:00 | INFO     | Loaded 3 records.
+2026-08-30 10:20:00 | INFO     | Processing first 3 records.
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | VALIDATE-ONLY MODE
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | Starting pipeline processing...
+2026-08-30 10:20:00 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=False, max_stage=validate)
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | Normalized 3 records
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | SAVING REPORT
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:20:00 | INFO     | 
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:00 | INFO     | Total records:     3
+2026-08-30 10:20:00 | INFO     | Valid records:     3
+2026-08-30 10:20:00 | INFO     | Invalid records:   0
+2026-08-30 10:20:00 | INFO     | Duplicates found:  0
+2026-08-30 10:20:00 | INFO     | Processed:         0
+2026-08-30 10:20:00 | INFO     | Successful:        0
+2026-08-30 10:20:00 | INFO     | Failed:            0
+2026-08-30 10:20:00 | INFO     | Skipped:           0
+2026-08-30 10:20:00 | INFO     | Runtime:           0.0s
+2026-08-30 10:20:00 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Browser headless mode: False
+2026-08-30 10:20:38 | INFO     | Dry run: True
+2026-08-30 10:20:38 | INFO     | Submit advertisements: False
+2026-08-30 10:20:38 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:20:38 | INFO     | Loaded 3 records.
+2026-08-30 10:20:38 | INFO     | Processing first 3 records.
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | PREPARE MODE
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Starting pipeline processing...
+2026-08-30 10:20:38 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=False, max_stage=images)
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Normalized 3 records
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Unique vehicles after dedupe: 3
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Descriptions built for 3 vehicles
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Images validated for 3 vehicles
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | SAVING REPORT
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:20:38 | INFO     | 
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:38 | INFO     | Total records:     3
+2026-08-30 10:20:38 | INFO     | Valid records:     3
+2026-08-30 10:20:38 | INFO     | Invalid records:   0
+2026-08-30 10:20:38 | INFO     | Duplicates found:  0
+2026-08-30 10:20:38 | INFO     | Processed:         0
+2026-08-30 10:20:38 | INFO     | Successful:        0
+2026-08-30 10:20:38 | INFO     | Failed:            0
+2026-08-30 10:20:38 | INFO     | Skipped:           0
+2026-08-30 10:20:38 | INFO     | Runtime:           0.0s
+2026-08-30 10:20:38 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | VEHICLE ADVERTISEMENT AUTOMATION STARTING
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | Browser headless mode: False
+2026-08-30 10:20:54 | INFO     | Dry run: True
+2026-08-30 10:20:54 | INFO     | Submit advertisements: False
+2026-08-30 10:20:54 | INFO     | Input source: file (data/inventory.csv)
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | LOADING SOURCE DATA
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | Loading source data from: data/inventory.csv
+2026-08-30 10:20:54 | INFO     | Loaded 3 records.
+2026-08-30 10:20:54 | INFO     | Processing first 3 records.
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | DRY RUN MODE
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | The browser will open and the form will be filled.
+2026-08-30 10:20:54 | INFO     | The advertisement will NOT be submitted.
+2026-08-30 10:20:54 | INFO     | Starting pipeline processing...
+2026-08-30 10:20:54 | INFO     | Starting pipeline with 3 records (dry_run=True, resume=False, max_stage=None)
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | STAGE 1: NORMALIZE
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | Normalized 3 records
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | STAGE 2: VALIDATE
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | Validated 3 records, 0 rejected
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | STAGE 3: DEDUPLICATE
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | Unique vehicles after dedupe: 3
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | STAGE 4: BUILD DESCRIPTIONS
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | Descriptions built for 3 vehicles
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | STAGE 5: VALIDATE IMAGES
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | Images validated for 3 vehicles
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | STAGE 6: POST ADS (dry_run=True)
+2026-08-30 10:20:54 | INFO     | ============================================================
+2026-08-30 10:20:54 | INFO     | DRY RUN MODE - Forms will be filled but not submitted
+2026-08-30 10:20:54 | INFO     | Processing vehicle 1/3: auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:20:55 | WARNING  | Category selection failed for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950
+2026-08-30 10:20:56 | INFO     | Dry run complete for auto_2018_Volkswagen_Kombi_2_0_BiTDI_449950 (form filled, not submitted)
+2026-08-30 10:20:56 | INFO     | Processing vehicle 2/3: auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:20:57 | WARNING  | Category selection failed for auto_2020_Toyota_Hilux_2_8_GD_6_520000
+2026-08-30 10:20:57 | INFO     | Dry run complete for auto_2020_Toyota_Hilux_2_8_GD_6_520000 (form filled, not submitted)
+2026-08-30 10:20:57 | INFO     | Processing vehicle 3/3: auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:20:58 | WARNING  | Category selection failed for auto_2019_Ford_Ranger_2_2_TDCi_480000
+2026-08-30 10:20:58 | INFO     | Dry run complete for auto_2019_Ford_Ranger_2_2_TDCi_480000 (form filled, not submitted)
+2026-08-30 10:20:58 | INFO     | ============================================================
+2026-08-30 10:20:58 | INFO     | SAVING REPORT
+2026-08-30 10:20:58 | INFO     | ============================================================
+2026-08-30 10:20:58 | INFO     | Reports saved to /Users/nsumant/car-ad-automation/car_ad_automation/core/reports
+2026-08-30 10:20:58 | INFO     | 
+2026-08-30 10:20:58 | INFO     | ============================================================
+2026-08-30 10:20:58 | INFO     | BATCH PROCESSING SUMMARY
+2026-08-30 10:20:58 | INFO     | ============================================================
+2026-08-30 10:20:58 | INFO     | Total records:     3
+2026-08-30 10:20:58 | INFO     | Valid records:     3
+2026-08-30 10:20:58 | INFO     | Invalid records:   0
+2026-08-30 10:20:58 | INFO     | Duplicates found:  0
+2026-08-30 10:20:58 | INFO     | Processed:         3
+2026-08-30 10:20:58 | INFO     | Successful:        3
+2026-08-30 10:20:58 | INFO     | Failed:            0
+2026-08-30 10:20:58 | INFO     | Skipped:           0
+2026-08-30 10:20:58 | INFO     | Runtime:           4.5s
+2026-08-30 10:20:58 | INFO     | ============================================================

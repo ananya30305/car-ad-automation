@@ -228,5 +228,92 @@ def scrape_cars_co_za(target_count: int = 1000, start_page: int = 2):
                 pass
 
 
+def scrape_website(url: str, target_count: int = 100) -> list[dict]:
+    """
+    Scrape cars.co.za and return normalized records for the pipeline.
+    
+    Args:
+        url: The cars.co.za listing page URL (e.g., "https://www.cars.co.za/usedcars/")
+        target_count: Maximum number of cars to scrape
+        
+    Returns:
+        List of normalized car records matching pipeline's expected format
+    """
+    from car_ad_automation.core.config import DATA_DIR, OUTPUT_DIR
+    
+    IMAGES_DIR = DATA_DIR / "images"
+    SCRAPER_PROFILE_DIR = DATA_DIR / "browser_profile_scraper"
+    
+    IMAGES_DIR.mkdir(parents=True, exist_ok=True)
+    SCRAPER_PROFILE_DIR.mkdir(parents=True, exist_ok=True)
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    collected_cars = []
+    seen_urls = set()
+
+    # Determine start page from URL or default
+    current_page = 2
+    page_match = re.search(r'[?&]P=(\d+)', url)
+    if page_match:
+        current_page = int(page_match.group(1))
+
+    with sync_playwright() as p:
+        context = p.chromium.launch_persistent_context(
+            user_data_dir=str(SCRAPER_PROFILE_DIR),
+            headless=False,
+            viewport={"width": 1440, "height": 900},
+            args=["--disable-blink-features=AutomationControlled", "--no-sandbox"],
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        )
+        page = context.pages[0] if context.pages else context.new_page()
+
+        try:
+            while len(collected_cars) < target_count:
+                page_url = f"https://www.cars.co.za/usedcars/?sort=sort_rank&price_type=listing_price&P={current_page}"
+                print(f"[SCRAPE] Page {current_page} | Progress: {len(collected_cars)}/{target_count}")
+
+                try:
+                    page.goto(page_url, wait_until="domcontentloaded", timeout=45000)
+                    page.wait_for_timeout(random.randint(1500, 2500))
+
+                    anchors = page.query_selector_all("a[href*='/for-sale/used/']")
+                    page_urls = []
+
+                    for a in anchors:
+                        href = a.get_attribute("href")
+                        if href:
+                            full_url = href if href.startswith("http") else f"https://www.cars.co.za{href}"
+                            if re.search(r'/\d+/?$', full_url) and full_url not in seen_urls:
+                                seen_urls.add(full_url)
+                                page_urls.append(full_url)
+
+                    for car_url in page_urls:
+                        if len(collected_cars) >= target_count:
+                            break
+                        try:
+                            car_data = scrape_single_car_detail(page, car_url)
+                            # Verify minimum 5 images are downloaded before saving
+                            if len(car_data.get("images", [])) >= 1:
+                                collected_cars.append(car_data)
+                                print(f" -> [{len(collected_cars)}/{target_count}] Successfully Scraped: {car_data.get('title')} ({len(car_data.get('images', []))} Images Downloaded)")
+                            else:
+                                print(f" -> [SKIP] {car_url} (Found only {len(car_data.get('images', []))} images)")
+                        except Exception as err:
+                            print(f"[WARN] Failed extracting {car_url}: {err}")
+
+                except Exception as e:
+                    print(f"[ERROR] Exception on Page {current_page}: {e}")
+
+                current_page += 1
+
+        finally:
+            try:
+                context.close()
+            except Exception:
+                pass
+
+    return collected_cars
+
+
 if __name__ == "__main__":
     scrape_cars_co_za(target_count=1000, start_page=2)

@@ -101,6 +101,13 @@ SUPPORTED_IMAGE_FORMATS = {'.jpg', '.jpeg', '.png', '.webp'}
 # Maximum image file size (bytes)
 MAX_IMAGE_SIZE = 50 * 1024 * 1024  # 50 MB
 
+# Minimum images required (0 = error, 1-4 = warning, 5+ = OK)
+MIN_IMAGES = int(os.getenv("MIN_IMAGES", "1"))
+RECOMMENDED_IMAGES = int(os.getenv("RECOMMENDED_IMAGES", "5"))
+
+# Image download directory (for form_filler fallback compatibility)
+IMAGE_DOWNLOAD_DIR = DATA_DIR / "images"
+
 # ============================================================
 # VALIDATION SETTINGS
 # ============================================================

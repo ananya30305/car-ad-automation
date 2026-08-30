@@ -3,12 +3,11 @@
 Main CLI for vehicle advertisement automation.
 """
 
-import asyncio
 import argparse
 import sys
 
 from car_ad_automation.core import config as cfg
-from car_ad_automation.pipeline.batch_processor import BatchProcessor
+from car_ad_automation.pipeline.pipeline import Pipeline
 from car_ad_automation.core.logger import create_logger
 
 
@@ -19,16 +18,34 @@ def parse_arguments() -> argparse.Namespace:
         description="Automate vehicle advertisement posting"
     )
 
+    # Input source selection
+    parser.add_argument(
+        "--source",
+        choices=["website", "file", "auto"],
+        default="auto",
+        help="Input source mode: 'website' to scrape, 'file' to load CSV/JSON, 'auto' to use default data/inventory.csv|.json (default: auto)"
+    )
+    parser.add_argument(
+        "--url",
+        metavar="URL",
+        help="Website URL to scrape (overrides --source)"
+    )
+    parser.add_argument(
+        "--file",
+        metavar="PATH",
+        help="Path to CSV/JSON file (overrides --source)"
+    )
+
     parser.add_argument(
         "--validate",
         action="store_true",
-        help="Validate source data only"
+        help="Validate source data only (run through validation stage)"
     )
 
     parser.add_argument(
         "--prepare",
         action="store_true",
-        help="Prepare advertisements without browser automation"
+        help="Prepare advertisements without browser automation (run through images stage)"
     )
 
     parser.add_argument(
@@ -83,9 +100,9 @@ def parse_arguments() -> argparse.Namespace:
     return parser.parse_args()
 
 
-async def main_async(args: argparse.Namespace) -> int:
+def main_async(args: argparse.Namespace) -> int:
     """
-    Async main function.
+    Main function.
 
     Args:
         args: Command line arguments.
@@ -103,6 +120,20 @@ async def main_async(args: argparse.Namespace) -> int:
     logger.info("=" * 60)
     logger.info("VEHICLE ADVERTISEMENT AUTOMATION STARTING")
     logger.info("=" * 60)
+
+    # ---------------------------------------------------------
+    # DETERMINE INPUT SOURCE
+    # ---------------------------------------------------------
+
+    if args.url:
+        source_mode = "website"
+        source_arg = args.url
+    elif args.file:
+        source_mode = "file"
+        source_arg = args.file
+    else:
+        source_mode = args.source
+        source_arg = None
 
     # ---------------------------------------------------------
     # BROWSER MODE
@@ -144,7 +175,7 @@ async def main_async(args: argparse.Namespace) -> int:
         submit_ad = False
 
     # ---------------------------------------------------------
-    # CONFIGURATION FOR BATCH PROCESSOR
+    # CONFIGURATION FOR PIPELINE
     # ---------------------------------------------------------
 
     processor_config = {
@@ -190,11 +221,15 @@ async def main_async(args: argparse.Namespace) -> int:
         f"Submit advertisements: {submit_ad}"
     )
 
+    logger.info(
+        f"Input source: {source_mode}" + (f" ({source_arg})" if source_arg else "")
+    )
+
     # ---------------------------------------------------------
-    # CREATE BATCH PROCESSOR
+    # CREATE PIPELINE
     # ---------------------------------------------------------
 
-    processor = BatchProcessor(
+    pipeline = Pipeline(
         processor_config,
         logger=logger
     )
@@ -209,7 +244,7 @@ async def main_async(args: argparse.Namespace) -> int:
         logger.info("LOADING SOURCE DATA")
         logger.info("=" * 60)
 
-        records = await processor.load_source_data()
+        records = pipeline.load_source_data(source_mode, source_arg)
 
         if not records:
             logger.error("No source data found.")
@@ -238,80 +273,55 @@ async def main_async(args: argparse.Namespace) -> int:
             )
 
         # -----------------------------------------------------
-        # VALIDATE ONLY
+        # DETERMINE DRY RUN FOR VALIDATE/PREPARE MODES
+        # -----------------------------------------------------
+
+        # --validate and --prepare imply dry_run=True (no browser submission)
+        effective_dry_run = dry_run or args.validate or args.prepare
+
+        # Determine max_stage based on flags
+        if args.validate:
+            max_stage = "validate"
+        elif args.prepare:
+            max_stage = "images"
+        else:
+            max_stage = None  # Run all stages
+
+        # -----------------------------------------------------
+        # RUN PIPELINE
         # -----------------------------------------------------
 
         if args.validate:
-
             logger.info("=" * 60)
             logger.info("VALIDATE-ONLY MODE")
             logger.info("=" * 60)
 
-            report = await processor.process_batch(
-                records,
-                dry_run=True,
-                validate_only=True
-            )
-
-        # -----------------------------------------------------
-        # PREPARE ONLY
-        # -----------------------------------------------------
-
         elif args.prepare:
-
             logger.info("=" * 60)
             logger.info("PREPARE MODE")
             logger.info("=" * 60)
 
-            report = await processor.process_batch(
-                records,
-                dry_run=True,
-                validate_only=False,
-                skip_browser=True
-            )
-
-        # -----------------------------------------------------
-        # NORMAL BROWSER AUTOMATION
-        # -----------------------------------------------------
-
         else:
-
-            if dry_run:
-
+            if effective_dry_run:
                 logger.info("=" * 60)
                 logger.info("DRY RUN MODE")
                 logger.info("=" * 60)
-
-                logger.info(
-                    "The browser will open and the form will be filled."
-                )
-
-                logger.info(
-                    "The advertisement will NOT be submitted."
-                )
-
+                logger.info("The browser will open and the form will be filled.")
+                logger.info("The advertisement will NOT be submitted.")
             else:
-
                 logger.info("=" * 60)
                 logger.info("SUBMISSION MODE")
                 logger.info("=" * 60)
+                logger.info("Advertisements may be submitted.")
 
-                logger.info(
-                    "Advertisements may be submitted."
-                )
+        logger.info("Starting pipeline processing...")
 
-            # -------------------------------------------------
-            # PROCESS RECORDS
-            # -------------------------------------------------
-
-            logger.info(
-                "Starting batch processing..."
-            )
-
-            report = await processor.process_batch(
-                records,
-                dry_run=dry_run
-            )
+        report = pipeline.run(
+            records,
+            dry_run=effective_dry_run,
+            resume=args.resume,
+            max_stage=max_stage
+        )
 
         # -----------------------------------------------------
         # SAVE REPORT
@@ -321,9 +331,7 @@ async def main_async(args: argparse.Namespace) -> int:
         logger.info("SAVING REPORT")
         logger.info("=" * 60)
 
-        processor.save_report(
-            cfg.REPORTS_DIR
-        )
+        pipeline.save_report(cfg.REPORTS_DIR)
 
         # -----------------------------------------------------
         # SUMMARY
@@ -404,9 +412,7 @@ def main() -> int:
 
     args = parse_arguments()
 
-    return asyncio.run(
-        main_async(args)
-    )
+    return main_async(args)
 
 
 if __name__ == "__main__":

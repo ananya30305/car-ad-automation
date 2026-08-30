@@ -62,6 +62,12 @@ class StructuredLogger:
         """Log error message."""
         self._log("ERROR", message, **kwargs)
     
+    def exception(self, message: str, **kwargs) -> None:
+        """Log exception with traceback."""
+        import traceback
+        tb = traceback.format_exc()
+        self._log("ERROR", f"{message}\n{tb}", **kwargs)
+    
     def debug(self, message: str, **kwargs) -> None:
         """Log debug message."""
         self._log("DEBUG", message, **kwargs)

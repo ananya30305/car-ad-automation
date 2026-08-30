@@ -1,4 +1,34 @@
-"""Batch Processor with Auto-Navigation & Interactive Post Approval Per Car."""
+"""
+Batch Processor - Standalone Browser Automation for Manual Ad Posting.
+
+====================================================================
+USAGE CONTEXT - IMPORTANT
+====================================================================
+
+This module provides a STANDALONE browser automation workflow for
+interactive manual ad posting. It reads pre-built ads from
+ads_ready_for_form.json and lets you manually approve each submission.
+
+This is DIFFERENT from the main Pipeline class in pipeline.py:
+
+  - Pipeline (pipeline.py): Complete end-to-end automation
+    * Loads source data (CSV/JSON/scraper)
+    * Normalizes, validates, deduplicates
+    * Builds descriptions, validates images
+    * Posts ads automatically (or dry-run)
+    * Uses checkpoint/resume
+    * Entry point: python -m car_ad_automation.cli.main
+
+  - BatchProcessor (this file): Manual interactive posting only
+    * Requires pre-built ads_ready_for_form.json
+    * You manually navigate to form page
+    * You manually click "Post" for each ad
+    * No checkpoint/resume
+    * Entry point: python -m car_ad_automation.pipeline.batch_processor
+
+Use Pipeline for production automation. Use BatchProcessor for
+testing form filling or when you need manual control over each post.
+"""
 
 import json
 import logging

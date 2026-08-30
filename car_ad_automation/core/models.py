@@ -117,6 +117,11 @@ class Vehicle:
         default_factory=list
     )
 
+    downloaded_image_count: int = field(
+        default=0,
+        init=False
+    )
+
     # --------------------------------------------------------
     # Currency
     # --------------------------------------------------------
@@ -408,6 +413,10 @@ class BatchProcessingReport:
     # --------------------------------------------------------
 
     missing_images: int = 0
+
+    downloaded_images_total: int = 0
+
+    images_download_failed: int = 0
 
     verification_failures: int = 0
 
