@@ -41,6 +41,7 @@ def extract_car(car: dict) -> dict:
     drive = clean(car.get("4x2 / 4x4") or car.get("drive_type"))
     colour = clean(car.get("body colour") or car.get("colour"))
     cond = clean(car.get("condition"), fallback=".")
+    seats = clean(car.get("seats"), fallback=".")
 
     feats = car.get("features", [])
     features_txt = "\n".join([str(f).strip() for f in feats if str(f).strip()]) if isinstance(feats, list) else clean(feats)
@@ -71,7 +72,7 @@ def extract_car(car: dict) -> dict:
         "drive_type": drive,
         "body colour": colour,
         "colour": colour,
-        "seats": clean(car.get("seats")),
+        "seats": seats,
         "price summary": pricing_summary,
         "pricing_summary": pricing_summary,
         "dealer_name": dealer,
@@ -90,7 +91,6 @@ def extract_car(car: dict) -> dict:
         "location": "South Africa",
         "images": valid_images[:5]
     }
-
 
 def main():
     if not INPUT_FILE.exists():

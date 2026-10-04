@@ -1,89 +1,158 @@
-Markdown# Vehicle Advertisement Automation System
+# Auto Listing Sync: Cars.co.za to Web Portal
 
-A streamlined Python and Playwright automation tool designed to extract car inventory data directly and automatically populate dynamic multi-step advertisement forms on target classifieds portals.
-
----
-
-## Key Features
-
-- **Direct 2-Step Pipeline**: Streamlined execution flow (`extract_cars.py` → `batch_processor.py`).
-- **Strict Category Automation**: Automatically expands **Vehicles → Cars → Used cars in South Africa** while explicitly filtering out *Parts* or *RVs*.
-- **AJAX DOM Mutation Handling**: Polls the DOM dynamically for server-side Joomla dropdown responses before attempting to populate extended fields.
-- **Deep Specification Mapping**: Maps up to 25 specs including Title Description, Kilometers, Seats, Dealer Rating, Features, Highlights, and Source Links.
-- **Rich Text Editor Ingestion**: Directly injects vehicle descriptions into TinyMCE iFrame HTML editors.
-- **Local Photo Upload**: Validates and attaches up to 5 local vehicle photos per listing (`.jpg`, `.png`).
-- **Interactive Approval**: Pauses browser automation prior to posting to allow visual verification.
+An end-to-end Python & Playwright automation pipeline designed to scrape used vehicle listings from `cars.co.za` and automatically populate dynamic multi-step advertisement forms on target web portals.
 
 ---
 
-## Project Architecture
+## 💡 Key Highlights
 
-```text
-car-ad-automation/
-├── batch_processor.py   # Entry point & Playwright persistent browser context orchestrator
-├── form_filler.py       # Core automation engine (handles AJAX category selection & field population)
-├── extract_cars.py     # Parses data/inventory.json and builds payload output
-├── config.py           # Global file paths, portal URLs, and browser settings
-├── scraper.py          # Standalone inventory scraper utility
-│
-├── data/
-│   ├── inventory.json  # Source inventory data
-│   └── images/         # Local vehicle photos organized by source ID
-│
-├── output/
-│   └── ads_ready_for_form.json  # Final output payload consumed by batch processor
-│
-└── browser_profile/    # Persistent Chromium profile keeping login sessions active
-Quick SetupPrerequisitesPython 3.9+pip package managerInstallationPowerShell# Navigate to project root directory
-cd D:\car-ad-automation
+* **Automated Web Scraping**: Extracts comprehensive vehicle metadata including title, trim variant, dynamic Google dealer rating, specs, vehicle highlights, features, and local image downloads.
+* **Interactive Batch Processing**: Human-in-the-loop queue management. Displays vehicle source links, auto-fills ad forms, allows visual inspection before submission, and logs confirmed listings.
+* **Smart Data Normalization**: Automatically strips unit strings (`km`), standardizes drive types (`4x2`/`4x4`), unmasks hidden phone numbers, and injects descriptions into TinyMCE iFrame editors.
+* **Customizable Exclusion Filtering**: Built-in support to skip specific models, sponsored cars, or duplicate listings across batch runs.
+* **Queue Recovery & Logging**: Automatically removes posted listings from the active JSON queue, cleans up local media, and logs completed titles directly to `output/carlist.txt`.
+
+---
+
+## ⚙️ Architecture & Pipeline Flow
+
+The system operates in two independent stages:
+              ┌──────────────────────────────┐
+              │   1. Inventory Scraping      │
+              │        (scraper.py)          │
+              └──────────────┬───────────────┘
+                             │
+                             ▼
+                 data/ & output/*.json
+                (inventory.json / images)
+                             │
+                             ▼
+              ┌──────────────────────────────┐
+              │  2. Batch Auto-Form Filler   │
+              │    (batch_processor.py)      │
+              └──────────────┬───────────────┘
+                             │
+                             ▼
+               Target Web Portal / Post Ad
+
+### 1. Data Collection (`scraper.py`)
+* Navigates `cars.co.za` search results page by page.
+* Filters out sponsored listings and checks URL slugs against an exclusion list.
+* Scrolls to the dealer section to trigger lazy-loaded Google Reviews and unmask dealer contact numbers.
+* Saves normalized metadata into `data/inventory.json` and downloads the first 5 images per car to `data/images/<source_id>/`.
+
+### 2. Form Auto-Filler (`batch_processor.py` & `form_filler.py`)
+* Loads queued ads from `output/ads_ready_for_form.json` (or `data/inventory.json`).
+* Uses a persistent Chromium session to maintain portal authentication.
+* Handles AJAX DOM mutations for hierarchical categories (*Vehicles → Cars → Used cars*).
+* Fills all technical specs, uploads local images, and waits for user confirmation (`y/n`).
+* Appends posted titles to `output/carlist.txt` and removes completed records from the queue.
+
+---
+
+## 🗺️ Field Mapping Matrix
+
+| Source Key (`inventory.json`) | Portal Form Element | Processing & Normalization Rules |
+| :--- | :--- | :--- |
+| `title` | Ad Title | Primary vehicle title string |
+| `title description` / `variant` | Variant / Subtitle | Submodel trim (e.g., *2.0D XLT Auto*) |
+| `year` | Registration Year | 4-digit year format |
+| `Kilometers driven` | Mileage | Strips `"km"`, extracts pure digits |
+| `transmission` | Transmission | Standardized (`Automatic` / `Manual`) |
+| `fuel` | Fuel Type | Standardized (`Petrol` / `Diesel` / `Hybrid` / `Electric`) |
+| `4x2 / 4x4` | Drive Type | Preserved as lowercase (`4x2` / `4x4`) |
+| `price` | Price (ZAR) | Extracted numeric string |
+| `dealer_name` | Dealer Name | Extracted seller name |
+| `dealer_address` | Location | Formatted seller town & province |
+| `Dealer average rating` | Rating & Reviews | Triggers dynamic widget/modal to parse score & count (e.g., `4.8 (630 reviews)`) |
+| `description` | Full Description | Injected into TinyMCE rich text editor iFrame |
+| `features` | Features / Accessories | Array converted to itemized spec tags |
+| `vehicle highlights` | Vehicle Highlights | Highlight summary block |
+| `images` | Image Uploader | Uploads up to 5 local `.jpg` files from `data/images/<source_id>/` |
+
+---
+
+## 🛠️ Exclusion Filtering
+
+To prevent scraping unwanted, rare, or non-target vehicles, `scraper.py` includes a model exclusion list (`EXCLUDED_MODELS`).
+
+> **Note**: The default exclusion array contains preset target models. Users can customize `EXCLUDED_MODELS` inside `scraper.py` by adding or removing exact model name strings to fit their own inventory requirements:
+
+```python
+# Custom model exclusions (Matches against URL slugs and extracted titles)
+EXCLUDED_MODELS = [
+    "2021 Toyota Fortuner",
+    "2023 Ford Ranger",
+    # Add your own custom titles here...
+]
+🚀 Quick Start
+1. Installation
+PowerShell
+# Clone the repository
+git clone [https://github.com/YOUR_USERNAME/car-ad-automation.git](https://github.com/YOUR_USERNAME/car-ad-automation.git)
+cd car-ad-automation
 
 # Install Python dependencies
 pip install playwright requests beautifulsoup4 pillow python-dotenv pandas
 
-# Install Playwright browser binaries
+# Install Playwright Chromium browser
 playwright install chromium
-Source Data Schema (data/inventory.json)Place your vehicle inventory in data/inventory.json:JSON[
-  {
-    "id": "STOCK001",
-    "title": "2022 Volkswagen Amarok",
-    "title description": "3.0 TDI Highline EX (190kW) 4Motion Auto Double-Ca",
-    "condition": "used",
-    "year": "2022",
-    "Kilometers driven": "77 000 km",
-    "transmission": "automatic",
-    "fuel": "petrol",
-    "4x2 / 4x4": "4x4",
-    " body colour": "White",
-    "seats": ".",
-    "price summary": "Pricing Summary R 729 900 Est. R 13 014 p/m",
-    "dealer_name": "ABC Motors",
-    "dealer_address": "Nelspruit, Mpumalanga",
-    "Dealer average rating": "4.0 (322 reviews)",
-    "features": [
-      "ABS Air Conditioner Airbag - DriverPass & Sides Airbag - On/Off Switch Alloy Wheels Audio Control on Steering Wheel Auxilary Input Bluetooth Central Locking Remote Cruise Control Electric Windows - Front & Back Fog Lamps - Front Leather Seats Leather Trim Mags Mud Flaps Park Distance Control (PDC) - Front Reverse Camera Smash and Grab Steering Wheel control Tow Bar Traction Control"
-    ],
-    "contact_number": "0600431011",
-    "Source Link": "[https://www.cars.co.za/for-sale/used/2022-Volkswagen-Amarok-3.0-TDI-Highline-EX-190kW-4Motion-Auto-Double-Ca-Mpumalanga-Nelspruit/11198989/](https://www.cars.co.za/for-sale/used/2022-Volkswagen-Amarok-3.0-TDI-Highline-EX-190kW-4Motion-Auto-Double-Ca-Mpumalanga-Nelspruit/11198989/)",
-    "vehicle highlights": [
-      "Exceptional Torque Output 580 Nm Exceptional pulling power for strong in-gear acceleration.Excellent Towing Capacity 3300 Kg Can haul heavy trailers and caravans with ease.High Ground Clearance 239 mm Improved approach, break-over and departure off-road."
-    ],
-    "description": "This 2022 Volkswagen Amarok 3.0TDi H-LINE EX is a remarkable pickup that combines rugged capability with luxurious comfort...",
-    "price": "729 900",
-    "Select a tag ": "Sale",
-    "images": [
-      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195720.png",
-      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195716.png",
-      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195701.png",
-      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195711.png",
-      "D:\\car-ad-automation\\data\\images\\0001\\Screenshot 2026-08-26 195706.png"
-    ],
-    "address": "Nelspruit, Mpumalanga",
-    "location": "South Africa"
-  }
-]
-Execution WorkflowRun these two commands sequentially in PowerShell:Step 1: Extract & Format Inventory PayloadReads data/inventory.json and generates output/ads_ready_for_form.json.PowerShellpython extract_cars.py
-Step 2: Run Browser Automation EngineLaunches persistent Chromium context, handles dynamic category selection, populates specifications, and attaches images.PowerShellpython batch_processor.py
-Automated Field Mapping MatrixSource Key (inventory.json)Portal Form ElementDescriptiontitleTitleFull vehicle listing titletitle descriptionTitle DescriptionEngine trim and vehicle variantKilometers drivenKilometer / MileageNumeric value (strips "km")conditionConditionForm standard (used)pricePriceNormalized numeric stringfeaturesComfort / FeaturesFormatted feature blockvehicle highlightsVehicle HighlightsHighlight points text blockDealer average ratingDealer RatingScore and review stringcontact_numberContact PhonePhone number fieldimagesFile Upload WidgetAttaches up to 5 validated local imagesPush Updates to GitHubRun these commands in PowerShell to push your clean workspace and updated README:PowerShellgit add .
-git commit -m "Update core engine, clean repository workspace, and update README"
-git push origin main
-License & SupportInternal private use automation project. Managed by Ananya P.
+2. Run Scraper
+Scrape inventory directly from cars.co.za:
+
+PowerShell
+python scraper.py
+3. Run Batch Form Processor
+Launch the interactive batch auto-filler:
+
+PowerShell
+python batch_processor.py
+Navigate to the blank Post Ad page on the portal in the opened browser window.
+
+Press ENTER in the terminal to auto-fill all fields and upload images.
+
+Review the form, click Post Ad, and enter y in the terminal to log the car to output/carlist.txt and advance to the next listing.
+
+📁 Repository Structure
+Plaintext
+car-ad-automation/
+├── scraper.py           # Inventory collection & image downloader script
+├── batch_processor.py   # Queue manager & CLI interface
+├── form_filler.py       # Core Playwright DOM automation engine
+├── config.py            # System configuration & file paths
+│
+├── data/
+│   ├── inventory.json   # Active inventory data store
+│   └── images/          # Local downloaded vehicle images (by source_id)
+│
+├── output/
+│   ├── cars.json        # Output inventory JSON
+│   └── carlist.txt      # Text log of successfully posted car titles
+│
+└── browser_profile/     # Persistent browser session state
+📄 License
+This repository is maintained for custom automation workflows. Distributed under the MIT License.
+
+
+---
+
+### Commands to Push to GitHub
+
+Run these commands in your PowerShell terminal to initialize Git (if not already initialized), add your updated files, and push to GitHub:
+
+```powershell
+# 1. Initialize git (if new repository)
+git init
+
+# 2. Add remote origin (replace with your actual GitHub repo URL)
+git remote add origin https://github.com/YOUR_USERNAME/car-ad-automation.git
+
+# 3. Stage all files
+git add .
+
+# 4. Commit changes
+git commit -m "Add complete scraper, batch processor, and documentation"
+
+# 5. Push to main branch
+git branch -M main
+git push -u origin main
